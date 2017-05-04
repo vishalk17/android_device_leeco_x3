@@ -219,7 +219,7 @@ persist.call_recording.src=1
 net.tethering.noprovisioning=true
 
 # Media Settings
-media.settings.xml=/system/vendor/etc/media_profiles.xml
+media.settings.xml=/vendor/etc/media_profiles_V1_0.xml
 persist.media.treble_omx=false
 
 # Default Renderer

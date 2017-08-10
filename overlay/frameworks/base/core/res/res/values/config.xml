@@ -263,4 +263,7 @@
         provisioning, availability etc -->
     <bool name="config_carrier_volte_available">true</bool>
 
+    <!-- Flag indicating which package name can access the persistent data partition -->
+    <string name="config_persistentDataPackageName" translatable="false">com.google.android.gms</string>
+
 </resources>

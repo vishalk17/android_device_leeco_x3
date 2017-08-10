@@ -83,6 +83,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196609
     vendor.ro.opengles.version=196609
 
+# Display
+PRODUCT_PROPERTY_OVERRIDES += debug.hwui.use_buffer_age=false
+
 # Audio
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \

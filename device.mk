@@ -12,17 +12,17 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-dalv
 # Call hwui memory config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
 
-# The gps config appropriate for this device 
-$(call inherit-product, device/common/gps/gps_us_supl.mk) 
+# The gps config appropriate for this device
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 # Vendor
-$(call inherit-product, vendor/LeTV/x500/x500-vendor-blobs.mk)
+$(call inherit-product, vendor/leeco/x3/x3-vendor-blobs.mk)
+
+# Folder path
+LOCAL_PATH := $(call my-dir)
 
 # Overlay Folder
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
-# Folder path
-LOCAL_PATH := device/LeTV/x500
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal xxhdpi
@@ -38,7 +38,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap 
+    Snap
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -99,7 +99,7 @@ PRODUCT_PACKAGES += \
     hostapd \
     wpa_supplicant
 
-# Media	
+# Media
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
@@ -116,7 +116,7 @@ PRODUCT_PACKAGES += \
     resize2fs \
     setup_fs \
     ext4_resize \
-    superumount 
+    superumount
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
@@ -217,7 +217,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/mtk-tpd.kl:system/usr/keylayout/mtk-tpd.kl\
     $(LOCAL_PATH)/configs/keylayout/synaptics_dsx_i2c.kl:system/usr/keylayout/synaptics_dsx_i2c.kl\
     $(LOCAL_PATH)/configs/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl
-    
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/ril_conf/apns-conf.xml:system/etc/apns-conf.xml \
     $(LOCAL_PATH)/configs/ril_conf/ecc_list.xml:system/etc/ecc_list.xml \
@@ -238,7 +238,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6c.script:system/etc/wide-dhcpv6/dhcp6c.script \
     $(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6cctlkey:system/etc/wide-dhcpv6/dhcp6cctlkey \
     $(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6cDNS.conf:system/etc/wide-dhcpv6/dhcp6cDNS.conf \
-    $(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6s.conf:system/etc/wide-dhcpv6/dhcp6s.conf 
+    $(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6s.conf:system/etc/wide-dhcpv6/dhcp6s.conf
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/radvd/radvd.conf:system/etc/radvd/radvd.conf
@@ -254,10 +254,10 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
-    
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
-    
+
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
@@ -280,7 +280,7 @@ PRODUCT_PACKAGES += \
    libgui_ext \
    libui_ext
 
-# MTK Helpers 
+# MTK Helpers
 PRODUCT_PACKAGES += \
    libccci_util   \
    libwvmsym
@@ -308,5 +308,4 @@ PRODUCT_PACKAGES += \
 
 # Mediaserver with system group
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/etc/init/mediaserver.rc:system/etc/init/mediaserver.rc 
-
+    $(LOCAL_PATH)/etc/init/mediaserver.rc:system/etc/init/mediaserver.rc

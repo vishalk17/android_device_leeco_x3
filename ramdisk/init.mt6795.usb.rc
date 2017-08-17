@@ -483,7 +483,7 @@ on property:sys.usb.config=gs3,dual_acm
     start adbd
     setprop sys.usb.state ${sys.usb.config}
     setprop sys.usb.acm_idx 1,4
-    
+
 on property:sys.usb.config=gs1gs3
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}
@@ -507,7 +507,7 @@ on property:sys.usb.config=gs1gs3,dual_acm
     start adbd
     setprop sys.usb.state ${sys.usb.config}
     setprop sys.usb.acm_idx 1,2,4
-    
+
 ###############################################
 on property:sys.usb.config=mass_storage,dual_acm
     write /sys/class/android_usb/android0/enable 0
@@ -517,7 +517,7 @@ on property:sys.usb.config=mass_storage,dual_acm
     write /sys/class/android_usb/android0/functions mass_storage,acm
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
-    
+
 on property:sys.usb.config=mtp,dual_acm
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}
@@ -535,7 +535,7 @@ on property:sys.usb.config=ptp,dual_acm
     write /sys/class/android_usb/android0/functions ptp,acm
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
-   
+
 on property:sys.usb.config=rndis,dual_acm
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor ${sys.usb.vid}

@@ -4,16 +4,16 @@
 
 on property:ril.volte.stack=1
     start volte_stack
-    
+
 on property:ril.volte.stack=0
     stop volte_stack
-    
+
 on property:ril.volte.ua=1
     start volte_ua
 
 on property:ril.volte.ua=0
     stop volte_ua
-    
+
 on property:ril.volte.imcb=1
     start volte_imcb
 

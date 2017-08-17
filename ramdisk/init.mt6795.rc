@@ -9,7 +9,7 @@ import init.mal.rc
 import init.trustonic.rc
 
 import init.ssd.rc
-import init.modem.rc	
+import init.modem.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
 # import init.modem.rc
@@ -168,6 +168,7 @@ on post-fs-data
 
     # mxg2320
     mkdir /data/mxg2320 0770 root system
+
     # mmc3524x
     mkdir /data/mmc3524x 0770 root system
     chmod 0660 /data/misc/wifi/p2p_supplicant.conf
@@ -339,7 +340,7 @@ on post-fs-data
     #Accdet
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
     #VideoCodec
-    chmod 0660 /dev/Vcodec
+    chmod 0666 /dev/Vcodec
     chown media system /dev/Vcodec
 
     #MJC
@@ -578,9 +579,9 @@ on post-fs-data
     # Recycle stuffs
     exec /system/bin/rm -f /cache/.ipoh.img
 
-	#Thermal	
-	mkdir /data/.tp/ 0775 system system 
-	
+	#Thermal
+	mkdir /data/.tp/ 0775 system system
+
 # End of adding by MTK drivers
 # -----------------------
 
@@ -607,7 +608,7 @@ on boot
 	  chmod 0660 /sys/power/autosleep
     chown system radio /sys/class/leds/lcd-backlight/brightness
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
-  
+
 
 
     chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
@@ -640,7 +641,7 @@ on boot
     chmod 0660 /d/ged/hal/custom_boost_gpu_freq
     chown system system /d/ged/hal/custom_upbound_gpu_freq
     chmod 0660 /d/ged/hal/custom_upbound_gpu_freq
-        
+
 # Smartbook Handler Framework
     chown system system /sys/power/sb_state
     chmod 0660 /sys/power/sb_state
@@ -771,7 +772,7 @@ on property:vold.decrypt=trigger_restart_framework
     start msensord
     start permission_check
     write /proc/bootprof "trigger_restart_framework"
-		
+
 on property:vold.decrypt=trigger_shutdown_framework
     start stop_modem
     start swapoff_action

@@ -6,8 +6,8 @@ import init.trustonic.rc
 
 on init
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
-    mkdir /storage/usbotg 0700 root root 
-    
+    mkdir /storage/usbotg 0700 root root
+
 on post-fs-data
 
 #
@@ -34,7 +34,7 @@ on post-fs-data
 #SMB
     chown system system /proc/smb/ScreenComm
     chmod 0660 /proc/smb/ScreenComm
-    
+
 # Create char device file for WMT, GPS, BT, FM, WIFI
 #    mknod /dev/stpwmt c 190 0;
 #    mknod /dev/stpgps c 191 0;
@@ -42,10 +42,10 @@ on post-fs-data
 
 #    chmod 0660 /dev/stpwmt
 #    chown system system /dev/stpwmt
-    
+
 #    chmod 0660 /dev/wmtdetect
 #    chown system system /dev/wmtdetect
- 		
+
     mknod /dev/wmtWifi c 153 0
     chmod 0660 /dev/wmtWifi
     chown system system /dev/wmtWifi
@@ -66,17 +66,17 @@ on post-fs-data
 
     chmod 0660 /dev/GAF001AF
     chown system camera /dev/GAF001AF
-   
+
     chmod 0660 /dev/DW9714AF
     chown system camera /dev/DW9714AF
-    
+
 
     chmod 0660 /dev/AD5820AF
     chown system camera /dev/AD5820AF
-    
+
     chmod 0660 /dev/BU64745GWZAF
     chown system camera /dev/BU64745GWZAF
-    
+
     chmod 0660 /dev/LC898212AF
     chown system camera /dev/LC898212AF
 
@@ -119,7 +119,7 @@ on post-fs-data
 # WiFi
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wpa_supplicant 0770 wifi wifi 
+    mkdir /data/misc/wpa_supplicant 0770 wifi wifi
     chown wifi wifi /data/misc/wifi
 
 # ANT
@@ -146,12 +146,12 @@ on post-fs-data
 
 on init
     # Refer to http://source.android.com/devices/tech/storage/index.html
-    # It said, "Starting in Android 4.4, multiple external storage devices are surfaced to developers through 
+    # It said, "Starting in Android 4.4, multiple external storage devices are surfaced to developers through
     #           Context.getExternalFilesDirs(), Context.getExternalCacheDirs(), and Context.getObbDirs().
     #           External storage devices surfaced through these APIs must be a semi-permanent part of the device (such as an SD card slot in a battery compartment).
     #           Developers expect data stored in these locations to be available over long periods of time."
     # Therefore, if the target doesn't support sd hot-plugging (Ex: the SD card slot in a battery compartment), we need to export SECONDARY_STORAGE in 'boot' section
-    # 
+    #
     # export SECONDARY_STORAGE /storage/sdcard1
 
 service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg

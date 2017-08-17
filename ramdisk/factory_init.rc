@@ -126,13 +126,13 @@ on post-fs
 
     chown system system /system/data
     mkdir /system/cache 0770 system cache
-    
+
     # Same reason as /data above
     chown system cache /cache
     chmod 0770 /cache
     # We restorecon /cache in case the cache partition has been reset.
     restorecon_recursive /cache
-    
+
     mkdir /cache/recovery 0770 system system
 
 
@@ -151,7 +151,7 @@ on post-fs
     chmod 0220 /proc/sysrq-trigger
     chown system log /proc/last_kmsg
     chmod 0440 /proc/last_kmsg
-    
+
     # make the selinux kernel policy world-readable
     chmod 0444 /sys/fs/selinux/policy
 
@@ -161,7 +161,7 @@ on post-fs
 #INTERNAL_END
 
 on post-fs-data
-	#Thermal	
+	#Thermal
 	mkdir /data/.tp/ 0775 system system
 
     # We chown/chmod /data again so because mount is run as root + defaults
@@ -173,9 +173,9 @@ on post-fs-data
     # We restorecon /data in case the userdata partition has been reset.
     restorecon /data
 
-   
+
     # We chown/chmod /data again so because mount is run as root + defaults
-     
+
     chown root system /proc/sysrq-trigger
     chmod 0220 /proc/sysrq-trigger
     # Emulated internal storage area
@@ -237,8 +237,8 @@ on post-fs-data
     # Check any timezone data in /data is newer than the copy in /system, delete if not.
     exec - system system -- /system/bin/tzdatacheck /system/usr/share/zoneinfo /data/misc/zoneinfo
 
-    
-    # dhcp server 
+
+    # dhcp server
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
@@ -301,7 +301,7 @@ on post-fs-data
 #   chown ccci ccci /sys/class/BOOT/BOOT/boot/md
     chown radio radio /sys/kernel/ccci/boot
 
-    
+
     # Sensor
     chmod 0666 /dev/hwmsensor
     chmod 0666 /dev/gyroscope
@@ -323,7 +323,7 @@ on post-fs-data
     #NFC
     rm /data/mtknfc_server
 
-## Custom pos_fs area (END) 
+## Custom pos_fs area (END)
 #INTERNAL_END
 
     # Separate location for storing security policy files on data
@@ -342,7 +342,7 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
 on boot
-    
+
 # basic network init
     ifup lo
     hostname localhost
@@ -439,7 +439,7 @@ service vold /system/bin/vold \
 
 service debuggerd /system/bin/debuggerd
     class main
-    
+
 service debuggerd64 /system/bin/debuggerd64
     class main
 

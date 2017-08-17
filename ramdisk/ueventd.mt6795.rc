@@ -117,4 +117,3 @@
 
 #Add Wake Gestures @Bule 20161123
 /sys/bus/i2c/devices/i2c-2/2-004b/*       0664  system   system
-

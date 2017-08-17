@@ -20,23 +20,23 @@ on post-fs-data
 
     chmod 0660 /dev/stpwmt
     chown system system /dev/stpwmt
- 
+
     mknod /dev/wmtWifi c 153 0
     chmod 0660 /dev/wmtWifi
     chown system system /dev/wmtWifi
 #Camera
     chmod 0660 /dev/GAF001AF
     chown system camera /dev/GAF001AF
-   
+
     chmod 0660 /dev/DW9714AF
     chown system camera /dev/DW9714AF
-    
+
     chmod 0660 /dev/AD5820AF
     chown system camera /dev/AD5820AF
-    
+
     chmod 0660 /dev/BU64745GWZAF
     chown system camera /dev/BU64745GWZAF
-    
+
     chmod 0660 /dev/LC898212AF
     chown system camera /dev/LC898212AF
 
@@ -63,16 +63,16 @@ on post-fs-data
 #Camera
     chmod 0660 /dev/GAF001AF
     chown system camera /dev/GAF001AF
-   
+
     chmod 0660 /dev/DW9714AF
     chown system camera /dev/DW9714AF
-    
+
     chmod 0660 /dev/AD5820AF
     chown system camera /dev/AD5820AF
-    
+
     chmod 0660 /dev/BU64745GWZAF
     chown system camera /dev/BU64745GWZAF
-    
+
     chmod 0660 /dev/LC898212AF
     chown system camera /dev/LC898212AF
 

@@ -309,3 +309,11 @@ PRODUCT_PACKAGES += \
 # Mediaserver with system group
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/etc/init/mediaserver.rc:system/etc/init/mediaserver.rc
+
+# camera legacy
+PRODUCT_PACKAGES += \
+    fs_config_files
+
+PRODUCT_PACKAGES += \
+    libbwc \
+		libm4u

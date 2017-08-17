@@ -172,7 +172,7 @@
 /dev/mtk_jpeg(/.*)? u:object_r:mtk_jpeg_device:s0
 /dev/mtk-kpd(/.*)? u:object_r:mtk_kpd_device:s0
 /dev/mtk_sched(/.*)? u:object_r:mtk_sched_device:s0
-/dev/MTK_SMI(/.*)? u:object_r:MTK_SMI_device:s0
+/dev/MTK_SMI           u:object_r:MTK_SMI_device:s0
 /dev/mtk_rrc(/.*)? u:object_r:mtk_rrc_device:s0
 /dev/mt-mdp(/.*)? u:object_r:mt_mdp_device:s0
 /dev/mt_otg_test(/.*)? u:object_r:mt_otg_test_device:s0
@@ -419,7 +419,7 @@
 /system/bin/memsicd3416x u:object_r:memsicd3416x_exec:s0
 /system/bin/memsicd u:object_r:memsicd_exec:s0
 /system/bin/meta_tst u:object_r:meta_tst_exec:s0
- 
+
 /system/bin/mmc_ffu u:object_r:mmc_ffu_exec:s0
 /system/bin/emmc_rw_debug u:object_r:emmc_rw_debug_exec:s0
 /system/bin/mvg_app u:object_r:mvg_app_exec:s0
@@ -454,7 +454,7 @@
 /system/bin/terservice u:object_r:terservice_exec:s0
 /system/bin/thermald u:object_r:thermald_exec:s0
 /system/bin/thermal_manager u:object_r:thermal_manager_exec:s0
-/system/bin/thermalloadalgod u:object_r:thermalloadalgod_exec:s0  
+/system/bin/thermalloadalgod u:object_r:thermalloadalgod_exec:s0
 /system/bin/thermal u:object_r:thermal_exec:s0
 /system/bin/tiny_mkswap u:object_r:tiny_mkswap_exec:s0
 /system/bin/tiny_swapon u:object_r:tiny_swapon_exec:s0
@@ -516,12 +516,14 @@
 /dev/block/platform/mtk-msdc\.0/[0-9]+\.MSDC0/by-name/recovery		u:object_r:recovery_block_device:s0
 /dev/block/platform/mtk-msdc\.0/[0-9]+\.MSDC0/by-name/protect1		u:object_r:protect1_block_device:s0
 /dev/block/platform/mtk-msdc\.0/[0-9]+\.MSDC0/by-name/protect2		u:object_r:protect2_block_device:s0
+/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/protect1	u:object_r:protect1_device:s0
+/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/protect2	u:object_r:protect2_device:s0
 /dev/block/platform/mtk-msdc\.0/[0-9]+\.MSDC0/by-name/keystore		u:object_r:keystore_block_device:s0
 /dev/block/platform/mtk-msdc\.0/[0-9]+\.MSDC0/by-name/oemkeystore	u:object_r:oemkeystore_block_device:s0
 /dev/block/platform/mtk-msdc\.0/[0-9]+\.MSDC0/by-name/boot	        u:object_r:boot_block_device:s0
 /dev/block/platform/mtk-msdc\.0/[0-9]+\.MSDC0/by-name/persist           u:object_r:persist_block_device:s0
 /dev/block/platform/mtk-msdc\.0/[0-9]+\.MSDC0/by-name/system            u:object_r:system_block_device:s0
-#line 1 "device/leeco/x3/sepolicy/file_contexts"
+#line 1 "device/leeco/x3/sepolicy/file_contexts" 
 
 # secblock @Bule 20161119
 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/security      u:object_r:secblock_device:s0
@@ -543,7 +545,7 @@
 /system/bin/goodixfingerprintd u:object_r:goodixfingerprintd_exec:s0
 /data/system/fingerprint(/.*)?    u:object_r:goodixfingerprintd_data_file:s0
 /persist/data/gxfp(/.*)?		  u:object_r:goodixfingerprintd_data_file:s0
-/dev/ttyACM[0-9]* u:object_r:goodixfingerprintd_device:s0 
+/dev/ttyACM[0-9]* u:object_r:goodixfingerprintd_device:s0
 
 # Mobicore files
 /system/lib64/libMcClient.so  u:object_r:mobicore_lib_file:s0
@@ -560,4 +562,14 @@
 #/sys/kernel/charge_levels/charge_level_ac                       u:object_r:fast_charge_sysfs:s0
 #/sys/kernel/charge_levels/charge_level_usb u:object_r:fast_charge_sysfs:s0
 #/sys/bus/i2c/devices/i2c-2/2-004b/wake_gesture_enable          u:object_r:smartwake_sysfs:s0
-
+/sys/kernel/ccci(/.*)?                                          u:object_r:sysfs_ccci:s0
+/protect_s/properties(/.*)?                                     u:object_r:persist_property_file:s0
+/dev/block/platform(/.*)? u:object_r:platformblk_device:s0
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq		u:object_r:perf_control_sysfs:s0
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq		u:object_r:perf_control_sysfs:s0
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor		u:object_r:perf_control_sysfs:s0
+/sys/block/mmcblk0/queue/scheduler				u:object_r:perf_control_sysfs:s0
+/sys/devices/.*/queue/scheduler					u:object_r:perf_control_sysfs:s0
+/data/\.tp\.settings                                            u:object_r:thermal_manager_data_file:s0
+/data/fuelgauge_datalog.txt                                     u:object_r:fuelgauge_data_file:s0
+/sys/class/BOOT/BOOT/boot/boot_mode                             u:object_r:sysfs_bootmode:s0

@@ -72,7 +72,7 @@ union	iwreq_data
 	struct iw_param	param;		/* Other small parameters */
 	struct iw_point	data;		/* Other large parameters */
 };
-struct	iwreq 
+struct	iwreq
 {
 	union
 	{
@@ -94,11 +94,11 @@ enum nl80211_testmode_sta_link_statistics_attr{
     NL80211_TESTMODE_STA_STATISTICS_RSSI,
     NL80211_TESTMODE_STA_STATISTICS_PHY_MODE,
 	NL80211_TESTMODE_STA_STATISTICS_TX_RATE,
-	
+
 	NL80211_TESTMODE_STA_STATISTICS_TOTAL_CNT,
 	NL80211_TESTMODE_STA_STATISTICS_THRESHOLD_CNT,
 	NL80211_TESTMODE_STA_STATISTICS_AVG_PROCESS_TIME,
-	
+
 	NL80211_TESTMODE_STA_STATISTICS_FAIL_CNT,
 	NL80211_TESTMODE_STA_STATISTICS_TIMEOUT_CNT,
 	NL80211_TESTMODE_STA_STATISTICS_AVG_AIR_TIME,
@@ -110,7 +110,7 @@ enum nl80211_testmode_sta_link_statistics_attr{
     NL80211_TESTMODE_STA_STATISTICS_TC_CUR_QUE_LEN_ARRAY,
 
     NL80211_TESTMODE_STA_STATISTICS_RESERVED_ARRAY,
-    
+
     NL80211_TESTMODE_STA_STATISTICS_NUM,
     NL80211_TESTMODE_STA_STATISTICS_MAX = NL80211_TESTMODE_STA_STATISTICS_NUM - 1
 };
@@ -125,33 +125,33 @@ enum nl80211_testmode_link_detect_attr{
 	NL80211_TESTMODE_LINK_TX_CNT,
 	NL80211_TESTMODE_LINK_TX_OK_CNT,
 	NL80211_TESTMODE_LINK_TX_OS_CNT,
-    
+
 	NL80211_TESTMODE_LINK_DETECT_NUM,
 	NL80211_TESTMODE_LINK_DETECT_MAX = NL80211_TESTMODE_LINK_DETECT_NUM - 1
 };
 
 typedef enum _ENUM_TRAFFIC_CLASS_INDEX_T {
-    TC0_INDEX = 0,  
-    TC1_INDEX,       
-    TC2_INDEX,       
-    TC3_INDEX,       
+    TC0_INDEX = 0,
+    TC1_INDEX,
+    TC2_INDEX,
+    TC3_INDEX,
     TC_DATA_NUM,
     TC4_INDEX = TC_DATA_NUM,
-    TC5_INDEX,       
-    TC_NUM           
+    TC5_INDEX,
+    TC_NUM
 } ENUM_TRAFFIC_CLASS_INDEX_T;
 
 struct wpa_driver_sta_statistics_s {
     u8      version;
     u8      addr[ETH_ALEN];
     u32     flag;
-    
+
     u8      link_score;
     u8      per;
     int     rssi;
     u32     phy_mode;
     double  tx_rate;
-    
+
     u32     tx_total_cnt;
     u32     tx_exc_threshold_cnt;
     u32     tx_avg_process_time;
@@ -161,14 +161,14 @@ struct wpa_driver_sta_statistics_s {
 
     u32     tc_buf_full_cnt[TC_DATA_NUM];
     u32     tc_que_len[TC_DATA_NUM];
-    
+
     u32     tc_avg_que_len[TC_DATA_NUM];
     u32     tc_cur_que_len[TC_DATA_NUM];
 
     u8      reserved[32];
 };
 
-struct wpa_driver_sta_link_detect_s {    
+struct wpa_driver_sta_link_detect_s {
     u64     tx_fail_cnt;
     u64     tx_retry_cnt;
     u64     tx_multi_retry_cnt;
@@ -210,14 +210,14 @@ struct wpa_driver_test_mode_info {
 struct wpa_driver_testmode_params {
     struct wpa_driver_test_mode_info hdr;
     u8  *buf;
-};    
+};
 struct wpa_driver_get_sta_statistics_params {
     struct wpa_driver_test_mode_info hdr;
     u32     version;
     u32     flag;
     u8      addr[ETH_ALEN];
-    
-    u8      *buf;   
+
+    u8      *buf;
 };
 struct wpa_driver_p2p_sigma_params {
     struct wpa_driver_test_mode_info hdr;
@@ -226,8 +226,8 @@ struct wpa_driver_p2p_sigma_params {
 };
 
 struct wpa_driver_get_sta_link_detect_params {
-    struct wpa_driver_test_mode_info hdr;    
-    u8      *buf;   
+    struct wpa_driver_test_mode_info hdr;
+    u8      *buf;
 };
 
 /* Hotspot Client Management */
@@ -278,7 +278,7 @@ struct wpa_driver_wfd_data_s {
 	u16  WfdVideoPort;
 	u16  WfdAudioPort;
 	u32  WfdFlag;
-	u32  WfdPolicy; 
+	u32  WfdPolicy;
 	u32  WfdState;
 	u8	 WfdSessionInformationIE[24*8]; // Include Subelement ID, length
 	u16  WfdSessionInformationIELen;
@@ -325,15 +325,15 @@ enum nl80211_testmode_available_chan_attr{
 	NL80211_TESTMODE_AVAILABLE_CHAN_5G_BASE_100,
 	NL80211_TESTMODE_AVAILABLE_CHAN_5G_BASE_149,
 	NL80211_TESTMODE_AVAILABLE_CHAN_5G_BASE_184,
-    
+
 	NL80211_TESTMODE_AVAILABLE_CHAN_NUM,
 	NL80211_TESTMODE_AVAILABLE_CHAN_MAX = NL80211_TESTMODE_AVAILABLE_CHAN_NUM - 1
 };
 struct wpa_driver_get_available_channel_params {
-   struct wpa_driver_test_mode_info hdr;    
-    u8      *buf;   
+   struct wpa_driver_test_mode_info hdr;
+    u8      *buf;
 };
-struct wpa_driver_available_chan_s {    
+struct wpa_driver_available_chan_s {
     u32     ch_2g_base1;
     u32     ch_5g_base34;
     u32     ch_5g_base100;

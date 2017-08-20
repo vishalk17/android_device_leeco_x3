@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binqmc6983d Executable File 
+# Policy File of /system/binqmc6983d Executable File
 
 
 # ==============================================
@@ -36,4 +36,3 @@ allow qmc6983d akmd8963_access_file2:file { open read write};
 file_type_auto_trans(qmc6983d, system_data_file, msensor_data_file)
 allow qmc6983d system_data_file:dir { create setattr };
 allow qmc6983d msensor_data_file:file { open write read create setattr};
-

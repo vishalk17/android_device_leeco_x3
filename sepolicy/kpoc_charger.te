@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/kpoc_charger Executable File 
+# Policy File of /system/bin/kpoc_charger Executable File
 
 # ==============================================
 # Type Declaration
@@ -11,12 +11,12 @@ type kpoc_charger_exec, exec_type, file_type;
 # MTK Policy Rule
 # ==============================================
 # Date : WK15.32
-# Operation : Migration 
+# Operation : Migration
 # Purpose : Start autokd
 init_daemon_domain(kpoc_charger)
 
 # Date : WK15.32
-# Operation : Migration 
+# Operation : Migration
 # Purpose : Interact with kernel to perform autok
 allow kpoc_charger block_device:dir search;
 allow kpoc_charger graphics_device:dir search;

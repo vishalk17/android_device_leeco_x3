@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binbmm050d Executable File 
+# Policy File of /system/binbmm050d Executable File
 
 
 # ==============================================
@@ -51,4 +51,3 @@ allow bmm050d sysfs_msensor_file:lnk_file read;
 file_type_auto_trans(bmm050d, system_data_file, msensor_data_file)
 allow bmm050d system_data_file:dir { create setattr };
 allow bmm050d msensor_data_file:file { open write read create setattr};
-

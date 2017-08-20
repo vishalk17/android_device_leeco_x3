@@ -5,7 +5,7 @@
 #Add by rui.hu
 
 # Date : WK14.30
-# Operation : DRM UT 
+# Operation : DRM UT
 # Purpose : To pass DRM UT
 
 allow drmserver nvram_agent_binder:binder call;
@@ -17,7 +17,7 @@ allow drmserver radio_data_file:file { read getattr open };
 
 #Add by rui.hu
 # Date : WK14.36
-# Operation : DRM UT 
+# Operation : DRM UT
 # Purpose : Make drmserver and binder read /proc/pid/cmdline to get process name
 #system app to drmserver
 allow drmserver system_app:dir search;
@@ -28,7 +28,7 @@ allow drmserver mediaserver:file { read open getattr };
 
 #Add by rui.hu
 # Date : WK14.36.5
-# Operation : DRM UT 
+# Operation : DRM UT
 # Purpose : Make widevine mediacodec mode work
 allow drmserver untrusted_app:dir search;
 allow drmserver untrusted_app:file { read open getattr };
@@ -124,4 +124,3 @@ allow drmserver mnt_media_rw_file:dir search;
 # with calling pid
 allow drmserver nfc:dir search;
 allow drmserver nfc:file { read getattr open };
-

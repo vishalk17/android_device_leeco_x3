@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binakmd09911 Executable File 
+# Policy File of /system/binakmd09911 Executable File
 
 
 # ==============================================
@@ -33,4 +33,3 @@ allow st480 input_device:chr_file { open ioctl read write };
 allow st480 system_data_file:dir { write add_name create setattr };
 #allow st480 system_data_file:file { open write read create setattr};
 allow st480 system_data_file:dir remove_name;
-

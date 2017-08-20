@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/wfca Executable File 
+# Policy File of /system/bin/wfca Executable File
 
 # ==============================================
 # Type Declaration
@@ -14,7 +14,7 @@ type wfca_exec, exec_type, file_type;
 init_daemon_domain(wfca)
 
 # Date : WK14.42
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for WFCA send RTP/RTCP
 allow wfca netd:unix_stream_socket connectto;
 allow wfca socket_device:sock_file {create write unlink};
@@ -37,4 +37,4 @@ allow wfca volte_ua:fd use;
 allow wfca volte_ua:udp_socket {read write setopt getattr getopt shutdown};
 
 # Purpose : for WakeUpLock
-allow wfca sysfs_wake_lock:file { read write open }; 
+allow wfca sysfs_wake_lock:file { read write open };

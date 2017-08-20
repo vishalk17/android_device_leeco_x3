@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/mxg2320d Executable File 
+# Policy File of /system/bin/mxg2320d Executable File
 
 
 # ==============================================
@@ -26,4 +26,3 @@ init_daemon_domain(mxg2320d)
 #unconfined_domain(mxg2320d)
 allow mxg2320d msensor_device:chr_file rw_file_perms;
 allow mxg2320d gsensor_device:chr_file rw_file_perms;
-

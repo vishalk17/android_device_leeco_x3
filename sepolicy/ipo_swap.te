@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binipod Executable File 
+# Policy File of /system/binipod Executable File
 
 
 # ==============================================
@@ -29,4 +29,3 @@ allow ipo_swap mtd_device:blk_file { write open };
 allow ipo_swap mtd_device:chr_file { read write ioctl open };
 allow ipo_swap shell_exec:file { read execute open execute_no_trans };
 allow ipo_swap system_file:file execute_no_trans;
-

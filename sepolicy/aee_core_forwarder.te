@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binaee_core_forwarder Executable File 
+# Policy File of /system/binaee_core_forwarder Executable File
 
 
 # ==============================================
@@ -47,7 +47,7 @@ allow aee_core_forwarder kernel:fifo_file read;
 allow aee_core_forwarder domain:dir r_dir_perms;
 allow aee_core_forwarder domain:file r_file_perms;
 
-#read 
+#read
 allow aee_core_forwarder sysfs_wake_lock:file { read write open };
 
 # Date : 2015/07/11

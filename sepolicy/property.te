@@ -170,7 +170,7 @@ type volte_prop, property_type;
 type hotknot_prop, property_type;
 type ctl_memsicd3416x_prop, property_type;
 type ctl_mxg2320d_prop, property_type;
-type serial_number_prop, property_type, mtk_property_type; 
+type serial_number_prop, property_type, mtk_property_type;
 type vold_encryption_type_prop, property_type;
 type nvram_prop, property_type, mtk_property_type;
 type pq_conf_prop, property_type, mtk_property_type;

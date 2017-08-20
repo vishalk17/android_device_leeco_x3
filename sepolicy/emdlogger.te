@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/emdlogger[x] Executable File 
+# Policy File of /system/bin/emdlogger[x] Executable File
 
 
 # ==============================================
@@ -58,7 +58,7 @@ allow emdlogger fuse:dir { write search create rmdir add_name remove_name read o
 allow emdlogger fuse:file { write read create open rename unlink getattr setattr append};
 
 #=========================================================
-# modem logger access on /data/mdlog 
+# modem logger access on /data/mdlog
 #=========================================================
 allow emdlogger mdlog_data_file:dir { write search read create open rmdir remove_name add_name relabelto getattr};
 allow emdlogger mdlog_data_file:fifo_file { read write open create setattr};
@@ -103,4 +103,3 @@ allow emdlogger proc:file r_file_perms;
 allow emdlogger sysfs:file { read open };
 allow emdlogger rootfs:file r_file_perms;
 allow emdlogger rootfs:lnk_file { getattr };
-

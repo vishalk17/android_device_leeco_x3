@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/flashlessd Executable File 
+# Policy File of /system/bin/flashlessd Executable File
 
 type flashlessd_exec, exec_type, file_type;
 type flashlessd, domain;

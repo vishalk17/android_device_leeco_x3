@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binmobile_log_d Executable File 
+# Policy File of /system/binmobile_log_d Executable File
 
 
 # ==============================================
@@ -24,7 +24,7 @@ type mobile_log_d ,domain;
 init_daemon_domain(mobile_log_d)
 
 # Date : WK14.31
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for L early bring-up
 allow mobile_log_d kernel:system syslog_mod;
 allow mobile_log_d platform_app:fd use;
@@ -92,4 +92,3 @@ allow mobile_log_d toolbox_exec:file { r_file_perms execute execute_no_trans };
 allow mobile_log_d rootfs:file r_file_perms;
 allow mobile_log_d sysfs:file { write read open };
 allow mobile_log_d rootfs:lnk_file { getattr };
-

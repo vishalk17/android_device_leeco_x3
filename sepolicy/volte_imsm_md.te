@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/mtkmal Executable File 
+# Policy File of /system/bin/mtkmal Executable File
 
 # ==============================================
 # Type Declaration
@@ -14,7 +14,7 @@ type volte_imsm_md_exec, exec_type, file_type;
 init_daemon_domain(volte_imsm_md)
 
 # Date : WK15.33
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for MTKMAL
 allow volte_imsm_md socket_device:sock_file write;
 

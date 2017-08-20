@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/pppd_via Executable File 
+# Policy File of /system/bin/pppd_via Executable File
 
 
 # ==============================================
@@ -39,17 +39,3 @@ allow pppd_via self:capability { setuid net_admin dac_override };
 allow pppd_via self:udp_socket ioctl;
 allow pppd_via system_data_file:file open;
 allow pppd_via net_radio_prop:property_service set;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

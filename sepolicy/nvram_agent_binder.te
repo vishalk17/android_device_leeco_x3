@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binnvram_agent_binder Executable File 
+# Policy File of /system/binnvram_agent_binder Executable File
 
 
 # ==============================================
@@ -26,19 +26,19 @@ init_daemon_domain(nvram_agent_binder)
 
 
 # Date : WK14.35
-# Operation : access nvram by binder 
-# Purpose : ensure nvram user can access nvram file normally. 
+# Operation : access nvram by binder
+# Purpose : ensure nvram user can access nvram file normally.
 binder_use(nvram_agent_binder)
 binder_service(nvram_agent_binder)
 
 # Date : WK14.35
-# Operation : access nvram by binder 
-# Purpose : ensure nvram user can access nvram file normally. 
+# Operation : access nvram by binder
+# Purpose : ensure nvram user can access nvram file normally.
 allow nvram_agent_binder nvram_agent_service:service_manager add;
 
 
 # Date : WK14.43
-# Operation : 2rd Selinux Migration 
+# Operation : 2rd Selinux Migration
 # Purpose : the role of nvram_agent_binder is same with nvram_daemon except property_set & exect permission
 allow nvram_agent_binder nvram_device:blk_file rw_file_perms;
 allow nvram_agent_binder mmcblk0_block_device:blk_file rw_file_perms;
@@ -74,4 +74,3 @@ allow nvram_agent_binder mtd_device:chr_file rw_file_perms;
 
 # Nougat
 allow nvram_agent_binder rootfs:lnk_file { getattr };
-

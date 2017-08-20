@@ -111,5 +111,3 @@ r_dir_file(goodixfingerprintd, mobicore_data_file)
 allow goodix mobicore_data_file:dir create_dir_perms;
 allow goodix mobicore_data_file:dir ra_dir_perms;
 allow goodix mobicore_data_file:chr_file { open read ioctl write };
-
-

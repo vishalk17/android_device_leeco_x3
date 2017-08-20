@@ -58,4 +58,3 @@ allow kernel mobicore_data_file:file open;
 allow kernel mobicore_data_file:file getattr;
 allow kernel mobicore_data_file:file write;
 allow kernel mobicore_data_file:file rename;
-

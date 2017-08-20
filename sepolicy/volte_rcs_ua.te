@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/volte_rcs_ua Executable File 
+# Policy File of /system/bin/volte_rcs_ua Executable File
 
 # ==============================================
 # Type Declaration
@@ -14,7 +14,7 @@ type rcs_ua_proxy_socket, file_type;
 init_daemon_domain(volte_rcs_ua)
 
 # Date : WK14.42
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for VoLTE L early bring up and first call
 allow volte_rcs_ua socket_device:sock_file write;
 allow volte_rcs_ua volte_stack:unix_stream_socket connectto;
@@ -23,7 +23,7 @@ allow volte_rcs_ua self:udp_socket { bind create };
 allow volte_rcs_ua self:udp_socket read;
 
 # Date : 2015/11/5
-# Operation : M Migration 
+# Operation : M Migration
 # Purpose : For rcs ua connect to stack by local socket
 unix_socket_connect(volte_rcs_ua, volte_stack, volte_stack)
 

@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/volte_stack Executable File 
+# Policy File of /system/bin/volte_stack Executable File
 
 # ==============================================
 # Type Declaration
@@ -15,7 +15,7 @@ init_daemon_domain(volte_stack)
 file_type_auto_trans(volte_stack, system_data_file, ims_ipsec_data_file)
 
 # Date : WK14.42
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for VoLTE L early bring up and first call
 allow volte_stack netd:unix_stream_socket connectto;
 allow volte_stack shell_exec:file { read execute open execute_no_trans };
@@ -38,7 +38,7 @@ allow volte_stack ims_ipsec_data_file:file { rename write ioctl create unlink op
 allow volte_stack system_file:file execute_no_trans;
 
 # Date : 2015/01/07
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for VoLTE L Pre-FT test, Pre-FT error show we need add tcp rule
 allow volte_stack self:tcp_socket accept;
 allow volte_stack self:tcp_socket read;

@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binnetdiag Executable File 
+# Policy File of /system/binnetdiag Executable File
 
 
 # ==============================================
@@ -27,7 +27,7 @@ init_daemon_domain(netdiag)
 
 
 # Date : WK14.31
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for L early bring-up
 allow netdiag shell_exec:file execute_no_trans;
 allow netdiag self:packet_socket { write ioctl setopt read getopt create };
@@ -96,4 +96,3 @@ binder_use(netdiag)
 # Nougat
 allow netdiag proc_net:file r_file_perms;
 allow netdiag rootfs:lnk_file { getattr };
-

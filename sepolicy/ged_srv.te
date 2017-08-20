@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/ged_srv Executable File 
+# Policy File of /system/bin/ged_srv Executable File
 
 # ==============================================
 # Type Declaration
@@ -13,9 +13,9 @@ type ged_srv_exec, exec_type, file_type;
 # ==============================================
 # Date : WK15.33
 # Operation : New Daemon
-# Purpose : Start ged_srv. ged_srv is a daemon to 
-# recieve events to dynamically change 
-# 1) vsync-offset 2) FPS 
+# Purpose : Start ged_srv. ged_srv is a daemon to
+# recieve events to dynamically change
+# 1) vsync-offset 2) FPS
 # though binder to surfaceflinger
 
 init_daemon_domain(ged_srv)
@@ -27,4 +27,3 @@ allow ged_srv surfaceflinger:binder call;
 
 binder_use(init)
 binder_use(ged_srv)
-

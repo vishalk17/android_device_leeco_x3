@@ -88,7 +88,7 @@ type gsm0710muxd_device, dev_type;
 type eemcs_device, dev_type;
 type emd_device, dev_type;
 type mt6605_device, dev_type;
-type exm0_device, dev_type; 
+type exm0_device, dev_type;
 type mmcblk_device, dev_type;
 type BOOT_device, dev_type;
 type MT_pmic_device, dev_type;

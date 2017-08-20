@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/MtkCodecService Executable File 
+# Policy File of /system/bin/MtkCodecService Executable File
 
 
 # ==============================================
@@ -17,10 +17,10 @@ type MtkCodecService ,domain;
 
 # Date : 2014/09/10
 # Operation : Migration
-# Purpose : allow Binder IPC 
+# Purpose : allow Binder IPC
 binder_use(MtkCodecService)
 
-# Date : 
+# Date :
 # Operation : Migration
 # Purpose : allow Binder IPC
 
@@ -37,4 +37,3 @@ allow MtkCodecService dumpstate:fd use;
 
 # Nougat
 allow MtkCodecService rootfs:lnk_file { getattr };
-

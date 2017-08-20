@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binthermal Executable File 
+# Policy File of /system/binthermal Executable File
 
 
 # ==============================================
@@ -30,11 +30,10 @@ allow thermal rild_oem_socket:sock_file write;
 allow thermal netd_socket:sock_file write;
 allow thermal netd:unix_stream_socket connectto;
 allow thermal self:udp_socket create;
-allow thermal self:udp_socket ioctl; 
+allow thermal self:udp_socket ioctl;
 allow thermal rpc_socket:sock_file write;
 allow thermal viarild:unix_stream_socket connectto;
 allow thermal statusd:unix_stream_socket connectto;
 
 # Nougat
 allow thermal rootfs:lnk_file { getattr };
-

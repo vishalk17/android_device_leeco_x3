@@ -4,24 +4,24 @@
 
 
 # Date : WK14.31
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for MTK boot performance profiling, for access /proc/bootprof
 allow zygote devmap_device:chr_file { read ioctl open };
 allow zygote proc:file write;
 
 # Date : WK14.34
-# Operation : Migration 
+# Operation : Migration
 # Purpose : 6571/6572 LCA external memory access(/dev/exm0)
 #allow zygote exm0_device:chr_file { read write ioctl open };
 
 # Date : WK14.34
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for CIP project (access /custom partition)
 allow zygote custom_file:dir rw_dir_perms;
 allow zygote custom_file:file create_file_perms;
 
 # Date : WK14.34
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for untrusted app to use ptrace (e.g. 360Mobile, taobao)
 dontaudit zygote untrusted_app:process ptrace;
 
@@ -71,4 +71,3 @@ allow zygote serial_number_prop:file { getattr open read };
 
 # Nougat
 allow zygote persist_ril_prop:file { read open getattr };
-

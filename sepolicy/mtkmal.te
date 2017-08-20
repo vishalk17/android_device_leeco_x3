@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/mtkmal Executable File 
+# Policy File of /system/bin/mtkmal Executable File
 
 # ==============================================
 # Type Declaration
@@ -14,7 +14,7 @@ type mtkmal_exec, exec_type, file_type;
 init_daemon_domain(mtkmal)
 
 # Date : WK15.33
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for MTKMAL
 allow mtkmal socket_device:sock_file write;
 

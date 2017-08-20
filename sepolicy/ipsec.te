@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/ipsec Executable File 
+# Policy File of /system/bin/ipsec Executable File
 
 # ==============================================
 # Type Declaration
@@ -17,7 +17,7 @@ type ipsec ,domain;
 # Date: WK14.52
 # Operation : Feature developing for ePDG
 
-# Purpose :  access xfrm 
+# Purpose :  access xfrm
 allow ipsec proc_net:file write;
 
 # Purpose :  set property for ip address with epdg_wod
@@ -36,7 +36,7 @@ allow ipsec port:udp_socket name_bind;
 allow ipsec netd:unix_stream_socket connectto;
 allow ipsec dnsproxyd_socket:sock_file write;
 
-# Purpose :   access property socket 
+# Purpose :   access property socket
 allow ipsec init:unix_stream_socket connectto;
 
 # Purpose :  access socket of wod and property
@@ -48,7 +48,7 @@ allow ipsec epdg_wod:fd use;
 # Purpose :  starter invoke charon
 allow ipsec charon_exec:file execute_no_trans;
 
-# Purpose :  charon set fwmark 
+# Purpose :  charon set fwmark
 allow ipsec fwmarkd_socket:sock_file write;
 
 # Purpose :  kernel ip/route operations
@@ -79,4 +79,3 @@ allow ipsec wod_ipsec_conf_file:dir { write read open search remove_name add_nam
 
 # Purpose : set alarm for DPD
 allow ipsec self:capability2 wake_alarm;
-

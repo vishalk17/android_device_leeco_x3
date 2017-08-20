@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binpoad Executable File 
+# Policy File of /system/binpoad Executable File
 
 
 # ==============================================
@@ -23,4 +23,3 @@ type poad ,domain;
 
 
 init_daemon_domain(poad)
-

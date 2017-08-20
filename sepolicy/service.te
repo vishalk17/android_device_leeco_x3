@@ -29,5 +29,3 @@ type mtk_multiwindow_service, app_api_service, system_server_service, service_ma
 type goodixfingerprintd_service, app_api_service, system_server_service, service_manager_type;
 type goodix_fingerprint_service, app_api_service, system_server_service, service_manager_type;
 type goodix_service, service_manager_type;
-
-

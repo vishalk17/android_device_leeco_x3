@@ -3,7 +3,7 @@
 # ==============================================
 
 # Date : WK14.37
-# Operation : Migration 
+# Operation : Migration
 # Purpose : Access 'OMADM_USB' nvram
 allow vold nvram_data_file:file { read getattr open write create setattr};
 allow vold nvram_data_file:lnk_file read;
@@ -22,13 +22,13 @@ allow vold mmcblk0_block_device:blk_file rw_file_perms;
 allow vold proc:file write;
 
 # Date : WK14.37
-# Operation : Migration 
+# Operation : Migration
 # Purpose : re-init ExternalSD
 allow vold misc_sd_device:chr_file { read ioctl open };
 
 
 # Date : WK14.38
-# Operation : Migration 
+# Operation : Migration
 # Purpose : encrypt phone
 allow vold kernel:system module_request;
 allow vold misc_device:chr_file { write open };
@@ -36,12 +36,12 @@ allow vold misc_device:chr_file { write open };
 
 
 # Date : WK14.38
-# Operation : Migration 
+# Operation : Migration
 # Purpose : symbolic link for /data/ext_sdcard_tool
 allow vold system_data_file:lnk_file { create unlink };
 
 # Date : WK14.40
-# Operation : Migration 
+# Operation : Migration
 # Purpose : multi partition
 allow vold sdcardd_exec:file { read open execute execute_no_trans };
 allow vold self:capability { sys_resource setgid setuid };
@@ -50,7 +50,7 @@ allow vold fuse_device:chr_file { read write open };
 allow vold system_data_file:file open;
 
 # Date : WK14.40
-# Operation : Migration 
+# Operation : Migration
 # Purpose : ptrace process
 allow vold mediaserver:process ptrace;
 
@@ -61,7 +61,7 @@ allow vold protect_s_data_file:dir { read getattr open ioctl };
 allow vold persist_data_file:dir { read getattr open ioctl };
 
 # Date : WK14.44
-# Operation : Migration 
+# Operation : Migration
 allow vold proc_lk_env:file { read write open ioctl};
 allow vold media_rw_data_file:dir { read open };
 

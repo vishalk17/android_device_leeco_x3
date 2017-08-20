@@ -34,4 +34,3 @@ binder_service(nvram_backup_binder)
 # Date : WK14.35
 # Operation : access nvram by binder
 # Purpose : ensure nvram user can access nvram file normally.
-

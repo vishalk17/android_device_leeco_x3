@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/fota1 Executable File 
+# Policy File of /system/bin/fota1 Executable File
 
 # ==============================================
 # Type Declaration
@@ -14,7 +14,7 @@ type fota1_exec, exec_type, file_type;
 init_daemon_domain(fota1)
 
 # Date : WK14.46
-# Operation : Migration 
+# Operation : Migration
 # Purpose : For recovery and tee1 upgrade
 allow fota1 cache_file:file append;
 allow fota1 misc_device:chr_file { write open };

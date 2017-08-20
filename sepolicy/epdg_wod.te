@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/epdg_wod Executable File 
+# Policy File of /system/bin/epdg_wod Executable File
 
 # ==============================================
 # Type Declaration
@@ -68,4 +68,3 @@ allow epdg_wod device:lnk_file create;
 # Purpose: Kill Process
 allow epdg_wod system_server:process { signal signull };
 allow epdg_wod kernel:process signal;
-

@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/dmlog Executable File 
+# Policy File of /system/bin/dmlog Executable File
 
 
 # ==============================================
@@ -17,7 +17,7 @@ type dmlog ,domain;
 init_daemon_domain(dmlog)
 
 # Date : 2014/09/23
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for mtk debug mechanism
 allow dmlog aed_device:chr_file read;
 allow dmlog debuggerd:fd use;

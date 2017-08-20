@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binaudiocmdservice_atci Executable File 
+# Policy File of /system/binaudiocmdservice_atci Executable File
 
 
 # ==============================================
@@ -51,7 +51,7 @@ allow audiocmdservice_atci self:capability { fowner chown dac_override fsetid };
 # ==============================================
 # Data: 2014/09/24
 # Operation: Migration
-# Purpose: allow Binder IPC for audio tuning tool 
+# Purpose: allow Binder IPC for audio tuning tool
 # ==============================================
 binder_use(audiocmdservice_atci)
 binder_call(audiocmdservice_atci, mediaserver)

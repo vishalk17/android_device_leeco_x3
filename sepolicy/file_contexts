@@ -419,7 +419,7 @@
 /system/bin/memsicd3416x u:object_r:memsicd3416x_exec:s0
 /system/bin/memsicd u:object_r:memsicd_exec:s0
 /system/bin/meta_tst u:object_r:meta_tst_exec:s0
- 
+
 /system/bin/mmc_ffu u:object_r:mmc_ffu_exec:s0
 /system/bin/emmc_rw_debug u:object_r:emmc_rw_debug_exec:s0
 /system/bin/mvg_app u:object_r:mvg_app_exec:s0
@@ -454,7 +454,7 @@
 /system/bin/terservice u:object_r:terservice_exec:s0
 /system/bin/thermald u:object_r:thermald_exec:s0
 /system/bin/thermal_manager u:object_r:thermal_manager_exec:s0
-/system/bin/thermalloadalgod u:object_r:thermalloadalgod_exec:s0  
+/system/bin/thermalloadalgod u:object_r:thermalloadalgod_exec:s0
 /system/bin/thermal u:object_r:thermal_exec:s0
 /system/bin/tiny_mkswap u:object_r:tiny_mkswap_exec:s0
 /system/bin/tiny_swapon u:object_r:tiny_swapon_exec:s0
@@ -545,7 +545,7 @@
 /system/bin/goodixfingerprintd u:object_r:goodixfingerprintd_exec:s0
 /data/system/fingerprint(/.*)?    u:object_r:goodixfingerprintd_data_file:s0
 /persist/data/gxfp(/.*)?		  u:object_r:goodixfingerprintd_data_file:s0
-/dev/ttyACM[0-9]* u:object_r:goodixfingerprintd_device:s0 
+/dev/ttyACM[0-9]* u:object_r:goodixfingerprintd_device:s0
 
 # Mobicore files
 /system/lib64/libMcClient.so  u:object_r:mobicore_lib_file:s0

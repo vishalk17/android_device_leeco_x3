@@ -14,7 +14,7 @@ init_daemon_domain(lannetmngrd)
 
 # Date : WK14.34
 # Operation : Migration
-# Purpose :  wifi  
+# Purpose :  wifi
 allow lannetmngrd wmtWifi_device:chr_file { write open };
 
 allow lannetmngrd kernel:system module_request;
@@ -24,20 +24,20 @@ allow lannetmngrd self:capability fsetid;
 
 # Date : WK14.34
 # Operation : Migration
-# Purpose :  property_service for wifi 
-allow lannetmngrd mtk_wifi_prop:property_service set; 
+# Purpose :  property_service for wifi
+allow lannetmngrd mtk_wifi_prop:property_service set;
 
 
 # Date : WK14.34
 # Operation : Migration
-# Purpose :   APP 
+# Purpose :   APP
 allow lannetmngrd platform_app:fd use;
 allow lannetmngrd platform_app_tmpfs:file write;
 
 
 # Date : WK14.37
 # Operation : Migration
-# Purpose :  PPPOE Test 
+# Purpose :  PPPOE Test
 allow lannetmngrd ppp:process sigkill;
 
 # Date : WK14.39
@@ -56,7 +56,7 @@ allow lannetmngrd netdiag:udp_socket { read write getopt setopt};
 
 # Date : WK14.41
 # Operation : Migration
-# Purpose :  ipv6 Tethering Test 
+# Purpose :  ipv6 Tethering Test
 #============= netd ==============
 allow lannetmngrd dhcp6s_exec:file execute;
 allow lannetmngrd dhcp_data_file:dir { read search write add_name remove_name };
@@ -70,7 +70,7 @@ allow lannetmngrd wide_dhcpv6_data_file:dir { read search write add_name remove_
 allow lannetmngrd wide_dhcpv6_data_file:file { read write create open getattr unlink};
 
 # Date : WK14.42
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for VoLTE L early bring up and first call
 allow lannetmngrd volte_stack:fd use;
 allow lannetmngrd volte_stack:tcp_socket { read write setopt getopt };
@@ -122,6 +122,3 @@ allow lannetmngrd isolated_app:fd use;
 
 #============= netd ==============
 allow lannetmngrd radio_tmpfs:file write;
-
-
-

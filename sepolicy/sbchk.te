@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/sbchk Executable File 
+# Policy File of /system/bin/sbchk Executable File
 
 # ==============================================
 # Type Declaration
@@ -32,5 +32,3 @@ allow sbchk block_device:dir search;
 # Purpose : for nand partition access
 allow sbchk mtd_device:chr_file rw_file_perms;
 allow sbchk mtd_device:dir search;
-
-

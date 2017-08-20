@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bindhcp6c Executable File 
+# Policy File of /system/bindhcp6c Executable File
 
 
 # ==============================================
@@ -28,15 +28,15 @@ init_daemon_domain(dhcp6c)
 
 # Date : WK14.34
 # Operation : Migration
-# Purpose :  wifi  
+# Purpose :  wifi
 allow dhcp6c self:udp_socket { create setopt write bind ioctl read };
 
 
 # Date : WK14.41
 # Operation : SQC
 # Purpose :  ALPS01763317
-# After connected to DHCPv6 enabled 6to4 IPv6 AP, 
-#the ipv6 related values of getprop command are wrong  
+# After connected to DHCPv6 enabled 6to4 IPv6 AP,
+#the ipv6 related values of getprop command are wrong
 #============= dhcp6c ==============
 allow dhcp6c node:udp_socket node_bind;
 allow dhcp6c port:udp_socket name_bind;
@@ -46,7 +46,7 @@ allow dhcp6c dhcp_prop:property_service set;
 
 # Date : WK14.42
 # Operation : SQC
-# Purpose :  L 2nd Migration 
+# Purpose :  L 2nd Migration
 
 #============= dhcp6c ==============
 
@@ -54,7 +54,7 @@ allow dhcp6c system_file:file execute_no_trans;
 
 # Date : WK14.43
 # Operation : SQC
-# Purpose :  dhcp6c get ip address and ps 
+# Purpose :  dhcp6c get ip address and ps
 
 #============= dhcp6c ==============
 allow dhcp6c dhcp_data_file:dir { write add_name search};
@@ -66,12 +66,3 @@ allow dhcp6c self:netlink_route_socket { write getattr read bind create nlmsg_re
 allow dhcp6c shell_exec:file { read execute open };
 allow dhcp6c wide_dhcpv6_data_file:dir { write search add_name };
 allow dhcp6c wide_dhcpv6_data_file:file { read write create open getattr };
-
-
-
-
-
-
-
-
-

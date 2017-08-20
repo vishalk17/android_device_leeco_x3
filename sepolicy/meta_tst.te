@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/meta_tst Executable File 
+# Policy File of /system/bin/meta_tst Executable File
 
 
 # ==============================================
@@ -179,5 +179,3 @@ allow meta_tst mnt_user_file:dir search;
 allow meta_tst mnt_user_file:lnk_file read;
 allow meta_tst storage_file:lnk_file read;
 allow meta_tst fuse:file read;
-
-

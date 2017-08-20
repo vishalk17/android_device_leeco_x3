@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binGoogleOtaBinder Executable File 
+# Policy File of /system/binGoogleOtaBinder Executable File
 
 
 # ==============================================
@@ -44,4 +44,3 @@ allow GoogleOtaBinder kmsg_device:chr_file { write read open ioctl};
 #for nand
 allow GoogleOtaBinder mtd_device:dir search;
 allow GoogleOtaBinder mtd_device:chr_file { read write open rw_file_perms};
-

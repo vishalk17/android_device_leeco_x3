@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/thermalloadalgod_exec Executable File 
+# Policy File of /system/bin/thermalloadalgod_exec Executable File
 
 
 # ==============================================
@@ -20,7 +20,7 @@ type thermalloadalgod_exec , exec_type, file_type;
 # ==============================================
 # MTK Policy Rule
 # ==============================================
- 
+
 #permissive thermalloadalgod;
 init_daemon_domain(thermalloadalgod)
 file_type_auto_trans(thermal_manager, system_data_file, thermal_manager_data_file)
@@ -28,12 +28,12 @@ file_type_auto_trans(thermal_manager, system_data_file, thermal_manager_data_fil
 #write_klog(thermalloadalgod)
 
 # Data : WK14.43
-# Operation : Migration 
+# Operation : Migration
 # Purpose : Fuel Gauge daemon for access driver node
 allow thermalloadalgod input_device:dir { search open read write };
 allow thermalloadalgod input_device:file { open read };
 
- 
+
 
 allow thermalloadalgod thermalloadalgod:netlink_kobject_uevent_socket { write create bind read};
 allow thermalloadalgod thermalloadalgod:netlink_socket { create bind write read};

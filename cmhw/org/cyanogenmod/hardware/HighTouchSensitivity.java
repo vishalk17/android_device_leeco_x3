@@ -58,4 +58,4 @@ public class HighTouchSensitivity {
         return FileUtils.writeLine(GLOVE_PATH, String.valueOf(status ? 1 : 0));
     }
 
-} 
+}

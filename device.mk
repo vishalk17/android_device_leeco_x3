@@ -1,10 +1,3 @@
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-
-# Language
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Dalvik heap configurations
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
@@ -59,15 +52,18 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.allow.mock.location=0 \
     ro.debuggable=1 \
     ro.zygote=zygote64_32 \
-    dalvik.vm.dex2oat-Xms=64m \
-    dalvik.vm.dex2oat-Xmx=64m \
-    dalvik.vm.image-dex2oat-Xms=64m \
-    dalvik.vm.image-dex2oat-Xmx=512m \
     ro.dalvik.vm.native.bridge=0 \
     persist.sys.usb.config=mtp \
     persist.debug.xlog.enable=0 \
-    camera.disable_zsl_mode=1 \
-    persist.sys.timezone=Europe/Warsaw
+    camera.disable_zsl_mode=1
+
+ifeq (lineage_x3,$(TARGET_PRODUCT))	#this is included only in lineage atm as some other roms have issue with this
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \S
+		dalvik.vm.dex2oat-Xms=64m \
+		dalvik.vm.dex2oat-Xmx=64m \
+		dalvik.vm.image-dex2oat-Xms=64m \
+		dalvik.vm.image-dex2oat-Xmx=512m \
+endif
 
 # PRODUCT_PROPERTY_OVERRIDES
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -105,7 +101,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
-
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck \
@@ -134,11 +129,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-# Var patch
-ifneq ($(TARGET_BUILD_VARIANT),user,userdebug,eng)
-  ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
-  ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/enableswap.sh:root/enableswap.sh \

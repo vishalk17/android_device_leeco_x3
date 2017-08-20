@@ -115,7 +115,7 @@ USE_XML_AUDIO_POLICY_CONF := 1
 
 # RIL
 #BOARD_PROVIDES_RILD := true
-BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
+BOARD_RIL_CLASS := ../../../device/leeco/x3/ril
 BOARD_CONNECTIVITY_MODULE := conn_soc
 
 # Display
@@ -189,8 +189,12 @@ TARGET_NEEDS_TEXT_RELOCATIONS := true
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 
-#Hack for prebuilt kernel
-ifeq ($(TARGET_DEVICE),x500)
-$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
-$(shell touch $(OUT)/obj/KERNEL_OBJ/usr/export_includes)
-endif
+# Charger
+BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
+BOARD_RED_LED_PATH	:= "/sys/class/leds/red"
+BOARD_GREEN_LED_PATH	:= "/sys/class/leds/green"
+BOARD_BLUE_LED_PATH	:= "/sys/class/leds/blue"
+
+# Tethering
+PRODUCT_PROPERTY_OVERRIDES += \
+    net.tethering.noprovisioning=true

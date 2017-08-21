@@ -1,6 +1,6 @@
 -include vendor/leeco/x3/BoardConfigVendor.mk
 
-LOCAL_PATH := $(call my-dir)
+LOCAL_PATH := device/leeco/x3
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
@@ -175,7 +175,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
 # SELinux
-BOARD_SEPOLICY_DIRS := \
+BOARD_SEPOLICY_DIRS += \
   $(LOCAL_PATH)/sepolicy
 
 # Seccomp Filter

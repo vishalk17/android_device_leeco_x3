@@ -12,7 +12,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product, vendor/leeco/x3/x3-vendor-blobs.mk)
 
 # Folder path
-LOCAL_PATH := $(call my-dir)
+LOCAL_PATH := device/leeco/x3
 
 # Overlay Folder
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -58,11 +58,11 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     camera.disable_zsl_mode=1
 
 ifeq (lineage_x3,$(TARGET_PRODUCT))	#this is included only in lineage atm as some other roms have issue with this
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \S
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 		dalvik.vm.dex2oat-Xms=64m \
 		dalvik.vm.dex2oat-Xmx=64m \
 		dalvik.vm.image-dex2oat-Xms=64m \
-		dalvik.vm.image-dex2oat-Xmx=512m \
+		dalvik.vm.image-dex2oat-Xmx=512m
 endif
 
 # PRODUCT_PROPERTY_OVERRIDES

@@ -115,7 +115,7 @@ USE_XML_AUDIO_POLICY_CONF := 1
 
 # RIL
 #BOARD_PROVIDES_RILD := true
-BOARD_RIL_CLASS := ../../../device/leeco/x3/ril
+BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
 BOARD_CONNECTIVITY_MODULE := conn_soc
 
 # Display

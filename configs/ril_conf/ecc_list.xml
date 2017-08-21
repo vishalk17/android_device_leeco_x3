@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <EccTable>
-    <!-- 
+    <!--
         The attribute definition for tag EccEntry:
         - Ecc: the emergnecy number
         - Category: the service category
@@ -11,6 +11,9 @@
     -->
     <EccEntry Ecc="112" Category="0" Condition="1" />
     <EccEntry Ecc="911" Category="0" Condition="1" />
+    <EccEntry Ecc="100" Category="0" Condition="1" />
+    <EccEntry Ecc="101" Category="0" Condition="1" />
+    <EccEntry Ecc="102" Category="0" Condition="1" />
     <EccEntry Ecc="000" Category="0" Condition="0" />
     <EccEntry Ecc="08" Category="0" Condition="0" />
     <EccEntry Ecc="110" Category="0" Condition="0" />

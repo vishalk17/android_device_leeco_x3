@@ -43,7 +43,7 @@ LOCAL_MODULE := bwc_test
 
 LOCAL_C_INCLUDES:= \
 	$(LOCAL_PATH)/inc \
-	/inc
+	#/inc
 	
 LOCAL_SHARED_LIBRARIES := \
 	libcutils \

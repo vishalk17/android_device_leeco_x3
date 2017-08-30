@@ -56,9 +56,6 @@ else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6795)
 LOCAL_CFLAGS += -DBWC_RO
 endif
 
-#ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6735m)
-#include $(LOCAL_PATH)/$(shell echo $(MTK_PLATFORM) | tr A-Z a-z )/Android.mk
-#else
 LOCAL_SRC_FILES:= \
 	$(COMMON_PATH)/bandwidth_control.cpp \
 	$(COMMON_PATH)/bandwidth_control_port.cpp \
@@ -69,7 +66,7 @@ LOCAL_SRC_FILES:= \
 	$(COMMON_PATH)/BWCProfileAdapter.cpp
 
 LOCAL_C_INCLUDES:= \
-	/inc
+	#/inc
 	#$(TOP)/frameworks/base/include/ \
 	#$(MTK_PATH_SOURCE)/hardware/bwc/inc \
 	#$(TOP)/$(MTK_PATH_PLATFORM)/kernel/core/include/mach \

@@ -70,7 +70,7 @@ LOCAL_SRC_FILES := gps_mtk_aosp.c
 
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/include \
-	$(LOCAL_PATH)/../../kernel-headers \
+	$(LOCAL_PATH)/../../kernel-headers
 
 LOCAL_MODULE := gps.mt6795
 LOCAL_MODULE_TAGS := optional

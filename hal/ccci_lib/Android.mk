@@ -5,7 +5,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := ccci_lib.c
 
 LOCAL_STATIC_LIBRARIES := libcutils liblog
-	
+
 LOCAL_SHARED_LIBRARIES := libc
 
 LOCAL_MODULE := libccci_util

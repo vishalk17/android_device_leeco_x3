@@ -33,12 +33,9 @@
 # applicable license agreements with MediaTek Inc.
 
 
-
-
 ifneq (,$(filter $(strip $(TARGET_BOARD_PLATFORM)), mt6572 mt6582 mt6592))
 
 LOCAL_PATH:= $(call my-dir)
-
 
 include $(CLEAR_VARS)
 
@@ -46,15 +43,14 @@ LOCAL_SRC_FILES:= m4u_lib.cpp
 LC_MTK_PLATFORM := $(shell echo $(MTK_PLATFORM) | tr A-Z a-z )
 
 LOCAL_C_INCLUDES:= \
-  $(TOP)/$(MTK_PATH_PLATFORM)/kernel/core/include/mach \
-  $(TOP)/$(MTK_PATH_SOURCE)/hardware/m4u/$(LC_MTK_PLATFORM) \
+	$(TOP)/$(MTK_PATH_PLATFORM)/kernel/core/include/mach \
+	$(TOP)/$(MTK_PATH_SOURCE)/hardware/m4u/$(LC_MTK_PLATFORM) \
 
 
 LOCAL_SHARED_LIBRARIES := \
-     libcutils \
-     liblog \
- 
- 
+	libcutils \
+	liblog \
+
 LOCAL_MODULE := libm4u
 
 LOCAL_MODULE_TAGS := eng

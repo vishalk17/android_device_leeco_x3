@@ -39,17 +39,15 @@ ifneq (,$(filter $(strip $(TARGET_BOARD_PLATFORM)), mt6580 mt6795 mt6752 mt6735 
 
 LOCAL_PATH:= $(call my-dir)
 
-
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:= m4u_lib.cpp
 LC_MTK_PLATFORM := $(shell echo $(MTK_PLATFORM) | tr A-Z a-z )
 
 LOCAL_C_INCLUDES:= \
-  $(TOP)/$(MTK_PATH_PLATFORM)/kernel/core/include/mach \
-  /m4u/mt6795 \
+	$(TOP)/$(MTK_PATH_PLATFORM)/kernel/core/include/mach \
+	../mt6795
 
-#
 ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6735)
 LOCAL_C_INCLUDES += $(TOP)/vendor/mediatek/proprietary/hardware/m4u/mt6735
 LOCAL_EXPORT_C_INCLUDE_DIRS:= $(TOP)/vendor/mediatek/proprietary/hardware/m4u/mt6735
@@ -69,10 +67,9 @@ LOCAL_SRC_FILES += ../mt6735/D3/m4u_lib_port.cpp
 endif
 
 LOCAL_SHARED_LIBRARIES := \
-     libcutils \
-     liblog \
- 
- 
+	libcutils \
+	liblog \
+
 LOCAL_MODULE := libm4u
 LOCAL_MULTILIB := both
 
@@ -86,5 +83,3 @@ include $(CLEAR_VARS)
 # include $(call all-makefiles-under,$(LOCAL_PATH))
 
 endif
-
-

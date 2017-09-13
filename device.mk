@@ -101,6 +101,7 @@ PRODUCT_PACKAGES += \
 	tinymix \
 	libfs_mgr
 
+PRODUCT_PROPERTY_OVERRIDES += ro.af.client_heap_size_kbyte=7168
 # Wifi
 PRODUCT_PACKAGES += \
 	lib_driver_cmd_mt66xx \

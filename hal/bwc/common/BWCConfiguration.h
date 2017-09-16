@@ -92,7 +92,7 @@
 		BWCProfile(BWCPT_PROFILE(BWCPT_FORCE_MMDVFS), SMI_BWC_SCEN_FORCE_MMDVFS, NULL),
 	};
 	int total_bwc_profiles = 16;
-
+	
 #else
 	BWCProfile* profileSetting = NULL;
 	int total_bwc_profiles = 0;
@@ -119,3 +119,4 @@ BWCProfile defaultProfileSetting[]={
 int total_default_bwc_profiles = 16;
 
 #endif
+

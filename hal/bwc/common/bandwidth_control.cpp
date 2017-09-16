@@ -384,3 +384,4 @@ unsigned int BWC_MONITOR::query_hwc_max_pixel(){
         return hwc_max_pixel;
     }
 }
+

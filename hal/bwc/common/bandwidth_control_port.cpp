@@ -83,8 +83,8 @@ extern "C"
 /*=============================================================================
     SMI Bandwidth Control
   =============================================================================*/
-
-
+  
+  
 static MTK_SMI_BWC_SCEN map_bwc_profile_to_smi(BWC_PROFILE_TYPE bwc_profile)
 {
     int smi_profile_queried = profileHelper.getSMIProfile(bwc_profile);
@@ -158,7 +158,7 @@ static int emi_ctrl_str_generate(
     BWC_UNUSED(codec_type);
 
     p_cmdstr_profile = profileHelper.getEmiProfileStr(profile_type);
-
+    
     if( p_cmdstr_profile == NULL ) {
         BWC_ERROR("Invalid profile_type = %d\n", (int)profile_type );
         return -1;
@@ -185,8 +185,8 @@ int BWC::emi_bw_ctrl_set(
         BWC_ERROR("emi_ctrl_str_generate failed!\n");
         return -1;
     }
-
-
+    
+    
     fd = open(con_sce_file, O_WRONLY);
 
     if( fd == -1 ){
@@ -410,7 +410,7 @@ static void mmdvfs_parse_arg(va_list arg_ptr, MTK_MMDVFS_CMD *cmd)
         }
         unsigned int value;
 
-        value = va_arg(arg_ptr, unsigned int);
+        value = va_arg(arg_ptr, unsigned int);  
 
         BWC_INFO("MMDVFS v %d %d =%d=\n", type, value, cmd->camera_mode);
 
@@ -427,28 +427,28 @@ static void mmdvfs_parse_arg(va_list arg_ptr, MTK_MMDVFS_CMD *cmd)
                 if (value)
                 {
                     cmd->camera_mode |= MMDVFS_CAMERA_MODE_FLAG_PIP;
-                }
+                }                               
                 break;
             case MMDVFS_CAMERA_MODE_VFB:
                 cmd->camera_mode &= ~MMDVFS_CAMERA_MODE_FLAG_VFB;
                 if (value)
                 {
                     cmd->camera_mode |= MMDVFS_CAMERA_MODE_FLAG_VFB;
-                }
+                }                               
                 break;
             case MMDVFS_CAMERA_MODE_EIS_2_0:
                 cmd->camera_mode &= ~MMDVFS_CAMERA_MODE_FLAG_EIS_2_0;
                 if (value)
                 {
                     cmd->camera_mode |= MMDVFS_CAMERA_MODE_FLAG_EIS_2_0;
-                }
+                }                               
                 break;
             case MMDVFS_CAMERA_MODE_IVHDR:
                 cmd->camera_mode &= ~MMDVFS_CAMERA_MODE_FLAG_IVHDR;
                 if (value)
                 {
                     cmd->camera_mode |= MMDVFS_CAMERA_MODE_FLAG_IVHDR;
-                }
+                }                               
                 break;
             case MMDVFS_VENC_SIZE:
                 cmd->venc_size = value;
@@ -490,7 +490,7 @@ mmdvfs_step_enum mmdvfs_query(BWC_PROFILE_TYPE scenario, ...)
         close(mmdvfs_smi_fd);
         mmdvfs_smi_fd = -1;
     }
-
+    
     return (mmdvfs_step_enum)cmd.ret;
 }
 
@@ -500,7 +500,7 @@ int mmdvfs_set(BWC_PROFILE_TYPE scenario, ...)
     MTK_MMDVFS_CMD cmd;
     memset(&cmd, 0, sizeof(MTK_MMDVFS_CMD));
     cmd.camera_mode = g_mmdvfs_camera_mode;
-
+       
     // parse args
     va_list arg_ptr;
     va_start(arg_ptr, scenario);
@@ -512,7 +512,7 @@ int mmdvfs_set(BWC_PROFILE_TYPE scenario, ...)
     BWC_INFO("MMDVFS SET %d\n", g_mmdvfs_camera_mode);
 
     cmd.type = MTK_MMDVFS_CMD_TYPE_SET;
-    cmd.scen = map_bwc_profile_to_smi(scenario);
+    cmd.scen = map_bwc_profile_to_smi(scenario);    
 
     if (mmdvfs_smi_fd == -1)
     {
@@ -524,11 +524,13 @@ int mmdvfs_set(BWC_PROFILE_TYPE scenario, ...)
         BWC_ERROR("MTK_IOC_MMDVFS_CMD failed.:%s\n" , strerror(errno) );
         close(mmdvfs_smi_fd);
         mmdvfs_smi_fd = -1;
-
-        return -1;
+        
+        return -1; 
     }
 
     return (int)cmd.ret;
 }
 
 }
+
+

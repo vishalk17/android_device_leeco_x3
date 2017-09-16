@@ -308,4 +308,3 @@ int mmdvfs_set(BWC_PROFILE_TYPE scenario, ...);
 }
 
 #endif /*__BANDWIDTH_CONTROL_H__*/
-

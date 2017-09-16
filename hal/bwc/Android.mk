@@ -46,7 +46,7 @@ include $(CLEAR_VARS)
 
 ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6735m)
 LOCAL_CFLAGS += -DBWC_D2
-else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6735) 
+else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6735)
 LOCAL_CFLAGS += -DBWC_D1
 else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6753)
 LOCAL_CFLAGS += -DBWC_D3
@@ -66,11 +66,11 @@ LOCAL_SRC_FILES:= \
 	$(COMMON_PATH)/BWCProfileAdapter.cpp
 
 LOCAL_C_INCLUDES:= \
-	#/inc
+	$(INCLUDE_PATH)/ \
 	#$(TOP)/frameworks/base/include/ \
 	#$(MTK_PATH_SOURCE)/hardware/bwc/inc \
 	#$(TOP)/$(MTK_PATH_PLATFORM)/kernel/core/include/mach \
-	#$(TOP)/$(MTK_PATH_PLATFORM)/hardware/bwc/inc \
+	#$(TOP)/$(MTK_PATH_PLATFORM)/hardware/bwc/inc
 
 LOCAL_SHARED_LIBRARIES := \
 	libcutils \

@@ -46,6 +46,8 @@ PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	ro.adb.secure=0 \
+	ro.secure=0 \
 	ro.allow.mock.location=0 \
 	ro.debuggable=1 \
 	ro.zygote=zygote64_32 \

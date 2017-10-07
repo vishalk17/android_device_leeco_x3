@@ -1634,8 +1634,11 @@ static void send_unsolResponse(int unsolResponse, const void *data,
 	ret = 0;
     }
     else
-	ret = s_unsolResponses[unsolResponseIndex].responseFunction((int) soc_id,
-			responseType, 0, RIL_E_SUCCESS, const_cast<void*>(data), datalen);
+    if (s_unsolResponses[unsolResponseIndex].responseFunction) {
+        ret = s_unsolResponses[unsolResponseIndex].responseFunction(
+                (int) soc_id, responseType, 0, RIL_E_SUCCESS, const_cast<void*>(data),
+                datalen);
+    }
 
     rwlockRet = pthread_rwlock_unlock(radioServiceRwlockPtr);
     assert(rwlockRet == 0);

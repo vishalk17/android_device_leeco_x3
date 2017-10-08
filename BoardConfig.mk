@@ -24,8 +24,6 @@ TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
-TARGET_BOARD_SUFFIX := _64
-TARGET_CPU_CORTEX_A53 := true
 
 # FIX Freezing
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
@@ -154,7 +152,7 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Recovery
 TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/ramdisk/init*.rc
 ifeq ($(WITH_TWRP),true)
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/etc/twrp.fstab
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/ramdisk/twrp.fstab
 else
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/ramdisk/recovery.fstab
 endif

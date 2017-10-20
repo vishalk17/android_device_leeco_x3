@@ -28,7 +28,9 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-	Snap
+	Camera2 \
+	Snap \
+	libcamera_parameters_ext
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -95,10 +97,12 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/camera/camerasize.xml:system/etc/camerasize.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
+	media.stagefright.legacyencoder=0
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \

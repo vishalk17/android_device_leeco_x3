@@ -81,6 +81,7 @@ ro.mtk_perf_response_time=1
 #
 # ADDITIONAL_BUILD_PROPERTIES
 #
+persist.camera.HAL3.enabled=1
 ro.mtk_trustonic_tee_support=1
 persist.sys.le_fast_chrg_enable=1
 ro.mediatek.chip_ver=S01
@@ -181,6 +182,8 @@ ro.mtk_lte_support=1
 ro.mtk_safemedia_support=1
 ro.mtk_umts_tdd128_mode=1
 ro.mtk_cam_mav_support=1
+camera.disable_zsl_mode=1
+persist.debug.wfd.enable=1
 ro.mtk_cam_vfb=1
 ro.sim_refresh_reset_by_modem=1
 ro.mtk_external_sim_support=1

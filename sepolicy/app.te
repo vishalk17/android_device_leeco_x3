@@ -20,3 +20,8 @@ allow appdomain surfaceflinger:fifo_file rw_file_perms;
 # Stage: SQC
 # Purpose: [SystemUI] Allow IMG GPU to touch sw_sync
 allow appdomain sw_sync_device:chr_file { read write getattr open ioctl };
+
+# Data: 2017/10/20
+# Operation: Add Feature
+# Purpose: Allow apps using hid_gadget_device to work properly.
+allow appdomain hid_gadget_device:chr_file rw_file_perms;

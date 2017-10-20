@@ -574,3 +574,6 @@
 /sys/devices/virtual/BOOT/BOOT/boot/boot_mode                   u:object_r:sysfs_boot_mode:s0
 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario      u:object_r:sysfs_membw:s0
 /sys/bus/platform/drivers/ddr_type/ddr_type                     u:object_r:sysfs_ddr_type:s0
+
+# USB Gadget
+/dev/hidg(.*)                        u:object_r:hid_gadget_device:s0

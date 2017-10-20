@@ -62,7 +62,7 @@ persist.sys.button_jack_profile=volume
 persist.sys.button_jack_switch=0
 
 #default timezone
-persist.sys.defaulttimezone=Europe/Warsaw
+persist.sys.defaulttimezone=Asia/Kolkata
 
 ro.kernel.zio=38,108,105,16
 #ro.kernel.qemu=1

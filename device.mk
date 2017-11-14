@@ -9,10 +9,10 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui
 $(call inherit-product, vendor/leeco/x3/x3-vendor-blobs.mk)
 
 # Folder path
-LOCAL_PATH := device/leeco/x3
+DEVICE_PATH := device/leeco/x3
 
 # Overlay Folder
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal xxhdpi
@@ -97,7 +97,7 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/camera/camerasize.xml:system/etc/camerasize.xml \
+	$(DEVICE_PATH)/configs/camera/camerasize.xml:system/etc/camerasize.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
@@ -134,18 +134,18 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/ramdisk/enableswap.sh:root/enableswap.sh \
-	$(LOCAL_PATH)/ramdisk/factory_init.project.rc:root/factory_init.project.rc \
-	$(LOCAL_PATH)/ramdisk/factory_init.rc:root/factory_init.rc \
-	$(LOCAL_PATH)/ramdisk/fstab.mt6795:root/fstab.mt6795 \
-	$(LOCAL_PATH)/ramdisk/init.modem.rc:root/init.modem.rc \
-	$(LOCAL_PATH)/ramdisk/init.mt6795.rc:root/init.mt6795.rc \
-	$(LOCAL_PATH)/ramdisk/init.mt6795.usb.rc:root/init.mt6795.usb.rc \
-	$(LOCAL_PATH)/ramdisk/init.project.rc:root/init.project.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.mt6795.rc:root/ueventd.mt6795.rc \
-	$(LOCAL_PATH)/ramdisk/init.volte.rc:root/init.volte.rc \
-	$(LOCAL_PATH)/ramdisk/init.mal.rc:root/init.mal.rc \
-	$(LOCAL_PATH)/ramdisk/init.trustonic.rc:root/init.trustonic.rc
+	$(DEVICE_PATH)/ramdisk/enableswap.sh:root/enableswap.sh \
+	$(DEVICE_PATH)/ramdisk/factory_init.project.rc:root/factory_init.project.rc \
+	$(DEVICE_PATH)/ramdisk/factory_init.rc:root/factory_init.rc \
+	$(DEVICE_PATH)/ramdisk/fstab.mt6795:root/fstab.mt6795 \
+	$(DEVICE_PATH)/ramdisk/init.modem.rc:root/init.modem.rc \
+	$(DEVICE_PATH)/ramdisk/init.mt6795.rc:root/init.mt6795.rc \
+	$(DEVICE_PATH)/ramdisk/init.mt6795.usb.rc:root/init.mt6795.usb.rc \
+	$(DEVICE_PATH)/ramdisk/init.project.rc:root/init.project.rc \
+	$(DEVICE_PATH)/ramdisk/ueventd.mt6795.rc:root/ueventd.mt6795.rc \
+	$(DEVICE_PATH)/ramdisk/init.volte.rc:root/init.volte.rc \
+	$(DEVICE_PATH)/ramdisk/init.mal.rc:root/init.mal.rc \
+	$(DEVICE_PATH)/ramdisk/init.trustonic.rc:root/init.trustonic.rc
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -178,87 +178,87 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.camera.manual_sensor.xml:system/etc/permissions/android.hardware.camera.manual_sensor.xml
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs.xml:system/etc/permissions/media_codecs.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_mediatek_audio.xml:system/etc/media_codecs_mediatek_audio.xml\
-	$(LOCAL_PATH)/configs/media/media_codecs_mediatek_video.xml:system/etc/media_codecs_mediatek_video.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-	$(LOCAL_PATH)/configs/media/media_profiles.xml:system/etc/media_profiles.xml \
-	$(LOCAL_PATH)/configs/mtk_clear_motion.cfg:system/etc/mtk_clear_motion.cfg
+	$(DEVICE_PATH)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
+	$(DEVICE_PATH)/configs/media/media_codecs.xml:system/etc/permissions/media_codecs.xml \
+	$(DEVICE_PATH)/configs/media/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
+	$(DEVICE_PATH)/configs/media/media_codecs_mediatek_audio.xml:system/etc/media_codecs_mediatek_audio.xml\
+	$(DEVICE_PATH)/configs/media/media_codecs_mediatek_video.xml:system/etc/media_codecs_mediatek_video.xml \
+	$(DEVICE_PATH)/configs/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+	$(DEVICE_PATH)/configs/media/media_profiles.xml:system/etc/media_profiles.xml \
+	$(DEVICE_PATH)/configs/mtk_clear_motion.cfg:system/etc/mtk_clear_motion.cfg
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/audio/audio_device.xml:system/etc/audio_device.xml \
-	$(LOCAL_PATH)/configs/audio/audio_em.xml:system/etc/audio_em.xml \
-	$(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf
+	$(DEVICE_PATH)/configs/audio/audio_device.xml:system/etc/audio_device.xml \
+	$(DEVICE_PATH)/configs/audio/audio_em.xml:system/etc/audio_em.xml \
+	$(DEVICE_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/permissions/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-	$(LOCAL_PATH)/configs/permissions/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
-	$(LOCAL_PATH)/configs/permissions/com.android.location.provider.xml:system/etc/permissions/com.android.location.provider.xml \
-	$(LOCAL_PATH)/configs/permissions/com.android.media.remotedisplay.xml:system/etc/permissions/com.android.media.remotedisplay.xml \
-	$(LOCAL_PATH)/configs/permissions/com.android.mediadrm.signer.xml:system/etc/permissions/com.android.mediadrm.signer.xml \
-	$(LOCAL_PATH)/configs/permissions/android.hardware.camera.manual_postprocessing.xml:system/etc/permissions/android.hardware.camera.manual_postprocessing.xml \
-	$(LOCAL_PATH)/configs/permissions/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml
+	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
+	$(DEVICE_PATH)/configs/permissions/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
+	$(DEVICE_PATH)/configs/permissions/com.android.location.provider.xml:system/etc/permissions/com.android.location.provider.xml \
+	$(DEVICE_PATH)/configs/permissions/com.android.media.remotedisplay.xml:system/etc/permissions/com.android.media.remotedisplay.xml \
+	$(DEVICE_PATH)/configs/permissions/com.android.mediadrm.signer.xml:system/etc/permissions/com.android.mediadrm.signer.xml \
+	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.manual_postprocessing.xml:system/etc/permissions/android.hardware.camera.manual_postprocessing.xml \
+	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.raw.xml:system/etc/permissions/android.hardware.camera.raw.xml
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-	$(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-	$(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+	$(DEVICE_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+	$(DEVICE_PATH)/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+	$(DEVICE_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/bluetooth/auto_pair_blacklist.conf:system/etc/bluetooth/auto_pair_blacklist.conf \
-	$(LOCAL_PATH)/configs/bluetooth/auto_pair_devlist.conf:system/etc/bluetooth/auto_pair_devlist.conf \
-	$(LOCAL_PATH)/configs/bluetooth/btconfig.xml:system/etc/bluetooth/btconfig.xml \
-	$(LOCAL_PATH)/configs/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
-	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf \
-	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.debug:system/etc/bluetooth/bt_stack.conf.debug \
-	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/etc/bluetooth/bt_stack.conf.sqc
+	$(DEVICE_PATH)/configs/bluetooth/auto_pair_blacklist.conf:system/etc/bluetooth/auto_pair_blacklist.conf \
+	$(DEVICE_PATH)/configs/bluetooth/auto_pair_devlist.conf:system/etc/bluetooth/auto_pair_devlist.conf \
+	$(DEVICE_PATH)/configs/bluetooth/btconfig.xml:system/etc/bluetooth/btconfig.xml \
+	$(DEVICE_PATH)/configs/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
+	$(DEVICE_PATH)/configs/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf \
+	$(DEVICE_PATH)/configs/bluetooth/bt_stack.conf.debug:system/etc/bluetooth/bt_stack.conf.debug \
+	$(DEVICE_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/etc/bluetooth/bt_stack.conf.sqc
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
-	$(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl\
-	$(LOCAL_PATH)/configs/keylayout/mtk-tpd.kl:system/usr/keylayout/mtk-tpd.kl\
-	$(LOCAL_PATH)/configs/keylayout/synaptics_dsx_i2c.kl:system/usr/keylayout/synaptics_dsx_i2c.kl
+	$(DEVICE_PATH)/configs/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
+	$(DEVICE_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl\
+	$(DEVICE_PATH)/configs/keylayout/mtk-tpd.kl:system/usr/keylayout/mtk-tpd.kl\
+	$(DEVICE_PATH)/configs/keylayout/synaptics_dsx_i2c.kl:system/usr/keylayout/synaptics_dsx_i2c.kl
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/ril_conf/ecc_list.xml:system/etc/ecc_list.xml \
-	$(LOCAL_PATH)/configs/ril_conf/spn-conf.xml:system/etc/spn-conf.xml
+	$(DEVICE_PATH)/configs/ril_conf/ecc_list.xml:system/etc/ecc_list.xml \
+	$(DEVICE_PATH)/configs/ril_conf/spn-conf.xml:system/etc/spn-conf.xml
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/dhcpcd/dhcpcd-run-hooks:system/etc/dhcpcd/dhcpcd-run-hooks \
-	$(LOCAL_PATH)/configs/dhcpcd/dhcpcd-hooks/20-dns.conf:system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf \
-	$(LOCAL_PATH)/configs/dhcpcd/dhcpcd-hooks/95-configured:system/etc/dhcpcd/dhcpcd-hooks/95-configured \
-	$(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6c.conf:system/etc/wide-dhcpv6/dhcp6c.conf \
-	$(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6c.script:system/etc/wide-dhcpv6/dhcp6c.script \
-	$(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6cctlkey:system/etc/wide-dhcpv6/dhcp6cctlkey \
-	$(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6cDNS.conf:system/etc/wide-dhcpv6/dhcp6cDNS.conf \
-	$(LOCAL_PATH)/configs/wide-dhcpv6/dhcp6s.conf:system/etc/wide-dhcpv6/dhcp6s.conf
+	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-run-hooks:system/etc/dhcpcd/dhcpcd-run-hooks \
+	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-hooks/20-dns.conf:system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf \
+	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-hooks/95-configured:system/etc/dhcpcd/dhcpcd-hooks/95-configured \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6c.conf:system/etc/wide-dhcpv6/dhcp6c.conf \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6c.script:system/etc/wide-dhcpv6/dhcp6c.script \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6cctlkey:system/etc/wide-dhcpv6/dhcp6cctlkey \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6cDNS.conf:system/etc/wide-dhcpv6/dhcp6cDNS.conf \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6s.conf:system/etc/wide-dhcpv6/dhcp6s.conf
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/radvd/radvd.conf:system/etc/radvd/radvd.conf
+	$(DEVICE_PATH)/configs/radvd/radvd.conf:system/etc/radvd/radvd.conf
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/slp_conf:system/etc/slp_conf \
-	$(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
-	$(LOCAL_PATH)/configs/clatd.conf:system/etc/clatd.conf \
-	$(LOCAL_PATH)/configs/custom.conf:system/etc/custom.conf \
-	$(LOCAL_PATH)/configs/mtklog-config.prop:system/etc/mtklog-config.prop \
-	$(LOCAL_PATH)/configs/mtk_omx_core.cfg:system/etc/mtk_omx_core.cfg \
-	$(LOCAL_PATH)/configs/perfservboosttbl.txt:system/etc/perfservboosttbl.txt \
-	$(LOCAL_PATH)/configs/perfservscntbl.txt:system/etc/perfservscntbl.txt
+	$(DEVICE_PATH)/configs/slp_conf:system/etc/slp_conf \
+	$(DEVICE_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
+	$(DEVICE_PATH)/configs/clatd.conf:system/etc/clatd.conf \
+	$(DEVICE_PATH)/configs/custom.conf:system/etc/custom.conf \
+	$(DEVICE_PATH)/configs/mtklog-config.prop:system/etc/mtklog-config.prop \
+	$(DEVICE_PATH)/configs/mtk_omx_core.cfg:system/etc/mtk_omx_core.cfg \
+	$(DEVICE_PATH)/configs/perfservboosttbl.txt:system/etc/perfservboosttbl.txt \
+	$(DEVICE_PATH)/configs/perfservscntbl.txt:system/etc/perfservscntbl.txt
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
+	$(DEVICE_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
 
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
-	$(LOCAL_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
-	$(LOCAL_PATH)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
+	$(DEVICE_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+	$(DEVICE_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
+	$(DEVICE_PATH)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
 
 
 # MTK Helpers
@@ -288,7 +288,7 @@ PRODUCT_PACKAGES += \
 
 # Mediaserver with system group
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/etc/init/mediaserver.rc:system/etc/init/mediaserver.rc
+	$(DEVICE_PATH)/etc/init/mediaserver.rc:system/etc/init/mediaserver.rc
 
 # camera legacy
 PRODUCT_PACKAGES += \

@@ -1,6 +1,3 @@
-# Check for target product
-ifeq (lineage_x3,$(TARGET_PRODUCT))
-
 DEVICE_PATH := device/leeco/x3
 
 # Inherit from those products. Most specific first.
@@ -41,5 +38,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 PRODUCT_COPY_FILES += \
 	bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
-
-endif

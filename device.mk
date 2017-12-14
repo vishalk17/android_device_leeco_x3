@@ -254,6 +254,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
 
+# Mediaserver with system group
+PRODUCT_COPY_FILES += \
+	$(DEVICE_PATH)/configs/init/mediaserver.rc:system/etc/init/mediaserver.rc
 
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
@@ -285,10 +288,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	gps.mt6795 \
 	libcurl
-
-# Mediaserver with system group
-PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/etc/init/mediaserver.rc:system/etc/init/mediaserver.rc
 
 # camera legacy
 PRODUCT_PACKAGES += \

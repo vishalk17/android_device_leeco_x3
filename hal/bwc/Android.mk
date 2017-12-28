@@ -46,7 +46,7 @@ include $(CLEAR_VARS)
 
 ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6735m)
 LOCAL_CFLAGS += -DBWC_D2
-else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6735) 
+else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6735)
 LOCAL_CFLAGS += -DBWC_D1
 else ifeq ($(strip $(TARGET_BOARD_PLATFORM)),mt6753)
 LOCAL_CFLAGS += -DBWC_D3

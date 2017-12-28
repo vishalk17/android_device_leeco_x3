@@ -2,7 +2,7 @@ This directory contains GPS HAL layer code.
 
 WHAT IT DOES?
 =============
-It provide GPS interfaces for gps provider on frameworks,which allow init/open/close/cleanup gps 
+It provide GPS interfaces for gps provider on frameworks,which allow init/open/close/cleanup gps
 when mnld daemon is launched.
 
 HOW IT WAS BUILT?
@@ -40,4 +40,3 @@ The lib 'gps.default' is loaded by system_server,
 GPS Location provider will call gps_module_methods API, if system_server is launched.
 
 All the source code of this library were written by MediaTek co..
-

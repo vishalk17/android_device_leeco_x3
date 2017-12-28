@@ -44,13 +44,13 @@ LOCAL_MODULE := bwc_test
 LOCAL_C_INCLUDES:= \
 	$(LOCAL_PATH)/inc \
 	#/inc
-	
+
 LOCAL_SHARED_LIBRARIES := \
 	libcutils \
 	liblog \
 	libbwc \
 
-#LOCAL_STATIC_LIBRARIES := 
+#LOCAL_STATIC_LIBRARIES :=
 LOCAL_MODULE_TAGS := tests
 LOCAL_PRELINK_MODULE:=false
-include $(BUILD_EXECUTABLE) 
+include $(BUILD_EXECUTABLE)

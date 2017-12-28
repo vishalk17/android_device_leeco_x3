@@ -1,6 +1,6 @@
 /* 
  * data path: virtual memory -> m4u -> LCDC_R
- * LCD_R read BufAddr through M4U, then LCD_W write the data to PMEM PA 
+ * LCD_R read BufAddr through M4U, then LCD_W write the data to PMEM PA
  * test APP dump PMEM_VA image to verify
  */
 
@@ -51,9 +51,9 @@ int vAllocate_Deallocate_basic()
 
 #ifdef __PMEM_WRAP_LAYER_EN__
     CM4u.m4u_enable_m4u_func((M4U_MODULE_ID_ENUM)0);
-#endif    
-    
-    // allocate MVA buffer for m4u module                    
+#endif
+
+    // allocate MVA buffer for m4u module
     CM4u.m4u_alloc_mva((M4U_MODULE_ID_ENUM)0,     // Module ID
                        BufAddr,              // buffer virtual start address
                        BufSize,              // buffer size
@@ -68,7 +68,7 @@ int vAllocate_Deallocate_basic()
     CM4u.m4u_dealloc_mva((M4U_MODULE_ID_ENUM)0, BufAddr, BufSize, BufMVA);
     M4UDBG(" after m4u_dealloc_mva() \r\n");
     CM4u.m4u_dump_info((M4U_MODULE_ID_ENUM)0);
-    
+
     TEST_END();
 
     return 0;
@@ -89,14 +89,14 @@ int main (int argc, char *argv[])
 
 
 #if 0
-    
+
     unsigned int i;
     M4UDBG("argc=%d \n", argc);
     for(i=0;i<argc;i++)
     {
     	  M4UDBG("argv[%d]=%s \n", i, argv[i]);
     }
-    
+
     unsigned int* pDataIn = new unsigned int[argc];
     for(i=0;i<argc;i++)
     {
@@ -107,12 +107,12 @@ int main (int argc, char *argv[])
     	  M4UDBG("pDataIn[%d]=%d \n", i, *(pDataIn+i));
     }
     delete[] pDataIn;
-        
+
     ///> --------------------1. allocate memory as LCD's source buffer
     unsigned int BufSize = 390*210*2;
     int pmem_fd_src, pmem_fd_dst;
-    
-#ifdef M4U_MEM_USE_PMEM    
+
+#ifdef M4U_MEM_USE_PMEM
     unsigned int BufAddr = (unsigned int)pmem_alloc_sync(BufSize, &pmem_fd_src );
     if(BufAddr==NULL)
     {
@@ -121,13 +121,13 @@ int main (int argc, char *argv[])
     else
     {
     	  M4UDBG("alloc pmem success! BufAddrDst=0x%x\n", BufAddr);
-    }    
+    }
     unsigned int BufAddrPA = (unsigned int)pmem_get_phys(pmem_fd_src);
     M4UDBG("src use pmem, BufAddr=0x%x,  BufAddrPA=0x%x \n", BufAddr, BufAddrPA);
 #else
     unsigned int BufAddr = (unsigned int)new unsigned char[BufSize];
     M4UDBG("src use new, BufAddr=0x%x \n", BufAddr);
-#endif    
+#endif
 
 
     unsigned int BufMVA;
@@ -158,11 +158,11 @@ int main (int argc, char *argv[])
             fprintf(fp, "%c", *(unsigned char*)(BufAddr+index));
         }
         fclose(fp);
-    } 
-    
+    }
+
     unsigned int BufSizeDst = 390*210*2;
 
-#ifdef M4U_MEM_USE_PMEM   
+#ifdef M4U_MEM_USE_PMEM
     unsigned int BufAddrDstPA;
     unsigned int BufAddrDst = (unsigned int)pmem_alloc_sync(BufSize, &pmem_fd_dst );
     if(BufAddrDst==NULL)
@@ -178,28 +178,28 @@ int main (int argc, char *argv[])
 #else
     unsigned int BufAddrDst = (unsigned int)new unsigned char[BufSize];
 #endif
-    
+
     memset((unsigned char*)BufAddrDst, 0x55, BufSizeDst);
     M4UDBG("src addr=0x%x, dst addr=0x%x \r\n", BufAddr, BufAddrDst);
 
     ///> --------------------2. allocate MVA
     MTKM4UDrv CM4u;
     CM4u.m4u_power_on(M4U_CLNTMOD_LCDC);
-    // allocate MVA buffer for LCDC module                    
+    // allocate MVA buffer for LCDC module
     CM4u.m4u_alloc_mva(M4U_CLNTMOD_LCDC,     // Module ID
                        BufAddr,              // buffer virtual start address
                        BufSize,              // buffer size
                        &BufMVA);             // return MVA address
     M4UDBG(" after m4u_alloc_mva(), BufMVA=0x%x \r\n", BufMVA);
-    
+
     ///> --------------------3. insert tlb range and tlb entry
     // manual insert MVA start page address
-    CM4u.m4u_manual_insert_entry(M4U_CLNTMOD_LCDC, 
+    CM4u.m4u_manual_insert_entry(M4U_CLNTMOD_LCDC,
                                  BufMVA,   // MVA address
                                  true);    // lock the entry for circuling access
 
     // insert TLB uni-update range
-    CM4u.m4u_insert_tlb_range(M4U_CLNTMOD_LCDC, 
+    CM4u.m4u_insert_tlb_range(M4U_CLNTMOD_LCDC,
                               BufMVA,                // range start MVA
                               BufMVA + BufSize - 1,  // range end MVA
                               RT_RANGE_HIGH_PRIORITY,
@@ -208,11 +208,11 @@ int main (int argc, char *argv[])
     CM4u.m4u_dump_reg(M4U_CLNTMOD_LCDC);
     CM4u.m4u_dump_info(M4U_CLNTMOD_LCDC);
 
-    ///> --------------------4. config LCD port                       
-    // config LCD port 
+    ///> --------------------4. config LCD port
+    // config LCD port
     M4U_PORT_STRUCT M4uPort;
     M4uPort.ePortID = M4U_PORT_LCD_R;
-    M4uPort.Virtuality = 1;						   
+    M4uPort.Virtuality = 1;
     M4uPort.Security = 0;
     M4uPort.Distance = 1;
     M4uPort.Direction = 0;
@@ -220,7 +220,7 @@ int main (int argc, char *argv[])
 
 /*
     M4uPort.ePortID = M4U_PORT_LCD_W;
-    M4uPort.Virtuality = 1;						   
+    M4uPort.Virtuality = 1;
     M4uPort.Security = 0;
     M4uPort.Distance = 1;
     M4uPort.Direction = 0;
@@ -238,7 +238,7 @@ int main (int argc, char *argv[])
     struct fb_overlay_layer ut_layer;
     fp_fb = open("/dev/graphics/fb0",O_RDONLY);
     if(fp_fb<0) return 0;
-    	
+
     ut_layer.src_fmt = MTK_FB_FORMAT_RGB565;
     ut_layer.layer_id = 0;
     ut_layer.layer_enable = 1;
@@ -251,14 +251,14 @@ int main (int argc, char *argv[])
     ut_layer.tgt_width = ut_layer.src_width = ut_layer.src_pitch = 210;
     ut_layer.src_color_key = 0;
     ut_layer.layer_rotation = MTK_FB_ORIENTATION_0;
-    
+
     ioctl(fp_fb, MTKFB_M4U_UT, &ut_layer);
     CM4u.m4u_monitor_stop(M4U_PORT_LCD_R);
 */
 
-    M4UDBG("src_va=0x%x, dst_va=0x%x, *dst_va=0x%x \n", 
+    M4UDBG("src_va=0x%x, dst_va=0x%x, *dst_va=0x%x \n",
         BufAddr, BufAddrDst, *(unsigned char*)BufAddrDst);
-    
+
     // save image
     {
         char* pFile;
@@ -272,7 +272,7 @@ int main (int argc, char *argv[])
             fprintf(fp, "%c", *(unsigned char*)(BufAddrDst+index));
         }
         fclose(fp);
-    }    
+    }
 
     ///> --------------------6. de-allocate MVA and release tlb resource
     CM4u.m4u_invalid_tlb_range(M4U_CLNTMOD_LCDC, BufMVA, BufMVA+BufSize-1);
@@ -281,7 +281,7 @@ int main (int argc, char *argv[])
     CM4u.m4u_dump_reg(M4U_CLNTMOD_LCDC);
     CM4u.m4u_dump_info(M4U_CLNTMOD_LCDC);
     CM4u.m4u_power_off(M4U_CLNTMOD_LCDC);
-    
+
     int cnt=0;
     //while(1)
     {
@@ -289,7 +289,7 @@ int main (int argc, char *argv[])
     	M4UDBG("m4u_ut sleep! %d\n", cnt++);
     }
 
-#ifdef M4U_MEM_USE_PMEM     
+#ifdef M4U_MEM_USE_PMEM
 
 #else
     delete[] (unsigned char*)BufAddr;
@@ -301,5 +301,3 @@ int main (int argc, char *argv[])
 
     return 0;
 }
-
-

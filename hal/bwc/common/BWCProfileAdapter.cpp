@@ -102,7 +102,7 @@ void BWCProfileAdapter::dump(){
         }
         // cout<<temp->getName()<<":"<<temp->getSMIProfile()<<":"<<temp->getEmiProfileStr()<<endl;
         BWC_INFO("%s:%d,%s", name, temp->getSMIProfile(), emiProfileStr);
-        
+
     }
 }
 
@@ -155,4 +155,3 @@ char * BWCProfileHelper::getName(int bwcProfile){
         return temp;
     }
 }
-

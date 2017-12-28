@@ -69,7 +69,7 @@ extern unsigned char src_file[];
 #define SRC_BPP 3
 
 #define DST_W 256
-#define DST_H 256 
+#define DST_H 256
 #define DST_BPP 2
 
 int main()
@@ -92,7 +92,7 @@ int main()
     struct timeval time_e;
     unsigned int time_all=0, time_cur=0;
     unsigned int cnt=0;
-    
+
     unsigned char pSrc[SRC_W*SRC_H*SRC_BPP];
 
 #ifdef _USE_PMEM_
@@ -120,34 +120,34 @@ int main()
     else
     {
        xlog("ashmem_create_region success! \n");
-    }    
+    }
     int err = ashmem_set_prot_region(fd, PROT_READ | PROT_WRITE);
     if (err) {
         xlog("------ ashmem_set_prot_region failed! \n");
         return false;
-    }    
+    }
     src_va = (unsigned char*)mmap(NULL, SRC_W*SRC_H*SRC_BPP, PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0);
     if (-1 == (long)src_va) {
         xlog("---------- mmap failed! \n");
         return false;
-    }    
+    }
 
     int fd_dst = ashmem_create_region("MDPBuf2", DST_W*DST_H*DST_BPP*6);
     if(-1==fd_dst)
     {
     	xlog("ashmem_create_region failed! \n");
     	return 0;
-    }    
+    }
     err = ashmem_set_prot_region(fd_dst, PROT_READ | PROT_WRITE);
     if (err) {
         xlog("------ ashmem_set_prot_region failed! \n");
         return false;
-    }    
+    }
     dst_va = (unsigned char*)mmap(NULL, DST_W*DST_H*DST_BPP*6, PROT_READ | PROT_WRITE, MAP_PRIVATE, fd_dst, 0);
     if (-1 == (long)dst_va) {
         xlog("---------- mmap failed! \n");
         return false;
-    }  
+    }
 #else
     xlog("======= M4U test STACK ======== \n");
     src_va = pSrc;
@@ -190,7 +190,7 @@ for(i=0;i<4;i++)
     gettimeofday(&time_s, NULL);
 
 #if 0
-    if (MHAL_NO_ERROR != mHalIoCtrl(MHAL_IOCTL_BITBLT, &stParam, sizeof(stParam), NULL, 0, NULL)) 
+    if (MHAL_NO_ERROR != mHalIoCtrl(MHAL_IOCTL_BITBLT, &stParam, sizeof(stParam), NULL, 0, NULL))
     {
         xlog("Test failed!! rgb %d", 4*j+i);
     }
@@ -198,12 +198,12 @@ for(i=0;i<4;i++)
     {
         xlog("Test success rgb!! %d", 4*j+i);
     }
-#endif    
+#endif
     gettimeofday(&time_e, NULL);
     time_cur = (time_e.tv_sec - time_s.tv_sec)*1000 + (time_e.tv_usec - time_s.tv_usec)/1000;
     time_all += time_cur;
     cnt++;
-    xlog("rgb_m4u: time_cur= %ums, time_all= %ums, time_avg= %ums", 
+    xlog("rgb_m4u: time_cur= %ums, time_all= %ums, time_avg= %ums",
         time_cur, time_all, (time_all/cnt));
 
 //Save
@@ -214,7 +214,7 @@ for(i=0;i<4;i++)
         fprintf(fp, "%c", dst_va[index]);
     }
     fclose(fp);
-   
+
 }
 
 #ifdef _USE_PMEM_
@@ -244,7 +244,6 @@ for(i=0;i<4;i++)
 #else
     xlog("++++++- M4U test STACK ++++++-- \n");
 #endif
-    
+
     return 0;
 }
-

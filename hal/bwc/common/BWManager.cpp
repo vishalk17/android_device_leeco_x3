@@ -18,11 +18,10 @@ namespace android {
 
     // Set the BWC profile with BWC binder service
     status_t BWManager::setProfile(int32_t profile, bool isEnable)
-    {    
+    {
 	     BWCClient & bwcProxy = BWCClient::getInstance();
 	     return bwcProxy.setProfile(profile, isEnable);
     }
 
 
 };
-

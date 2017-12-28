@@ -64,7 +64,7 @@ typedef struct {
 
 typedef struct
 {
-	unsigned int*       hwc_max_pixel; //0 : exit this scenario , 1 : enter this scenario 
+	unsigned int*       hwc_max_pixel; //0 : exit this scenario , 1 : enter this scenario
 } MTK_SMI_BWC_STATE;
 
 typedef struct {

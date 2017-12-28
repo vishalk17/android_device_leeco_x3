@@ -45,4 +45,4 @@ public:
 
 void testAdapter( void );
 
-#endif 
+#endif

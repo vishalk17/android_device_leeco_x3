@@ -7,10 +7,10 @@
 namespace android {
 
     // Proxy of BWC remote service
-    class BpBWCService : public BpInterface<IBWCService> 
+    class BpBWCService : public BpInterface<IBWCService>
     {
     public:
-        BpBWCService(const sp<IBinder>& impl) : BpInterface<IBWCService>(impl) 
+        BpBWCService(const sp<IBinder>& impl) : BpInterface<IBWCService>(impl)
         {
         }
 
@@ -32,13 +32,13 @@ namespace android {
 
     IMPLEMENT_META_INTERFACE(BWCService, "BWCService");
 
-    // Handling the binder transaction to BWCService 
-    status_t BnBWCService::onTransact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags) 
-    {    
+    // Handling the binder transaction to BWCService
+    status_t BnBWCService::onTransact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
+    {
         status_t ret = 0;
 
 
-        switch(code) 
+        switch(code)
         {
             // Set current BWC profile (profile id, state id)
         case BWC_SET_PROFILE:

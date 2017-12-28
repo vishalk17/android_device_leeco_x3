@@ -21,6 +21,4 @@ Files in this directory is used to
 generate a shared library 'libccci_util.so'.
 
 The shared library 'libccci_util' is called by
-ccci user which like ccci_mdinit modules to get current modem configure setting.   I 
-
-
+ccci user which like ccci_mdinit modules to get current modem configure setting.   I

@@ -38,4 +38,3 @@
 
 #include "../2.0/m4u_lib_v2.h"
 #endif	/* __M4U_H_ */
-

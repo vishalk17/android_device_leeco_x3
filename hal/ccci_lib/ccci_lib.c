@@ -180,7 +180,7 @@ int query_prj_cfg_setting(char name[], char val[], int size)
 	}
 #endif
 
-//-- For MTK_IMS_SUPPORT 
+//-- For MTK_IMS_SUPPORT
 	if(property_get(MTK_IMS_SUPPORT, value, NULL) > 0) {
 		if(strstr("yes,ture,on", value) > 0) {
 			if(strcmp(name, "MTK_IMS_SUPPORT")==0) {
@@ -202,5 +202,3 @@ int query_prj_cfg_setting(char name[], char val[], int size)
 
 	return -1;
 }
-
-

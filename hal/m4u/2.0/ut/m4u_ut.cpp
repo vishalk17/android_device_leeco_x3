@@ -1,6 +1,6 @@
 /* 
  * data path: virtual memory -> m4u -> LCDC_R
- * LCD_R read BufAddr through M4U, then LCD_W write the data to PMEM PA 
+ * LCD_R read BufAddr through M4U, then LCD_W write the data to PMEM PA
  * test APP dump PMEM_VA image to verify
  */
 
@@ -46,7 +46,7 @@ int vAllocate_Deallocate_basic()
     unsigned char* BufAddr = new unsigned char[BufSize];
     unsigned int BufMVA;
     MTKM4UDrv CM4u;
-    
+
     M4U_PORT_STRUCT port;
     port.ePortID = M4U_PORT_DISP_OVL0;
     port.Direction = 0;
@@ -60,18 +60,18 @@ int vAllocate_Deallocate_basic()
     for(i=0; i<BufSize; i++)
         BufAddr[i] = 0x55;
 
-    ret = CM4u.m4u_alloc_mva(M4U_PORT_DISP_OVL0,     
-                       (unsigned long)BufAddr, BufSize,             
+    ret = CM4u.m4u_alloc_mva(M4U_PORT_DISP_OVL0,
+                       (unsigned long)BufAddr, BufSize,
                        M4U_PROT_READ|M4U_PROT_WRITE,
                        M4U_FLAGS_SEQ_ACCESS,
-                       &BufMVA);             
+                       &BufMVA);
     if(ret)
     {
         printf("allocate mva fail. ret=0x%x\n", ret);
         return ret;
     }
-                       
-    ret = CM4u.m4u_cache_sync(M4U_PORT_DISP_OVL0, M4U_CACHE_FLUSH_BY_RANGE, 
+
+    ret = CM4u.m4u_cache_sync(M4U_PORT_DISP_OVL0, M4U_CACHE_FLUSH_BY_RANGE,
                     (unsigned long)BufAddr, BufSize, BufMVA);
     if(ret)
     {
@@ -79,7 +79,7 @@ int vAllocate_Deallocate_basic()
         return ret;
     }
 
-    ret = CM4u.m4u_cache_sync(M4U_PORT_DISP_OVL0, M4U_CACHE_INVALID_BY_RANGE, 
+    ret = CM4u.m4u_cache_sync(M4U_PORT_DISP_OVL0, M4U_CACHE_INVALID_BY_RANGE,
                     (unsigned long)BufAddr, BufSize, BufMVA);
     if(ret)
     {
@@ -87,7 +87,7 @@ int vAllocate_Deallocate_basic()
         return ret;
     }
 
-    ret = CM4u.m4u_cache_sync(M4U_PORT_DISP_OVL0, M4U_CACHE_CLEAN_BY_RANGE, 
+    ret = CM4u.m4u_cache_sync(M4U_PORT_DISP_OVL0, M4U_CACHE_CLEAN_BY_RANGE,
                     (unsigned long)BufAddr, BufSize, BufMVA);
     if(ret)
     {
@@ -147,19 +147,19 @@ int ion_m4u_misc_using()
     MTKM4UDrv CM4u;
     unsigned int BufMVA;
     int ret;
-    ret = CM4u.m4u_alloc_mva(0,     
-                       (unsigned long)pBuf, bufsize,             
+    ret = CM4u.m4u_alloc_mva(0,
+                       (unsigned long)pBuf, bufsize,
                        M4U_PROT_READ|M4U_PROT_WRITE,
                        M4U_FLAGS_SEQ_ACCESS,
-                       &BufMVA);             
+                       &BufMVA);
     if(ret)
     {
         printf("allocate mva fail. ret=0x%x\n", ret);
         return ret;
     }
     printf("mva=0x%x\n", BufMVA);
-                       
-    ret = CM4u.m4u_cache_sync(0, M4U_CACHE_FLUSH_BY_RANGE, 
+
+    ret = CM4u.m4u_cache_sync(0, M4U_CACHE_FLUSH_BY_RANGE,
                     (unsigned long)pBuf,bufsize, BufMVA);
     if(ret)
     {
@@ -184,5 +184,3 @@ int main (int argc, char *argv[])
 
     return 0;
 }
-
-

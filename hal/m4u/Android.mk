@@ -37,5 +37,3 @@ LOCAL_PATH:= $(call my-dir)
 #include $(call all-makefiles-under, $(LOCAL_PATH)/$(shell echo $(MTK_PLATFORM) | tr A-Z a-z ))
 #include $(LOCAL_PATH)/$(shell echo $(MTK_PLATFORM) | tr A-Z a-z )/Android.mk
 include $(call all-subdir-makefiles)
-
-

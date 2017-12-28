@@ -7,7 +7,7 @@
 
 using namespace android;
 
-int main(int argc, char** argv) 
+int main(int argc, char** argv)
 {
     ALOGD("BWC service start");
     BWC_UNUSED(argc);

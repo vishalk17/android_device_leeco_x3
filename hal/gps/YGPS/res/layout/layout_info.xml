@@ -275,7 +275,7 @@
                 style="@style/style_table_right"
                 android:text="@string/gps_status_unknown" />
         </TableRow>
-        
+
         <View
             android:layout_height="1dip"
             android:background="@color/light_gray" />

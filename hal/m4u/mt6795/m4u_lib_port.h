@@ -21,7 +21,7 @@ enum
     M4U_PORT_MDP_WDMA            ,
     M4U_PORT_MDP_WROT0           ,
     M4U_PORT_MDP_WROT1           ,
-                               
+
     M4U_PORT_HW_VDEC_MC_EXT      ,
     M4U_PORT_HW_VDEC_PP_EXT      ,
     M4U_PORT_HW_VDEC_UFO_EXT     ,
@@ -31,7 +31,7 @@ enum
     M4U_PORT_HW_VDEC_PRED_RD_EXT ,
     M4U_PORT_HW_VDEC_PRED_WR_EXT ,
     M4U_PORT_HW_VDEC_PPWRAP_EXT  ,
-                               
+
     M4U_PORT_IMGO                ,
     M4U_PORT_RRZO                ,
     M4U_PORT_AAO                 ,
@@ -53,7 +53,7 @@ enum
     M4U_PORT_RB                  ,
     M4U_PORT_RP                  ,
     M4U_PORT_WR                  ,
-                                
+
     M4U_PORT_VENC_RCPU           ,
     M4U_PORT_VENC_REC            ,
     M4U_PORT_VENC_BSDMA          ,
@@ -73,7 +73,7 @@ enum
     M4U_PORT_REMDC_WDMA          ,
     M4U_PORT_VENC_NBM_RDMA       ,
     M4U_PORT_VENC_NBM_WDMA       ,
-                                
+
     M4U_PORT_MJC_MV_RD           ,
     M4U_PORT_MJC_MV_WR           ,
     M4U_PORT_MJC_DMA_RD          ,
@@ -91,7 +91,7 @@ enum
     M4U_PORT_AUDIO               ,
     M4U_PORT_MSDC3               ,
     M4U_PORT_USB0                ,
-    
+
     M4U_PORT_MSDC0               ,
     M4U_PORT_USB1                ,
     M4U_PORT_AP_DMA              ,
@@ -99,10 +99,10 @@ enum
     M4U_PORT_GCE                 ,
     M4U_PORT_DEBUGTOP0           ,
     M4U_PORT_DEBUGTOP1           ,
-                                
+
     M4U_PORT_UNKNOWN             ,
-                                 
-};                               
+
+};
 
 #define M4U_PORT_NR M4U_PORT_UNKNOWN
 

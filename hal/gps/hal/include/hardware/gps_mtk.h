@@ -69,4 +69,3 @@ typedef struct _GpsCallbacks_mtk {
 __END_DECLS
 
 #endif /* ANDROID_INCLUDE_HARDWARE_GPS_MTK_H */
-

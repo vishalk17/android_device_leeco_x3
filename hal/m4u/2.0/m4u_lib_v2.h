@@ -314,4 +314,3 @@ public:
 };
 
 #endif	/* __M4U_H_ */
-

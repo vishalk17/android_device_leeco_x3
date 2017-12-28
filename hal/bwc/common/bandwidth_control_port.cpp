@@ -453,6 +453,13 @@ static void mmdvfs_parse_arg(va_list arg_ptr, MTK_MMDVFS_CMD *cmd)
             case MMDVFS_VENC_SIZE:
                 cmd->venc_size = value;
                 break;
+            case 6:
+                cmd->camera_mode &= ~6;
+                if (value)
+                {
+                    cmd->camera_mode |= 6;
+                }
+                break;
             default:
                 BWC_ERROR("unknown parameter %d", type);
             break;

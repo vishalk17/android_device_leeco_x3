@@ -129,6 +129,9 @@ WIFI_DRIVER_FW_PATH_STA := STA
 WIFI_DRIVER_FW_PATH_AP := AP
 WIFI_DRIVER_FW_PATH_P2P := P2P
 
+# Fix video autoscaling on old OMX decoders
+TARGET_OMX_LEGACY_RESCALING:= true
+
 # Bluetooth
 MTK_BT_SUPPORT := yes
 BOARD_HAVE_BLUETOOTH := true

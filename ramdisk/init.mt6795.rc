@@ -1143,10 +1143,7 @@ service autokd /vendor/bin/autokd
 
 # Wlan
 service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
-    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -I/vendor/etc/wifi/wpa_supplicant_overlay.conf -N \
-    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin \
-    -I/vendor/etc/wifi/p2p_supplicant_overlay.conf \
+    -e/data/misc/wifi/entropy.bin -dd \
     -O/data/vendor/wifi/wpa/sockets -g@android:wpa_wlan0
     interface android.hardware.wifi.supplicant@1.0::ISupplicant default
     interface android.hardware.wifi.supplicant@1.1::ISupplicant default

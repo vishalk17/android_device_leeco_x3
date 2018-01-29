@@ -73,7 +73,7 @@
         <item>230</item>
         <item>255</item>
     </integer-array>
-    
+
     <!-- Minimum allowable screen brightness to use in a very dark room.
          This value sets the floor for the darkest possible auto-brightness
          adjustment.  It is expected to be somewhat less than the first entry in
@@ -256,4 +256,11 @@
  Otherwise, the buttons will light up whenever the user interacts with the device. -->
  <bool name="config_buttonLightOnKeypressOnly">true</bool>
  
+    <!-- Flag specifying whether VoLTE is available on device -->
+    <bool name="config_device_volte_available">true</bool>
+    <!-- Flag specifying whether VoLTE & VT should be available for carrier: independent of
+        carrier provisioning. If false: hard disabled. If true: then depends on carrier
+        provisioning, availability etc -->
+    <bool name="config_carrier_volte_available">true</bool>
+
 </resources>

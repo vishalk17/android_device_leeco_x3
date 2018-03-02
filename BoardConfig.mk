@@ -153,7 +153,7 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_FLASH_BLOCK_SIZE := 4096
 
 # LZMA compression for ramdisk
-LZMA_RAMDISK_TARGETS += recovery 
+LZMA_RAMDISK_TARGETS += recovery,boot
 
 # Recovery
 ifeq ($(WITH_TWRP),true)

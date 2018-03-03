@@ -217,3 +217,10 @@ media.stagefright.less-secure=true
 # ClearMotion
 persist.sys.display.clearMotion=1
 ro.mtk_clearmotion_support=1
+
+#device tree stuff
+ro.kernel.android.checkjni=0
+ro.telephony.ril.config=fakeiccid
+persist.call_recording.enabled=true
+persist.call_recording.src=1
+net.tethering.noprovisioning=true

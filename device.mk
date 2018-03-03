@@ -182,6 +182,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/audio/audio_device.xml:system/etc/audio_device.xml \
+	$(DEVICE_PATH)/configs/audio/audio_effects.xml:system/etc/audio_effects.xml \
 	$(DEVICE_PATH)/configs/audio/audio_em.xml:system/etc/audio_em.xml \
 	$(DEVICE_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf
 

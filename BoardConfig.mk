@@ -116,7 +116,7 @@ TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/cmhw
-#TARGET_TAP_TO_WAKE_NODE := "/sys/bus/i2c/devices/i2c-2/2-004b/wake_gesture_enable"
+TARGET_TAP_TO_WAKE_NODE := "/sys/bus/i2c/devices/i2c-2/2-004b/wake_gesture_enable"
 
 # Wifi
 WPA_SUPPLICANT_VERSION := VER_0_8_X

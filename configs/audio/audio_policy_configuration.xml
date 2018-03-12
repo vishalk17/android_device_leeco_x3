@@ -55,7 +55,32 @@
 					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
 							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
 				</mixPort>
+				<mixPort name="hdmi_stereo" role="source" flags="">
+					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+							 samplingRates="44100"
+							 channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+					<profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
+							 samplingRates="44100"
+							 channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+				</mixPort>
+				<mixPort name="hdmi_multi_channel" role="source" flags="AUDIO_OUTPUT_FLAG_DIRECT">
+					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+							 samplingRates="32000,44100,48000"
+							 channelMasks="AUDIO_CHANNEL_OUT_5POINT1,AUDIO_CHANNEL_OUT_7POINT1"/>
+					<profile name="" format="AUDIO_FORMAT_PCM_8_24_BIT"
+							 samplingRates="32000,44100,48000"
+							 channelMasks="AUDIO_CHANNEL_OUT_5POINT1,AUDIO_CHANNEL_OUT_7POINT1"/>
+					<profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
+							 samplingRates="32000,44100,48000"
+							 channelMasks="AUDIO_CHANNEL_OUT_5POINT1,AUDIO_CHANNEL_OUT_7POINT1"/>
+				</mixPort>
 				<mixPort name="fast" role="source" flags="AUDIO_OUTPUT_FLAG_FAST">
+					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+							 samplingRates="44100,48000"
+							 channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+					<profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
+							 samplingRates="44100,48000"
+							 channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
 				</mixPort>
 				<mixPort name="primary input" role="sink">
 					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
@@ -66,12 +91,12 @@
 			<devicePorts>
 				<!-- Output devices declaration, i.e. Sink DEVICE PORT -->
 				<devicePort tagName="Earpiece" type="AUDIO_DEVICE_OUT_EARPIECE" role="sink">
-				   <profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
-							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
-				   <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
+					<profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
+							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
 				</devicePort>
-				<devicePort tagName="Speaker" role="sink" type="AUDIO_DEVICE_OUT_SPEAKER" address="">
+				<devicePort tagName="Speaker" type="AUDIO_DEVICE_OUT_SPEAKER" role="sink" address="">
 					<profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
 							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
 					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
@@ -88,24 +113,6 @@
 							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
 					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
 							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-				</devicePort>
-				<devicePort tagName="AUX Digital Out" type="AUDIO_DEVICE_OUT_AUX_DIGITAL" role="sink">
-					<profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
-							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-				</devicePort>
-				<devicePort tagName="BT SCO" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO" role="sink">
-					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-							 samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-				</devicePort>
-				<devicePort tagName="BT SCO Headset" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET" role="sink">
-					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-							 samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-				</devicePort>
-				<devicePort tagName="BT SCO Car Kit" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT" role="sink">
-					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-							 samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
 				</devicePort>
 				<devicePort tagName="Analog Dock Headset" type="AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET" role="sink">
 					<profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
@@ -125,38 +132,56 @@
 					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
 							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
 				</devicePort>
+				<devicePort tagName="AUX Digital Out" type="AUDIO_DEVICE_OUT_AUX_DIGITAL" role="sink">
+					<profile name="" format="AUDIO_FORMAT_PCM_32_BIT"
+							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+							 samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+				</devicePort>
 
+				<!-- Input Devices declaration. -->
+				<devicePort tagName="Comm" type="AUDIO_DEVICE_IN_COMMUNICATION" role="source">
+					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+							 samplingRates="8000,16000,32000,44100,48000"
+							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
+				</devicePort>
 				<devicePort tagName="Built-In Mic" type="AUDIO_DEVICE_IN_BUILTIN_MIC" role="source">
 					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
 							 samplingRates="8000,16000,32000,44100,48000"
-							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
 				</devicePort>
-				<devicePort tagName="Built-In Back Mic" type="AUDIO_DEVICE_IN_BACK_MIC" role="source">
+				<devicePort tagName="Ambient" type="AUDIO_DEVICE_IN_AMBIENT" role="source">
 					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
 							 samplingRates="8000,16000,32000,44100,48000"
-							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
 				</devicePort>
 				<devicePort tagName="Wired Headset Mic" type="AUDIO_DEVICE_IN_WIRED_HEADSET" role="source">
 					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
 							 samplingRates="8000,16000,32000,44100,48000"
-							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
-				</devicePort>
-				<devicePort tagName="BT SCO Headset Mic" type="AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET" role="source">
-					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-							 samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
+							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
 				</devicePort>
 				<devicePort tagName="AUX Digital In" type="AUDIO_DEVICE_IN_AUX_DIGITAL" role="source">
 					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
 							 samplingRates="8000,16000,32000,44100,48000"
-							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
 				</devicePort>
-				<devicePort tagName="FM Tuner In" type="AUDIO_DEVICE_IN_FM_TUNER" role="source">
-					 <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+				<devicePort tagName="MATV" type="AUDIO_DEVICE_IN_MATV" role="source">
+					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
 							 samplingRates="8000,16000,32000,44100,48000"
-							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
+							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
 				</devicePort>
 				<devicePort tagName="Voice Call In" type="AUDIO_DEVICE_IN_VOICE_CALL" role="source">
-					 <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+							 samplingRates="8000,16000,32000,44100,48000"
+							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
+				</devicePort>
+				<devicePort tagName="Built-In Back Mic" type="AUDIO_DEVICE_IN_BACK_MIC" role="source">
+					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+							 samplingRates="8000,16000,32000,44100,48000"
+							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
+				</devicePort>
+				<devicePort tagName="FM Tuner In" type="AUDIO_DEVICE_IN_FM_TUNER" role="source">
+					<profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
 							 samplingRates="8000,16000,32000,44100,48000"
 							 channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_VOICE_UPLINK,AUDIO_CHANNEL_IN_VOICE_DNLINK"/>
 				</devicePort>
@@ -172,13 +197,7 @@
 				<route type="mix" sink="Wired Headphones"
 					   sources="primary output,fast,FM Tuner In"/>
 				<route type="mix" sink="AUX Digital Out"
-					   sources="primary output"/>
-				<route type="mix" sink="BT SCO"
-					   sources="primary output"/>
-				<route type="mix" sink="BT SCO Headset"
-					   sources="primary output"/>
-				<route type="mix" sink="BT SCO Car Kit"
-					   sources="primary output"/>
+					   sources="primary output,hdmi_multi_channel,hdmi_stereo"/>
 				<route type="mix" sink="Analog Dock Headset"
 					   sources="primary output"/>
 				<route type="mix" sink="Digital Dock Headset"
@@ -186,7 +205,7 @@
 				<route type="mix" sink="FM Tuner Out"
 					   sources="primary output"/>
 				<route type="mix" sink="primary input"
-					   sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BT SCO Headset Mic,AUX Digital In,FM Tuner In,Voice Call In"/>
+					   sources="Comm,Built-In Mic,Ambient,Wired Headset Mic,AUX Digital In,MATV,Voice Call In,Built-In Back Mic,FM Tuner In"/>
 			</routes>
 
 		</module>

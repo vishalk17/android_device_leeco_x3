@@ -190,10 +190,10 @@ on post-fs-data
     mkdir /data/nvram/media 0771 media audio
     mkdir /data/misc 01771 system misc
     mkdir /data/misc/adb 02750 system shell
-    mkdir /data/misc/bluedroid 02770 bluetooth net_bt_stack
+    mkdir /data/misc/bluedroid 02770 bluetooth bluetooth
     # Fix the access permissions and group ownership for 'bt_config.conf'
     chmod 0660 /data/misc/bluedroid/bt_config.conf
-    chown bluetooth net_bt_stack /data/misc/bluedroid/bt_config.conf
+    chown bluetooth bluetooth /data/misc/bluedroid/bt_config.conf
     mkdir /data/misc/bluetooth 0770 system system
     mkdir /data/misc/keystore 0700 keystore keystore
     mkdir /data/misc/keychain 0771 system system
@@ -480,12 +480,12 @@ service permission_check /system/bin/permission_check
     group system radio
     oneshot
 
-service ccci_fsd /system/bin/ccci_fsd 0
+service ccci_fsd /system/vendor/bin/ccci_fsd 0
     user radio
     group radio system
     oneshot
 
-service ccci_mdinit /system/bin/ccci_mdinit 0
+service ccci_mdinit /system/vendor/bin/ccci_mdinit 0
     user system
     group radio system
     oneshot

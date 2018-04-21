@@ -51,7 +51,7 @@ BOARD_DISABLE_HW_ID_MATCH_CHECK := true
 # Kernel
 TARGET_USES_64_BIT_BINDER := true
 TARGET_IS_64_BIT := true
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive androidboot.verifiedbootstate=green
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := \
@@ -172,12 +172,6 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
 
 # system.prop
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
-
-# SELinux
-BOARD_SEPOLICY_DIRS += device/leeco/x3/sepolicy
-
-# Seccomp Filter
-BOARD_SECCOMP_POLICY := $(DEVICE_PATH)/seccomp
 
 # Legacy blobs
 TARGET_NEEDS_TEXT_RELOCATIONS := true

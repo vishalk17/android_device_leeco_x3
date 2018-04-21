@@ -201,6 +201,7 @@ ro.mtk_voice_extension_support=1
 wfd.dummy.enable=1
 ro.mediatek.project.path=device/leeco/x3
 persist.mtk.wcn.combo.chipid=-1
+persist.mtk.wcn.combo.chipid=0x6630
 service.wcn.driver.ready=no
 service.wcn.coredump.mode=2
 ro.com.android.mobiledata=false
@@ -224,3 +225,6 @@ ro.telephony.ril.config=fakeiccid
 persist.call_recording.enabled=true
 persist.call_recording.src=1
 net.tethering.noprovisioning=true
+
+# Media Settings
+media.settings.xml=/system/vendor/etc/media_profiles.xml

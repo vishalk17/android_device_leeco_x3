@@ -18,7 +18,7 @@
 /dev/wmtdetect            0660   system     system
 
 # BT
-/dev/stpbt                0660   bluetooth  net_bt_stack
+/dev/stpbt                0660   bluetooth  bluetooth
 
 # OTP
 /dev/otp                  0660   system    system
@@ -34,7 +34,7 @@
 /dev/stpant               0660   system     system
 
 # WIFI
-/dev/wmtWifi              0660   system     system
+/dev/wmtWifi              0660   wifi     wifi
 
 # FMRadio
 /dev/fm                   0660   media     media

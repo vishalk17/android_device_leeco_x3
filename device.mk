@@ -1,4 +1,3 @@
-
 # Dalvik heap configurations
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
 
@@ -10,6 +9,8 @@ $(call inherit-product, vendor/leeco/x3/x3-vendor-blobs.mk)
 
 # Folder path
 DEVICE_PATH := device/leeco/x3
+
+-include $(DEVICE_PATH)/hidl.mk
 
 # Overlay Folder
 DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
@@ -295,7 +296,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
 	frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
-	
+
 # Seccomp policy
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/seccomp/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy
+
+# HIDL Manifest
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/manifest.xml:system/vendor/manifest.xml

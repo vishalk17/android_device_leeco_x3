@@ -92,6 +92,7 @@ USE_MINIKIN := true
 
 # Charger
 BOARD_CHARGER_SHOW_PERCENTAGE := true
+WITH_LINEAGE_CHARGER := false
 
 # Offline charging
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/BOOT/BOOT/boot/boot_mode

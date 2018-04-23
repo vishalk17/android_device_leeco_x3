@@ -99,7 +99,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
-	media.stagefright.legacyencoder=0
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -291,6 +290,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	libbwc \
 	libm4u
+
+#Camera Legacy
+PRODUCT_PROPERTY_OVERRIDES += \
+     media.stagefright.legacyencoder=true \
+     media.stagefright.less-secure=true
 
 # Vulkan
 PRODUCT_COPY_FILES += \

@@ -287,10 +287,7 @@ PRODUCT_PACKAGES += \
 	gps.mt6795 \
 	libcurl
 
-# camera legacy
-PRODUCT_PACKAGES += \
-	fs_config_files
-
+# camera
 PRODUCT_PACKAGES += \
 	libbwc \
 	libm4u

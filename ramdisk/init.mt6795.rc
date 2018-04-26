@@ -1083,7 +1083,7 @@ service netdiag /system/bin/netdiag
 service nvram_daemon /system/bin/nvram_daemon
     class main
     user root
-    group system
+    group root system
     oneshot
 
 service atci_service /system/bin/atci_service
@@ -1126,9 +1126,10 @@ service audio-daemon /system/bin/audiocmdservice_atci
     oneshot
 
 service pq /system/bin/pq
-    class core
+    class main
     user system
     group system graphics
+    oneshot
 
 # FOTA upgrade
 service rbfota /system/bin/fota1
@@ -1560,7 +1561,7 @@ service shutdown /system/bin/shutdown
 
 service NvRAMAgent /system/bin/nvram_agent_binder
     class main
-    user system
+    user root
     group system
 
 service thermal_manager /system/bin/thermal_manager

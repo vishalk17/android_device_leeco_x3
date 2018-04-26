@@ -481,19 +481,21 @@ service permission_check /system/bin/permission_check
     oneshot
 
 service ccci_fsd /system/vendor/bin/ccci_fsd 0
-    user radio
+    user root
     group radio system
+    class core
     oneshot
 
 service ccci_mdinit /system/vendor/bin/ccci_mdinit 0
-    user system
+    user root
     group radio system
+    class core
     oneshot
 
 service nvram_daemon /system/bin/nvram_daemon
     class main
     user root
-    group system
+    group root system
     oneshot
 
 service factory_no_image /system/bin/factory

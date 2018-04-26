@@ -89,8 +89,7 @@ PRODUCT_PACKAGES += \
 	hostapd \
 	wpa_supplicant \
         wificond \
-        wifilogd \
-        wpa_supplicant.conf
+        wifilogd
 
 # Media
 PRODUCT_COPY_FILES += \

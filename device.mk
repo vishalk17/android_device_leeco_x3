@@ -232,7 +232,7 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6s.conf:system/etc/wide-dhcpv6/dhcp6s.conf
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/radvd/radvd.conf:system/etc/radvd/radvd.conf
+	$(DEVICE_PATH)/configs/radvd/radvd.conf:system/vendor/etc/radvd/radvd.conf
 
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/slp_conf:system/etc/slp_conf \
@@ -255,9 +255,9 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/init/mediaserver.rc:system/etc/init/mediaserver.rc
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
-	$(DEVICE_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
-	$(DEVICE_PATH)/configs/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny
+	$(DEVICE_PATH)/configs/hostapd/hostapd_default.conf:system/vendor/etc/hostapd/hostapd_default.conf \
+	$(DEVICE_PATH)/configs/hostapd/hostapd.accept:system/vendor/etc/hostapd/hostapd.accept \
+	$(DEVICE_PATH)/configs/hostapd/hostapd.deny:system/vendor/etc/hostapd/hostapd.deny
 
 
 # MTK Helpers

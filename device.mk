@@ -280,6 +280,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	libion
 
+# Lights
+PRODUCT_PACKAGES += \
+        lights.mt6795
+
 # GPS
 PRODUCT_PACKAGES += \
 	gps.mt6795 \

@@ -4,8 +4,6 @@ DEVICE_PATH := device/leeco/x3
 
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
-TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
-
 MTK_K64_SUPPORT := yes
 USE_CAMERA_STUB := true
 

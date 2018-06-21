@@ -80,8 +80,9 @@ on charger
     start fuelgauged
     start servicemanager
 
-    # disable USB
+    # Enabled USB & charging only mode
     write /sys/class/udc/musb-hdrc/device/cmode 0
+    write /sys/class/android_usb/android0/enable 1
 
     # md32 boot
     chown root system /dev/md32

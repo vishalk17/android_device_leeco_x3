@@ -8,6 +8,7 @@ on boot
     write /sys/class/android_usb/android0/f_rndis/vendorID ${sys.usb.vid}
 
 on charger
+    write /sys/class/udc/musb-hdrc/device/cmode 0
     write /sys/class/android_usb/android0/enable 1
 
 on fs

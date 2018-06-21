@@ -78,7 +78,6 @@ export LD_PRELOAD "libmtk_symbols.so"
 on charger
     mount ext4 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/system /system ro
     start fuelgauged
-    start kpoc_charger
     start servicemanager
 
     # disable USB
@@ -1624,5 +1623,9 @@ service guiext-server /system/bin/guiext-server
     user system
     group system graphics
 
-service kpoc_charger /system/bin/kpoc_charger
+# Charger
+service charger /charger
     class charger
+    user root
+    group system graphics
+    seclabel u:r:charger:s0

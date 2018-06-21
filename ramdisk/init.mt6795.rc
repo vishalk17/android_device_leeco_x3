@@ -1126,9 +1126,9 @@ service audio-daemon /system/bin/audiocmdservice_atci
     oneshot
 
 service pq /system/bin/pq
-    class main
-    user system
-    group system graphics
+    class core
+    user root
+    group system graphics media camera
     oneshot
 
 # FOTA upgrade
@@ -1615,7 +1615,7 @@ service batterywarning /system/bin/batterywarning
 
 service MtkCodecService /system/bin/MtkCodecService
     class main
-    user system
+    user root
     group audio media sdcard_r
 
 # GuiExt Server init

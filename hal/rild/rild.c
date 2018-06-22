@@ -197,10 +197,10 @@ int main(int argc, char **argv) {
     // ril/socket id received as -c parameter, otherwise set to 0
     const char *clientId = NULL;
 
-    if (mtkInit() == -1) {
-	RLOGE("**mtkInit() error**");
+//    if (mtkInit() == -1) {
+//	RLOGE("**mtkInit() error**");
 	goto done;
-    }
+//    }
 
     RLOGD("**RIL Daemon Started**");
     RLOGD("**RILd param count=%d**", argc);

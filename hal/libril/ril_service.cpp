@@ -7810,7 +7810,7 @@ void convertRilCellInfoListToHal(void *response, size_t responseLen, hidl_vec<Ce
 #ifdef MTK_HARDWARE
 	RIL_CellInfo *rilCellInfo = rilCellInfohd[i];
 #endif
-	records[i].celInfoType = (CellInfoType) rilCellInfo->cellInfoType;
+	records[i].cellInfoType = (CellInfoType) rilCellInfo->cellInfoType;
 #if VDBG
     RLOGD("rilCellInfo->cellInfoType=%d records[%d].cellInfoType=%d",
 	(int)rilCellInfo->cellInfoType, i, (int)records[i].cellInfoType);

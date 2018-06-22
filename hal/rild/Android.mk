@@ -21,8 +21,8 @@ LOCAL_SHARED_LIBRARIES := \
 	libril \
 	libdl
 
-LOCAL_STATIC_LIBRARIES := \
-	rild-prop-md1
+#LOCAL_STATIC_LIBRARIES := \
+#	rild-prop-md1
 
 # temporary hack for broken vendor rils
 LOCAL_WHOLE_STATIC_LIBRARIES := \

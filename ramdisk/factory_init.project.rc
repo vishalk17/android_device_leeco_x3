@@ -23,7 +23,7 @@ on post-fs-data
 
     mknod /dev/wmtWifi c 153 0
     chmod 0660 /dev/wmtWifi
-    chown system system /dev/wmtWifi
+    chown wifi wifi /dev/wmtWifi
 #Camera
     chmod 0660 /dev/GAF001AF
     chown system camera /dev/GAF001AF

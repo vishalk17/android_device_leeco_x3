@@ -176,8 +176,9 @@ on post-fs-data
     mkdir /data/nvram 0771 root system
     mkdir /data/nvram/media 0771 media audio
 
-	symlink /nvdata /data/nvram
-	restorecon_recursive /nvdata
+    symlink /nvdata /data/nvram
+    restorecon_recursive /nvdata
+
     # mxg2320
     mkdir /data/mxg2320 0770 root system
 
@@ -1126,9 +1127,9 @@ service audio-daemon /system/bin/audiocmdservice_atci
     oneshot
 
 service pq /system/bin/pq
-    class core
-    user root
-    group system graphics media camera
+    class main
+    user system
+    group system graphics
     oneshot
 
 # FOTA upgrade

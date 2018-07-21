@@ -44,9 +44,8 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth HAL
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0-service \
-    android.hardware.bluetooth@1.0-service.mtk \
-    android.hardware.bluetooth@1.0-impl
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.bluetooth@1.0-service
 
 #USB HAL
 PRODUCT_PACKAGES += \

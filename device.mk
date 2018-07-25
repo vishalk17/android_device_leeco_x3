@@ -314,5 +314,5 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    libbluetooth_mtk \
-    libbt-vendor
+    libbt-vendor \
+    libbluetooth_mtk

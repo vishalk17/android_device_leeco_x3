@@ -3,6 +3,7 @@
 DEVICE_PATH := device/leeco/x3
 
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
+TARGET_BOARD_KERNEL_HEADERS := $(DEVICE_PATH)/kernel-headers
 
 MTK_K64_SUPPORT := yes
 USE_CAMERA_STUB := true

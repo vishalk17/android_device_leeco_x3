@@ -56,8 +56,8 @@
 ***************************************************************************/
 
 #define COMBO_IOC_MAGIC         0xb0
-#define COMBO_IOCTL_FW_ASSERT   _IOW(COMBO_IOC_MAGIC, 0, int)
-#define COMBO_IOCTL_BT_SET_PSM  _IOW(COMBO_IOC_MAGIC, 1, bool)
+#define COMBO_IOCTL_FW_ASSERT   _IOWR(COMBO_IOC_MAGIC, 0, int)
+#define COMBO_IOCTL_BT_SET_PSM  _IOWR(COMBO_IOC_MAGIC, 1, bool)
 /**************************************************************************
  *                  G L O B A L   V A R I A B L E S                       *
 ***************************************************************************/

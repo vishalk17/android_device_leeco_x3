@@ -42,6 +42,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	Torch
 
+# LeEco's Prebuilt Apps
+PRODUCT_PACKAGES += \
+        GFManager \
+        LetvRemoteControl_preinstall \
+        UEIQuicksetSDKLeTV
+
 # Other
 PRODUCT_PACKAGES += \
 	librs_jni \

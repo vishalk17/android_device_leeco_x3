@@ -90,8 +90,8 @@ PRODUCT_PACKAGES += \
     android.hardware.health@1.0-service
 
 # Fingerprint
-#PRODUCT_PACKAGES += \
-#    android.hardware.biometrics.fingerprint@2.1-service
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint@2.1-service
 
 # Ril
 PRODUCT_PACKAGES += \

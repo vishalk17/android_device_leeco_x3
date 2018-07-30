@@ -1,0 +1,8 @@
+type nvram_device, dev_type;
+type nvdata_device, dev_type;
+type bootdevice_block_device, dev_type;
+type als_ps_device, dev_type;
+type gsensor_device, dev_type;
+type gyroscope_device, dev_type;
+type mtk-adc-cali_device, dev_type;
+type pro_info_device, dev_type;

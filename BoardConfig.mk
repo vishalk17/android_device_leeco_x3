@@ -206,3 +206,6 @@ DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/manifest.xml
 # Dexpreopt
 WITH_DEXPREOPT := true
 WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+
+# Selinux
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy

@@ -27,6 +27,10 @@ PRODUCT_PACKAGES += \
 	power.default \
 	power.mt6795
 
+# Modem controller
+PRODUCT_PACKAGES += \
+        md_ctrl
+
 # Camera
 PRODUCT_PACKAGES += \
 	Camera2 \

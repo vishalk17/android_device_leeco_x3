@@ -1013,12 +1013,12 @@ on property:vold.decrypt=trigger_shutdown_framework
     setprop service.nvram_init 0
     write /proc/bootprof "trigger_shutdown_framework"
 
-service stop_modem /system/bin/md_ctrl 0
+service stop_modem /system/vendor/bin/md_ctrl 0
     class main
     disabled
     oneshot
 
-service start_modem /system/bin/md_ctrl 1
+service start_modem /system/vendor/bin/md_ctrl 1
     class main
     disabled
     oneshot

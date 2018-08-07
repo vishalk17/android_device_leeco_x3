@@ -197,10 +197,10 @@ int main(int argc, char **argv) {
     // ril/socket id received as -c parameter, otherwise set to 0
     const char *clientId = NULL;
 
-//    if (mtkInit() == -1) {
-//	RLOGE("**mtkInit() error**");
+    if (mtkInit() == -1) {
+	RLOGE("**mtkInit() error**");
 	goto done;
-//    }
+    }
 
     RLOGD("**RIL Daemon Started**");
     RLOGD("**RILd param count=%d**", argc);
@@ -235,7 +235,7 @@ int main(int argc, char **argv) {
     }
 
     if (rilLibPath == NULL) {
-	if ( 0 == property_get(LIB_PATH_PROPERTY, libPath, "/system/lib/mtk-ril.so")) {
+	if ( 0 == property_get(LIB_PATH_PROPERTY, libPath, "mtk-ril.so")) {
 	    // No lib sepcified on the command line, and nothing set in props.
 	    // Assume "no-ril" case.
 	    goto done;

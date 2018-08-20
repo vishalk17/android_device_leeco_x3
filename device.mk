@@ -326,3 +326,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libbt-vendor \
     libbluetooth_mtk
+
+# Graphics
+PRODUCT_PACKAGES += \
+    libgralloc_extra \
+    libui_ext \
+    libgui_ext

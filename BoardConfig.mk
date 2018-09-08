@@ -30,7 +30,7 @@ MTK_HARDWARE := true
 # Kernel
 TARGET_USES_64_BIT_BINDER := true
 TARGET_IS_64_BIT := true
-LZMA_RAMDISK_TARGETS += recovery 
+LZMA_RAMDISK_TARGETS += recovery
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -100,6 +100,9 @@ BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 BOARD_RED_LED_PATH := "/sys/class/leds/red"
 BOARD_GREEN_LED_PATH := "/sys/class/leds/green"
 BOARD_BLUE_LED_PATH := "/sys/class/leds/blue"
+
+# Initial API Level of the Device
+PRODUCT_SHIPPING_API_LEVEL := 23
 
 # Offline charging
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/BOOT/BOOT/boot/boot_mode

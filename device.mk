@@ -261,7 +261,7 @@ PRODUCT_COPY_FILES += \
 
 # Mediaserver with system group
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/init/mediaserver.rc:system/vendor/etc/init/mediaserver.rc
+	$(DEVICE_PATH)/configs/init/mediaserver.rc:system/etc/init/mediaserver.rc
 
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/hostapd/hostapd_default.conf:system/vendor/etc/hostapd/hostapd_default.conf \

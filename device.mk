@@ -13,7 +13,9 @@ DEVICE_PATH := device/leeco/x3
 -include $(DEVICE_PATH)/hidl.mk
 
 # Overlay Folder
-DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += \
+         $(DEVICE_PATH)/overlay \
+         $(DEVICE_PATH)/overlay-lineage
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal xxhdpi

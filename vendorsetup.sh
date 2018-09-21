@@ -1,1 +1,1 @@
-add_lunch_combo omni_x3-userdebug
+add_lunch_combo lineage_x3-userdebug

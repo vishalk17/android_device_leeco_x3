@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/omni_x3.mk
+	$(LOCAL_DIR)/lineage.mk

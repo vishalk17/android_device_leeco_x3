@@ -260,6 +260,7 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/custom.conf:system/etc/custom.conf \
 	$(DEVICE_PATH)/configs/mtklog-config.prop:system/etc/mtklog-config.prop \
 	$(DEVICE_PATH)/configs/mtk_omx_core.cfg:system/etc/mtk_omx_core.cfg \
+	$(DEVICE_PATH)/configs/mtk_omx_core.cfg:system/vendor/etc/mtk_omx_core.cfg \
 	$(DEVICE_PATH)/configs/perfservboosttbl.txt:system/etc/perfservboosttbl.txt \
 	$(DEVICE_PATH)/configs/perfservscntbl.txt:system/etc/perfservscntbl.txt
 

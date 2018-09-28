@@ -221,7 +221,7 @@ on post-fs-data
 
     # radvd
     mkdir /data/misc/radvd 0770 system system
-    chmod 444 /etc/radvd/radvd.conf
+    chmod 444 /vendor/etc/radvd/radvd.conf
 
     # Touch Panel
     #chmod 0664 /dev/touch
@@ -1032,7 +1032,7 @@ service bootlogoupdater /system/bin/boot_logo_updater
     class main
     oneshot
 
-service mobile_log_d /system/bin/mobile_log_d
+service mobile_log_d /vendor/bin/mobile_log_d
     class main
 # MTK PR_DEBUG SWITCH
 on property:debug.MB.prdebug=1
@@ -1061,7 +1061,7 @@ service pvrsrvctl /system/vendor/bin/pvrsrvctl --no-module --start
 on property:sys.boot_completed=1
     start ged_srv
 
-service ged_srv /system/bin/ged_srv
+service ged_srv /vendor/bin/ged_srv
     class core
     user system
     group system
@@ -1070,24 +1070,24 @@ service ged_srv /system/bin/ged_srv
 on property:sys.boot_completed=1
     start gas_srv
 
-service gas_srv /system/bin/gas_srv
+service gas_srv /vendor/bin/gas_srv
     class core
     user system
     group system
     disabled
 
-service netdiag /system/bin/netdiag
+service netdiag /vendor/bin/netdiag
     class main
     socket netdiag stream 0660 root inet
 
 
-service nvram_daemon /system/bin/nvram_daemon
+service nvram_daemon /vendor/bin/nvram_daemon
     class main
     user root
     group root system
     oneshot
 
-service atci_service /system/bin/atci_service
+service atci_service /vendor/bin/atci_service
     class core
     socket atci-service stream 660 radio system
     socket atci-serv-fw stream 660 radio system
@@ -1095,7 +1095,7 @@ service atci_service /system/bin/atci_service
     disabled
     group radio system
 
-service atcid-daemon-u /system/bin/atcid
+service atcid-daemon-u /vendor/bin/atcid
     class main
     socket adb_atci_socket stream 660 radio system
     user system
@@ -1103,7 +1103,7 @@ service atcid-daemon-u /system/bin/atcid
     disabled
     oneshot
 
-service atcid-daemon-e /system/bin/atcid
+service atcid-daemon-e /vendor/bin/atcid
     class core
     socket adb_atci_socket stream 660 radio system
     user root
@@ -1119,14 +1119,14 @@ on property:persist.service.atci.autostart=1
 start atci_service
 start atcid-daemon-u
 
-service audio-daemon /system/bin/audiocmdservice_atci
+service audio-daemon /vendor/bin/audiocmdservice_atci
     class main
     socket atci-audio stream 660 root system
     user root
     disabled
     oneshot
 
-service pq /system/bin/pq
+service pq /vendor/bin/pq
     class main
     user system
     group system graphics
@@ -1140,7 +1140,7 @@ service rbfota /system/bin/fota1
 
 
 # For WiFi High Speed calibration
-service autokd /system/bin/autokd
+service autokd /vendor/bin/autokd
     class core
     user system
     group system
@@ -1216,18 +1216,18 @@ service dhcp_inform /system/bin/dhcpcd -s -BK -A
     disabled
     oneshot
 
-service dhcpv6_inform /system/bin/dhcp6c -c "/etc/wide-dhcpv6/dhcp6cSIP.conf" -Dfi
+service dhcpv6_inform /vendor/bin/dhcp6c -c "/vendor/etc/wide-dhcpv6/dhcp6cSIP.conf" -Dfi
     class main
     user root
     group system radio dhcp net_admin net_raw
     disabled
     oneshot
 
-service dhcp6cDNS_wlan0 /system/bin/dhcp6c -c "/etc/wide-dhcpv6/dhcp6cDNS.conf" -Df wlan0
+service dhcp6cDNS_wlan0 /vendor/bin/dhcp6c -c "/vendor/etc/wide-dhcpv6/dhcp6cDNS.conf" -Df wlan0
     disabled
     oneshot
 
-service dhcp6c_wlan0 /system/bin/dhcp6c -c "/etc/wide-dhcpv6/dhcp6c.conf" -Df wlan0
+service dhcp6c_wlan0 /vendor/bin/dhcp6c -c "/vendor/etc/wide-dhcpv6/dhcp6c.conf" -Df wlan0
     disabled
     oneshot
 
@@ -1282,12 +1282,12 @@ on property:service.pppoe_wlan0.enable=1
     write /proc/sys/net/ipv4/tcp_rto_min 400
     write /proc/sys/net/ipv4/tcp_early_retrans 0
 
-service DMAgent /system/bin/dm_agent_binder
+service DMAgent /vendor/bin/dm_agent_binder
     class main
     user system
     group system cache
 
-service PPLAgent /system/bin/ppl_agent
+service PPLAgent /vendor/bin/ppl_agent
     class main
     user system
     group system cache
@@ -1345,7 +1345,7 @@ service emd_daemon /system/bin/emd_daemon
     user root
     oneshot
 
-service agpsd /system/bin/mtk_agpsd
+service agpsd /vendor/bin/mtk_agpsd
     class main
     socket agpsd stream 660 gps system
     socket agpsd2 stream 660 system inet
@@ -1353,12 +1353,12 @@ service agpsd /system/bin/mtk_agpsd
     user gps
     group gps inet sdcard_r sdcard_rw misc radio
 
-service slpd /system/bin/slpd
+service slpd /vendor/bin/slpd
     class main
     user gps
     group gps inet
 
-service wifi2agps /system/bin/wifi2agps
+service wifi2agps /vendor/bin/wifi2agps
     class main
     user wifi
     group gps inet
@@ -1384,14 +1384,14 @@ service GoogleOtaAgent /system/bin/GoogleOtaBinder
     user root
     group root
 
-service mdlogger /system/bin/mdlogger
+service mdlogger /vendor/bin/mdlogger
     class main
     user shell
     group shell system radio sdcard_rw inet sdcard_r media_rw
     disabled
     oneshot
 
-service emdlogger1 /system/bin/emdlogger1
+service emdlogger1 /vendor/bin/emdlogger1
     class main
     user shell
     group system shell radio sdcard_rw inet sdcard_r media_rw
@@ -1423,16 +1423,16 @@ service emdlogger6 /system/bin/emdlogger6
 #sensor service (begin)
 #
 
-service msensord /system/bin/msensord
+service msensord /vendor/bin/msensord
     class main
     oneshot
 
-service s62xd /system/bin/s62xd
+service s62xd /vendor/bin/s62xd
     disabled
     user compass
     group system
     class main
-service ami304d /system/bin/ami304d
+service ami304d /vendor/bin/ami304d
     user system
     group system
     disabled
@@ -1444,19 +1444,19 @@ service memsicd /system/bin/memsicd
     group system
     class main
 
-service memsicd3416x /system/bin/memsicd3416x
+service memsicd3416x /vendor/bin/memsicd3416x
     disabled
     user system
     group system
     class main
 
-service akmd8975 /system/bin/akmd8975
+service akmd8975 /vendor/bin/akmd8975
     disabled
     user system
     group system
     class main
 
-service akmd8963 /system/bin/akmd8963
+service akmd8963 /vendor/bin/akmd8963
     disabled
     user system
     group system
@@ -1467,12 +1467,12 @@ service akmd09911 /system/bin/akmd09911
     user system
     group system
     class main
-service mxg2320d /system/bin/mxg2320d
+service mxg2320d /vendor/bin/mxg2320d
     user system
     group system
     class main
 
-service bmm050d /system/bin/bmm050d
+service bmm050d /vendor/bin/bmm050d
     disabled
     user system
     group system
@@ -1484,7 +1484,7 @@ service bmm056d /system/bin/bmm056d
     group system
     class main
 
-service mc6420d /system/bin/mc6420d
+service mc6420d /vendor/bin/mc6420d
     disabled
     user system
     group system
@@ -1496,19 +1496,19 @@ service qmc5983d /system/bin/qmc5983d
     group system
     class main
 
-service orientationd /system/bin/orientationd
+service orientationd /vendor/bin/orientationd
     disabled
     user system
     group system input
     class main
 
-service AcdApiDaemon /system/bin/AcdApiDaemon
+service AcdApiDaemon /vendor/bin/AcdApiDaemon
     disabled
     user system
     group system
     class main
 
-service geomagneticd /system/bin/geomagneticd
+service geomagneticd /vendor/bin/geomagneticd
     disabled
     user system
     group system input
@@ -1541,12 +1541,12 @@ on property:ro.build.type=user
 on property:ro.build.type=userdebug
     start emsvr_user
 
-service emsvr_user /system/bin/em_svr
+service emsvr_user /vendor/bin/em_svr
     disabled
     user system
     group system radio diag bluetooth
 
-service emsvr /system/bin/em_svr
+service emsvr /vendor/bin/em_svr
     disabled
     user root
     group bluetooth
@@ -1560,12 +1560,12 @@ service shutdown /system/bin/shutdown
     group root
     disabled
 
-service NvRAMAgent /system/bin/nvram_agent_binder
+service NvRAMAgent /vendor/bin/nvram_agent_binder
     class main
     user root
     group system
 
-service thermal_manager /system/bin/thermal_manager
+service thermal_manager /vendor/bin/thermal_manager
     class main
     user root
     oneshot
@@ -1580,7 +1580,7 @@ service thermald /system/bin/thermald
     user system
     group system
 
-service fuelgauged /system/bin/fuelgauged
+service fuelgauged /vendor/bin/fuelgauged
     class main
     user system
     group system
@@ -1614,13 +1614,13 @@ service batterywarning /system/bin/batterywarning
 #	group gps system radio
 #	class main
 
-service MtkCodecService /system/bin/MtkCodecService
+service MtkCodecService /vendor/bin/MtkCodecService
     class main
     user root
     group audio media sdcard_r
 
 # GuiExt Server init
-service guiext-server /system/bin/guiext-server
+service guiext-server /vendor/bin/guiext-server
     class main
     user system
     group system graphics

@@ -253,7 +253,7 @@ on post-fs-data
     chmod 0660 /dev/rtc0
 
     # M4U
-    #insmod /system/lib/modules/m4u.ko
+    #insmod /vendor/lib/modules/m4u.ko
     mknod /dev/M4U_device c 188 0
     chmod 0444 /dev/M4U_device
     chown system media /dev/M4U_device
@@ -567,7 +567,7 @@ on post-fs-data
     chown media system /dev/Vcodec
 
     #MJC
-    #insmod /system/lib/modules/mjc_kernel_driver.ko
+    #insmod /vendor/lib/modules/mjc_kernel_driver.ko
     #mknod /dev/MJC c 168 0
     chmod 0660 /dev/MJC
     chown media system /dev/MJC
@@ -1363,7 +1363,7 @@ service wifi2agps /vendor/bin/wifi2agps
     user wifi
     group gps inet
 
-service mnld /system/xbin/mnld
+service mnld /vendor/xbin/mnld
     class main
     user gps
     group gps inet misc sdcard_rw sdcard_r media_rw system
@@ -1609,7 +1609,7 @@ service batterywarning /system/bin/batterywarning
     user shell
     group shell
 
-#service BGW /system/xbin/BGW
+#service BGW /vendor/xbin/BGW
 #	user system
 #	group gps system radio
 #	class main

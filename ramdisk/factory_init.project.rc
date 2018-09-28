@@ -11,7 +11,7 @@ on post-fs-data
     chmod 0666 /dev/ttyMT3
     chown system system /dev/ttyMT3
 
-	insmod /system/lib/modules/mtk_wmt_detect.ko
+	insmod /vendor/lib/modules/mtk_wmt_detect.ko
 
 	# Create char device file for WMT, GPS, BT, FM, WIFI
     mknod /dev/stpwmt c 190 0;

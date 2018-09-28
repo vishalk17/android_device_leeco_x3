@@ -23,13 +23,13 @@ on post-fs-data
     chown system system /dev/ttyMT3
 
 # STP, WMT, GPS, FM and BT Driver
-#   insmod /system/lib/modules/mtk_hif_sdio.ko
-#   insmod /system/lib/modules/mtk_stp_wmt.ko
-#   insmod /system/lib/modules/mtk_stp_uart.ko
-#   insmod /system/lib/modules/mtk_stp_gps.ko
-#   insmod /system/lib/modules/mtk_stp_bt.ko
-#   insmod /system/lib/modules/mtk_fm_drv.ko
-#   insmod /system/lib/modules/mtk_wmt_wifi.ko
+#   insmod /vendor/lib/modules/mtk_hif_sdio.ko
+#   insmod /vendor/lib/modules/mtk_stp_wmt.ko
+#   insmod /vendor/lib/modules/mtk_stp_uart.ko
+#   insmod /vendor/lib/modules/mtk_stp_gps.ko
+#   insmod /vendor/lib/modules/mtk_stp_bt.ko
+#   insmod /vendor/lib/modules/mtk_fm_drv.ko
+#   insmod /vendor/lib/modules/mtk_wmt_wifi.ko
 
 #SMB
     chown system system /proc/smb/ScreenComm
@@ -128,7 +128,7 @@ on post-fs-data
 
 #Disable for one Single loader
 # Load WiFi Driver
-#   insmod /system/lib/modules/wlan_mt.ko
+#   insmod /vendor/lib/modules/wlan_mt.ko
 
 # Char device for BT 3.0 HS
     mknod /dev/ampc0 c 151 0

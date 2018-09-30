@@ -224,7 +224,7 @@ void stop_modem(){
 
     SLOGD("Use muxreport to stop modem\n");
 
-    args[0] = "/system/vendor/bin/muxreport";
+    args[0] = "/system/bin/muxreport";
     args[1] = "3";
     args[2] = NULL;
 
@@ -247,7 +247,7 @@ void start_modem(){
     int status;
     SLOGD("Just use muxreport to start modem\n");
 
-    args[0] = "/system/vendor/bin/muxreport";
+    args[0] = "/system/bin/muxreport";
     args[1] = "4";
     args[2] = NULL;
 

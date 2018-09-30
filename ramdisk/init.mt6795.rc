@@ -1363,7 +1363,7 @@ service wifi2agps /vendor/bin/wifi2agps
     user wifi
     group gps inet
 
-service mnld /vendor/xbin/mnld
+service mnld /system/xbin/mnld
     class main
     user gps
     group gps inet misc sdcard_rw sdcard_r media_rw system
@@ -1609,7 +1609,7 @@ service batterywarning /system/bin/batterywarning
     user shell
     group shell
 
-#service BGW /vendor/xbin/BGW
+#service BGW /system/xbin/BGW
 #	user system
 #	group gps system radio
 #	class main

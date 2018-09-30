@@ -188,7 +188,7 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/media/media_codecs.xml:system/vendor/etc/media_codecs.xml \
 	$(DEVICE_PATH)/configs/media/media_codecs_mediatek_video.xml:system/vendor/etc/media_codecs_mediatek_video.xml \
 	$(DEVICE_PATH)/configs/media/media_profiles.xml:system/vendor/etc/media_profiles.xml \
-	$(DEVICE_PATH)/configs/mtk_clear_motion.cfg:system/vendor/etc/mtk_clear_motion.cfg
+	$(DEVICE_PATH)/configs/mtk_clear_motion.cfg:system/etc/mtk_clear_motion.cfg
 #	$(DEVICE_PATH)/configs/media/media_codecs_ffmpeg.xml:system/vendor/etc/media_codecs_ffmpeg.xml \
 #	$(DEVICE_PATH)/configs/media/media_codecs_mediatek_audio.xml:system/vendor/etc/media_codecs_mediatek_audio.xml\
 #	$(DEVICE_PATH)/configs/media/media_codecs_performance.xml:system/vendor/etc/media_codecs_performance.xml
@@ -241,38 +241,38 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/ril_conf/spn-conf.xml:system/etc/spn-conf.xml
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-run-hooks:system/vendor/etc/dhcpcd/dhcpcd-run-hooks \
-	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-hooks/20-dns.conf:system/vendor/etc/dhcpcd/dhcpcd-hooks/20-dns.conf \
-	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-hooks/95-configured:system/vendor/etc/dhcpcd/dhcpcd-hooks/95-configured \
-	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6c.conf:system/vendor/etc/wide-dhcpv6/dhcp6c.conf \
-	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6c.script:system/vendor/etc/wide-dhcpv6/dhcp6c.script \
-	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6cctlkey:system/vendor/etc/wide-dhcpv6/dhcp6cctlkey \
-	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6cDNS.conf:system/vendor/etc/wide-dhcpv6/dhcp6cDNS.conf \
-	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6s.conf:system/vendor/etc/wide-dhcpv6/dhcp6s.conf
+	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-run-hooks:system/etc/dhcpcd/dhcpcd-run-hooks \
+	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-hooks/20-dns.conf:system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf \
+	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-hooks/95-configured:system/etc/dhcpcd/dhcpcd-hooks/95-configured \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6c.conf:system/etc/wide-dhcpv6/dhcp6c.conf \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6c.script:system/etc/wide-dhcpv6/dhcp6c.script \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6cctlkey:system/etc/wide-dhcpv6/dhcp6cctlkey \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6cDNS.conf:system/etc/wide-dhcpv6/dhcp6cDNS.conf \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6s.conf:system/etc/wide-dhcpv6/dhcp6s.conf
 
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/radvd/radvd.conf:system/vendor/etc/radvd/radvd.conf
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/slp_conf:system/vendor/etc/slp_conf \
-	$(DEVICE_PATH)/configs/gps/gps.conf:system/vendor/etc/gps.conf \
-	$(DEVICE_PATH)/configs/clatd.conf:system/vendor/etc/clatd.conf \
-	$(DEVICE_PATH)/configs/custom.conf:system/vendor/etc/custom.conf \
-	$(DEVICE_PATH)/configs/mtklog-config.prop:system/vendor/etc/mtklog-config.prop \
+	$(DEVICE_PATH)/configs/slp_conf:system/etc/slp_conf \
+	$(DEVICE_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
+	$(DEVICE_PATH)/configs/clatd.conf:system/etc/clatd.conf \
+	$(DEVICE_PATH)/configs/custom.conf:system/etc/custom.conf \
+	$(DEVICE_PATH)/configs/mtklog-config.prop:system/etc/mtklog-config.prop \
 	$(DEVICE_PATH)/configs/mtk_omx_core.cfg:system/etc/mtk_omx_core.cfg \
 	$(DEVICE_PATH)/configs/mtk_omx_core.cfg:system/vendor/etc/mtk_omx_core.cfg \
-	$(DEVICE_PATH)/configs/perfservboosttbl.txt:system/vendor/etc/perfservboosttbl.txt \
-	$(DEVICE_PATH)/configs/perfservscntbl.txt:system/vendor/etc/perfservscntbl.txt
+	$(DEVICE_PATH)/configs/perfservboosttbl.txt:system/etc/perfservboosttbl.txt \
+	$(DEVICE_PATH)/configs/perfservscntbl.txt:system/etc/perfservscntbl.txt
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/agps_profiles_conf2.xml:system/vendor/etc/agps_profiles_conf2.xml
+	$(DEVICE_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
 
 # Mediaserver with system group
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/init/mediaserver.rc:system/vendor/etc/init/mediaserver.rc
+	$(DEVICE_PATH)/configs/init/mediaserver.rc:system/etc/init/mediaserver.rc
 
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/hostapd/hostapd_default.conf:system/vendor/etc/hostapd/hostapd_default.conf \

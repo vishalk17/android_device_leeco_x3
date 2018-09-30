@@ -186,13 +186,13 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/media/media_codecs.xml:system/vendor/etc/media_codecs.xml \
+	$(DEVICE_PATH)/configs/media/media_codecs_ffmpeg.xml:system/vendor/etc/media_codecs_ffmpeg.xml \
+	$(DEVICE_PATH)/configs/media/media_codecs_mediatek_audio.xml:system/vendor/etc/media_codecs_mediatek_audio.xml\
 	$(DEVICE_PATH)/configs/media/media_codecs_mediatek_video.xml:system/vendor/etc/media_codecs_mediatek_video.xml \
+	$(DEVICE_PATH)/configs/media/media_codecs_performance.xml:system/vendor/etc/media_codecs_performance.xml \
 	$(DEVICE_PATH)/configs/media/media_profiles.xml:system/vendor/etc/media_profiles.xml \
 	$(DEVICE_PATH)/configs/mtk_clear_motion.cfg:system/etc/mtk_clear_motion.cfg
-#	$(DEVICE_PATH)/configs/media/media_codecs_ffmpeg.xml:system/vendor/etc/media_codecs_ffmpeg.xml \
-#	$(DEVICE_PATH)/configs/media/media_codecs_mediatek_audio.xml:system/vendor/etc/media_codecs_mediatek_audio.xml\
-#	$(DEVICE_PATH)/configs/media/media_codecs_performance.xml:system/vendor/etc/media_codecs_performance.xml
-	
+
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/audio/audio_device.xml:system/vendor/etc/audio_device.xml \
 	$(DEVICE_PATH)/configs/audio/audio_effects.xml:system/vendor/etc/audio_effects.xml \

@@ -8,7 +8,7 @@ on property:ril.mal=1
 on property:ril.mal=0
     stop mal-daemon
 
-service mal-daemon /vendor/bin/mtkmal
+service mal-daemon /system/bin/mtkmal
     class core
     socket mal-mfi stream 660 root radio
     socket volte_imsm stream 660 root radio

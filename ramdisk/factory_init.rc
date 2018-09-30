@@ -470,7 +470,7 @@ service logcatd /system/bin/logcat -b all -v threadtime -v usec -v printable -D 
 ## Custom service area (START)
 # Please add custom service below
 
-service thermal_manager /vendor/bin/thermal_manager
+service thermal_manager /system/bin/thermal_manager
     user root
     oneshot
 
@@ -492,16 +492,16 @@ service ccci_mdinit /system/vendor/bin/ccci_mdinit 0
     class core
     oneshot
 
-service nvram_daemon /vendor/bin/nvram_daemon
+service nvram_daemon /system/bin/nvram_daemon
     class main
     user root
     group root system
     oneshot
 
-service factory_no_image /vendor/bin/factory
+service factory_no_image /system/bin/factory
 
 
-service mobile_log_d /vendor/bin/mobile_log_d
+service mobile_log_d /system/bin/mobile_log_d
 	class main
 
 ## Custom service area (END)

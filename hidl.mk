@@ -36,11 +36,11 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service
 
 # Camera HAL
-#PRODUCT_PACKAGES += \
-#    camera.device@1.0-impl \
-#    camera.device@3.2-impl \
-#    android.hardware.camera.provider@2.4-impl \
-#    android.hardware.camera.provider@2.4-service
+PRODUCT_PACKAGES += \
+    camera.device@1.0-impl \
+    camera.device@3.2-impl \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service
 
 # Bluetooth HAL
 PRODUCT_PACKAGES += \

@@ -1,0 +1,29 @@
+From bb0b64191ff1bbf1433c6f750c16c600437f6b80 Mon Sep 17 00:00:00 2001
+From: vishalk17 <vishalkapadi95@gmail.com>
+Date: Sun, 28 Oct 2018 17:35:05 +0000
+Subject: [PATCH] BOARD_PROVIDES_RILD
+
+Change-Id: I8b710c9a19e34ccb472b1de99eacbd3eda8d94ca
+---
+ rild/Android.mk | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/rild/Android.mk b/rild/Android.mk
+index 7ac505c..d16dd57 100644
+--- a/rild/Android.mk
++++ b/rild/Android.mk
+@@ -1,5 +1,7 @@
+ # Copyright 2006 The Android Open Source Project
+
++ifneq ($(BOARD_PROVIDES_RILD),true)
++
+ LOCAL_PATH:= $(call my-dir)
+ include $(CLEAR_VARS)
+
+@@ -31,3 +33,4 @@ LOCAL_INIT_RC := rild.rc
+
+ include $(BUILD_EXECUTABLE)
+
++endif #BOARD_PROVIDES_RILD
+--
+2.7.4

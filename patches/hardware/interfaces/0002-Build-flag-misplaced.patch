@@ -1,7 +1,7 @@
-From 2e8c58608604b843e896d24f8f69986822a2b4a9 Mon Sep 17 00:00:00 2001
+From 0e29cc11bcfbc51e0cc5eedf7f9f522a43c7e7f3 Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Sat, 16 Dec 2017 19:42:51 +0800
-Subject: [PATCH 4/4] Build flag misplaced
+Subject: [PATCH 2/3] Build flag misplaced
 
 Build flag SUPPRESS_MTK_AUDIO_BLOB_ERR_MSG is for the shared library not
 service.

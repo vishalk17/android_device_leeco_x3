@@ -1,5 +1,20 @@
+From 56fb295ba95d2df667e59bea5e62d13f21c7dfe9 Mon Sep 17 00:00:00 2001
+From: vishalk17 <vishalkapadi95@gmail.com>
+Date: Sat, 27 Oct 2018 08:45:22 +0000
+Subject: [PATCH] bionic mtk patch
+
+Change-Id: I97e642f32e0321329763a8cc8c4240bdbff21bf4
+---
+ libc/Android.mk           | 8 ++++++++
+ libc/bionic/ndk_cruft.cpp | 9 ++++++++-
+ libc/libc.arm.map         | 1 +
+ libc/libc.map.txt         | 1 +
+ libc/libc.mips.map        | 1 +
+ libc/libc.x86.map         | 1 +
+ 6 files changed, 20 insertions(+), 1 deletion(-)
+
 diff --git a/libc/Android.mk b/libc/Android.mk
-index 888404cf7..bb18a2282 100644
+index 888404c..bb18a22 100644
 --- a/libc/Android.mk
 +++ b/libc/Android.mk
 @@ -1,4 +1,12 @@
@@ -16,10 +31,10 @@ index 888404cf7..bb18a2282 100644
  include $(call all-makefiles-under,$(LOCAL_PATH))
  
 diff --git a/libc/bionic/ndk_cruft.cpp b/libc/bionic/ndk_cruft.cpp
-index c042f9ff1..edbcb37eb 100644
+index dbacf18..33181fa 100644
 --- a/libc/bionic/ndk_cruft.cpp
 +++ b/libc/bionic/ndk_cruft.cpp
-@@ -343,10 +343,17 @@ size_t dlmalloc_usable_size(void* ptr) {
+@@ -345,10 +345,17 @@ size_t dlmalloc_usable_size(void* ptr) {
  }
  
  // In L we added a public pthread_gettid_np, but some apps were using the private API.
@@ -39,7 +54,7 @@ index c042f9ff1..edbcb37eb 100644
  // so export this compatibility shim that simply calls malloc.
  void* dlmalloc(size_t size) {
 diff --git a/libc/libc.arm.map b/libc/libc.arm.map
-index f63a0dae7..68e208c5b 100644
+index a4212dd..6b44133 100644
 --- a/libc/libc.arm.map
 +++ b/libc/libc.arm.map
 @@ -121,6 +121,7 @@ LIBC {
@@ -51,7 +66,7 @@ index f63a0dae7..68e208c5b 100644
      __putlong;
      __putshort;
 diff --git a/libc/libc.map.txt b/libc/libc.map.txt
-index 6abcc4491..02389a6d7 100644
+index c271a57..ce2a0bf 100644
 --- a/libc/libc.map.txt
 +++ b/libc/libc.map.txt
 @@ -121,6 +121,7 @@ LIBC {
@@ -63,7 +78,7 @@ index 6abcc4491..02389a6d7 100644
      __putlong;
      __putshort;
 diff --git a/libc/libc.mips.map b/libc/libc.mips.map
-index 0a675cec0..2ea5373af 100644
+index 214c7f5..382b2a5 100644
 --- a/libc/libc.mips.map
 +++ b/libc/libc.mips.map
 @@ -118,6 +118,7 @@ LIBC {
@@ -75,7 +90,7 @@ index 0a675cec0..2ea5373af 100644
      __putlong;
      __putshort;
 diff --git a/libc/libc.x86.map b/libc/libc.x86.map
-index a97d4cc73..a002b387a 100644
+index 145b64e..dc4ce9c 100644
 --- a/libc/libc.x86.map
 +++ b/libc/libc.x86.map
 @@ -118,6 +118,7 @@ LIBC {
@@ -86,3 +101,6 @@ index a97d4cc73..a002b387a 100644
      __ptrace; # arm x86 mips
      __putlong;
      __putshort;
+-- 
+2.7.4
+

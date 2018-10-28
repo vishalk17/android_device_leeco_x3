@@ -1,7 +1,7 @@
-From cfc32e20e46544f2106731aa6206719b6ff27d09 Mon Sep 17 00:00:00 2001
+From feda792b8336018aa921b11f1764856ab39f3222 Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Fri, 22 Dec 2017 23:35:45 +0800
-Subject: [PATCH 2/4] gatekeeperd:Add use software gatekeeper option
+Subject: [PATCH 2/3] gatekeeperd:Add use software gatekeeper option
 
 Add BOARD_USE_SOFT_GATEKEEPER flag to use software gatekeeper.
 

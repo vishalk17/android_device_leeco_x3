@@ -35,10 +35,9 @@ LOCAL_C_INCLUDES += \
 
 LOCAL_SRC_FILES := \
 	wifi_hal.cpp \
-	rtt.cpp \
 	common.cpp \
 	cpp_bindings.cpp \
-	gscan.cpp \
+	wifi_logger.cpp \
 	wifi_offload.cpp
 
 LOCAL_SHARED_LIBRARIES += libutils liblog

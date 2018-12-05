@@ -62,6 +62,7 @@
  *                  G L O B A L   V A R I A B L E S                       *
 ***************************************************************************/
 
+static unsigned char preset_bdaddr[BD_ADDR_LEN];
 const bt_vendor_callbacks_t *bt_vnd_cbacks = NULL;
 static int  bt_fd = -1;
 
@@ -84,6 +85,12 @@ static BOOL is_memzero(unsigned char *buf, int size)
         if (*(buf+i) != 0) return FALSE;
     }
     return TRUE;
+}
+
+/* Store the preset BD address from BT HAL */
+void store_bdaddr(const unsigned char *addr)
+{
+    memcpy(preset_bdaddr, addr, BD_ADDR_LEN);
 }
 
 /* Register callback functions to libbt-hci.so */
@@ -212,7 +219,7 @@ static int bt_read_nvram(unsigned char *pucNvRamData)
 int mtk_fw_cfg(void)
 {
     unsigned int chipId = 0;
-    unsigned char ucNvRamData[sizeof(ap_nvram_btradio_struct)] = {0};
+    ap_nvram_btradio_struct nvData = {0};
 
     LOG_TRC();
 
@@ -223,22 +230,22 @@ int mtk_fw_cfg(void)
     }
 
     /* Read NVRAM data */
-    if ((bt_read_nvram(ucNvRamData) < 0) ||
-          is_memzero(ucNvRamData, sizeof(ap_nvram_btradio_struct))) {
+    if ((bt_read_nvram((unsigned char *)&nvData) < 0) ||
+          is_memzero(&nvData, sizeof(ap_nvram_btradio_struct))) {
         LOG_WAN("Read NVRAM data fails or NVRAM data all zero!!\n");
         LOG_WAN("Use %04x default value\n", chipId);
         switch (chipId) {
           case 0x6628:
             /* Use MT6628 default value */
-            memcpy(ucNvRamData, &stBtDefault_6628, sizeof(ap_nvram_btradio_struct));
+            memcpy(&nvData, &stBtDefault_6628, sizeof(ap_nvram_btradio_struct));
             break;
           case 0x6630:
             /* Use MT6630 default value */
-            memcpy(ucNvRamData, &stBtDefault_6630, sizeof(ap_nvram_btradio_struct));
+            memcpy(&nvData, &stBtDefault_6630, sizeof(ap_nvram_btradio_struct));
             break;
           case 0x6632:
             /* Use MT6632 default value */
-            memcpy(ucNvRamData, &stBtDefault_6632, sizeof(ap_nvram_btradio_struct));
+            memcpy(&nvData, &stBtDefault_6632, sizeof(ap_nvram_btradio_struct));
             break;
           case 0x8163:
           case 0x8127:
@@ -261,7 +268,13 @@ int mtk_fw_cfg(void)
           case 0x6771:
           case 0x6775:
             /* Use A-D die default value */
-            memcpy(ucNvRamData, &stBtDefault_consys, sizeof(ap_nvram_btradio_struct));
+            memcpy(&nvData, &stBtDefault_consys, sizeof(ap_nvram_btradio_struct));
+            break;
+          case 0x6765:
+          case 0x3967:
+          case 0x6761:
+            /* Use CONNAC default value */
+            memcpy(&nvData, &stBtDefault_connac, sizeof(ap_nvram_btradio_struct));
             break;
           default:
             LOG_WAN("Unknown combo chip id: %04x\n", chipId);
@@ -269,23 +282,30 @@ int mtk_fw_cfg(void)
         }
     }
 
+    /* Try to use the preset BD address from BT HAL if it is valid */
+    if (!is_memzero(preset_bdaddr, BD_ADDR_LEN))
+        memcpy(nvData.addr, preset_bdaddr, BD_ADDR_LEN);
+
     LOG_WAN("[BDAddr %02x-%02x-%02x-%02x-%02x-%02x][Voice %02x %02x][Codec %02x %02x %02x %02x] \
-            [Radio %02x %02x %02x %02x %02x %02x][Sleep %02x %02x %02x %02x %02x %02x %02x][BtFTR %02x %02x] \
-            [TxPWOffset %02x %02x %02x][CoexAdjust %02x %02x %02x %02x %02x %02x] \
-            [Radio_ext %02x %02x][TxPWOffset_ext %02x %02x %02x]\n",
-            ucNvRamData[0], ucNvRamData[1], ucNvRamData[2], ucNvRamData[3], ucNvRamData[4], ucNvRamData[5],
-            ucNvRamData[6], ucNvRamData[7],
-            ucNvRamData[8], ucNvRamData[9], ucNvRamData[10], ucNvRamData[11],
-            ucNvRamData[12], ucNvRamData[13], ucNvRamData[14], ucNvRamData[15], ucNvRamData[16], ucNvRamData[17],
-            ucNvRamData[18], ucNvRamData[19], ucNvRamData[20], ucNvRamData[21], ucNvRamData[22], ucNvRamData[23], ucNvRamData[24],
-            ucNvRamData[25], ucNvRamData[26],
-            ucNvRamData[27], ucNvRamData[28], ucNvRamData[29],
-            ucNvRamData[30], ucNvRamData[31], ucNvRamData[32], ucNvRamData[33], ucNvRamData[34], ucNvRamData[35],
-            ucNvRamData[36], ucNvRamData[37],
-            ucNvRamData[38], ucNvRamData[39], ucNvRamData[40]);
+             [Radio %02x %02x %02x %02x %02x %02x][Sleep %02x %02x %02x %02x %02x %02x %02x][BtFTR %02x %02x] \
+             [TxPWOffset %02x %02x %02x][CoexAdjust %02x %02x %02x %02x %02x %02x][PIP %02x %02x] \
+             [RadioExt %02x %02x][TxPWOffsetExt1 %02x %02x %02x]\
+             [TxPWOffsetExt2 %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x]\n",
+             nvData.addr[0], nvData.addr[1], nvData.addr[2], nvData.addr[3], nvData.addr[4], nvData.addr[5],
+             nvData.Voice[0], nvData.Voice[1],
+             nvData.Codec[0], nvData.Codec[1], nvData.Codec[2], nvData.Codec[3],
+             nvData.Radio[0], nvData.Radio[1], nvData.Radio[2], nvData.Radio[3], nvData.Radio[4], nvData.Radio[5],
+             nvData.Sleep[0], nvData.Sleep[1], nvData.Sleep[2], nvData.Sleep[3], nvData.Sleep[4], nvData.Sleep[5], nvData.Sleep[6],
+             nvData.BtFTR[0], nvData.BtFTR[1],
+             nvData.TxPWOffset[0], nvData.TxPWOffset[1], nvData.TxPWOffset[2],
+             nvData.CoexAdjust[0], nvData.CoexAdjust[1], nvData.CoexAdjust[2], nvData.CoexAdjust[3], nvData.CoexAdjust[4], nvData.CoexAdjust[5],
+             nvData.PIP[0], nvData.PIP[1],
+             nvData.RadioExt[0], nvData.RadioExt[1],
+             nvData.TxPWOffsetExt1[0], nvData.TxPWOffsetExt1[1], nvData.TxPWOffsetExt1[2],
+             nvData.TxPWOffsetExt2[0], nvData.TxPWOffsetExt2[1], nvData.TxPWOffsetExt2[2], nvData.TxPWOffsetExt2[3], nvData.TxPWOffsetExt2[4],
+             nvData.TxPWOffsetExt2[5], nvData.TxPWOffsetExt2[6], nvData.TxPWOffsetExt2[7], nvData.TxPWOffsetExt2[8], nvData.TxPWOffsetExt2[9]);
 
-
-    return (BT_InitDevice(chipId, ucNvRamData) == TRUE ? 0 : -1);
+    return (BT_InitDevice(chipId, (unsigned char *)&nvData) == TRUE ? 0 : -1);
 }
 
 /* MTK specific deinitialize process */

@@ -85,7 +85,7 @@ extern "C"
 #define NVRAM_MNT_POINT "/nvram"
 #define MISC_MNT_POINT "/misc"
 #define PROINFO_MNT_POINT "/proinfo"
-#define NVDATA_MNT_POINT "/nvdata"
+#define NVDATA_MNT_POINT "/mnt/vendor/nvdata"
 
 typedef struct {
 	char 	cFileVer[FILEVERLENGTH];
@@ -122,7 +122,7 @@ typedef struct nvram_journal_handle {
 #pragma pack()
 #define ISREAD      1
 #define ISWRITE     0
-
+#if 0
 #ifdef _WIN32
 #define LOGD(x)
 #else
@@ -136,7 +136,7 @@ typedef struct nvram_journal_handle {
     do { \
         ALOGD(__VA_ARGS__); \
     } while (0)
-
+#endif
 bool NVM_GetBackupFileNum(unsigned int * iAPBackupFileNum,
                           unsigned short *iMDBackupFileNum);
 
@@ -441,7 +441,7 @@ bool NVM_MiscLog(unsigned int level, const char *func, unsigned int line,
 
 bool NVM_GetDeviceInfo(const char *path, struct mtd_info_user *device_info);
 extern int init_nvram_platform_callback();
-extern int nvram_platform_callback();
+
 
 bool Check_FileVerinFirstBoot(void);
 
@@ -457,8 +457,10 @@ typedef struct NVRAM_PLATFORM {
 	int layout_version;
 	int header_offset;
 } NVRAM_PLATFORM_T;
+extern int nvram_platform_callback(NVRAM_PLATFORM_T* pPlatform );
 
 extern int nvram_multi_storage_support(NVRAM_PLATFORM_T* pPlatform );
+extern bool nvram_md1_support();
 extern bool nvram_md5_support();
 extern bool nvram_evdo_support();
 int NVM_CheckFileSize(int iRealFileLid, const TCFG_FILE *pCfgFielTable);

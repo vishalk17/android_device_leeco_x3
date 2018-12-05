@@ -289,7 +289,7 @@ extern int iFileAuxADCLID;
 #define AP_CFG_FILE_EXT_MDTYPE_LID_VERNO			"000"
 #define AP_CFG_FILE_VER_INFO_LID_VERNO				"000"
 /* BT file version */
-#define AP_CFG_RDEB_FILE_BT_ADDR_LID_VERNO			"001"
+#define AP_CFG_RDEB_FILE_BT_ADDR_LID_VERNO			"002"
 /* WIFI file version */
 //#define AP_CFG_RDEB_FILE_WIFI_LID_VERNO				"000"
 /* WIFI MAC addr file version */
@@ -341,4 +341,3 @@ extern int iFileAuxADCLID;
 #define AP_CFG_RDCL_FILE_MD_SBP_LID_VERNO         "001"
 
 #endif /* CFG_FILE_LID_H */
-

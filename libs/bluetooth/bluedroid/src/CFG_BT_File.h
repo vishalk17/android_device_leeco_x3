@@ -43,20 +43,23 @@
 /* The record structure of bt nvram file */
 typedef struct
 {
-    unsigned char addr[6];            /* BT address */
-    unsigned char Voice[2];           /* Voice setting for SCO connection */
-    unsigned char Codec[4];           /* PCM codec setting */
-    unsigned char Radio[6];           /* RF configuration */
-    unsigned char Sleep[7];           /* Sleep mode configuration */
-    unsigned char BtFTR[2];           /* Other feature setting */
-    unsigned char TxPWOffset[3];      /* TX power channel offset compensation */
-    unsigned char CoexAdjust[6];      /* BT/WIFI coexistence performance adjustment */
-    unsigned char Radio_ext[2];       /* RF configuration extended parameters */
-    unsigned char TxPWOffset_ext[4];  /* Tx power channel offset compensation with new range */
-    unsigned char Reserved1[2];       /* Reserved */
-    unsigned char Reserved2[4];       /* Reserved */
-    unsigned char Reserved3[8];       /* Reserved */
-    unsigned char Reserved4[8];       /* Reserved */
+    unsigned char addr[6];             /* BT address */
+    unsigned char Voice[2];            /* Voice setting for SCO connection */
+    unsigned char Codec[4];            /* PCM codec setting */
+    unsigned char Radio[6];            /* RF configuration */
+    unsigned char Sleep[7];            /* Sleep mode configuration */
+    unsigned char BtFTR[2];            /* Other feature setting */
+    unsigned char TxPWOffset[3];       /* TX power channel offset compensation */
+    unsigned char CoexAdjust[6];       /* BT/WIFI coexistence performance adjustment */
+    unsigned char RadioExt[2];         /* RF configuration extended parameters */
+    unsigned char TxPWOffsetExt1[3];   /* Tx power channel offset compensation with new range */
+    unsigned char TxPWOffsetExt2[10];  /* Tx power channel offset compensation for CONNAC */
+    unsigned char PIP[2];              /* PIP value for CONNAC */
+    unsigned char TSSI[35];            /* TSSI value for CONNAC */
+    unsigned char Reserved1[2];        /* Reserved */
+    unsigned char Reserved2[4];        /* Reserved */
+    unsigned char Reserved3[8];        /* Reserved */
+    unsigned char Reserved4[8];        /* Reserved */
 } ap_nvram_btradio_struct, ap_nvram_btradio_mt6610_struct;
 
 
@@ -65,5 +68,3 @@ typedef struct
 #define CFG_FILE_BT_ADDR_REC_TOTAL   1
 
 #endif
-
-

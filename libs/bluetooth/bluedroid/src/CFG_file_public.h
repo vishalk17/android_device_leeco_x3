@@ -133,4 +133,3 @@ typedef struct {
 } TABLE_FOR_SPECIAL_LID;
 typedef int(*pfCallbackForDaemon)(void);
 #endif /* CFG_FILE_LID_H */
-

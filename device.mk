@@ -78,6 +78,11 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	dalvik.vm.image-dex2oat-Xmx=512m
 endif
 
+# OpenGL
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=196609
+    vendor.ro.opengles.version=196609
+
 # Audio
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \

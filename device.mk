@@ -289,10 +289,6 @@ PRODUCT_PACKAGES += \
 	libccci_util \
 	libmtk_symbols
 
-# Sensors
-PRODUCT_PACKAGES += \
-        sensors.mt6795
-
 # Sensor Calibration
 PRODUCT_PACKAGES += libem_sensor_jni
 

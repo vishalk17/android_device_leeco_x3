@@ -1,4 +1,4 @@
 subdirs = [
     "hal/libcamera_parameters",
-    "sensors",
+    "hal/multihal_sensors",
 ]

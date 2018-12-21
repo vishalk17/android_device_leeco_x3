@@ -283,6 +283,9 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/hostapd/hostapd.accept:system/vendor/etc/hostapd/hostapd.accept \
 	$(DEVICE_PATH)/configs/hostapd/hostapd.deny:system/vendor/etc/hostapd/hostapd.deny
 
+# MultiHal Sensors
+PRODUCT_COPY_FILES += \
+        $(DEVICE_PATH)/configs/sensors/_hals.conf:system/vendor/etc/sensors/_hals.conf
 
 # MTK Helpers
 PRODUCT_PACKAGES += \

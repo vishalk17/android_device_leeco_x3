@@ -287,6 +287,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
         $(DEVICE_PATH)/configs/sensors/_hals.conf:system/vendor/etc/sensors/_hals.conf
 
+PRODUCT_PACKAGES += \
+        sensors.mt6795
+
 # MTK Helpers
 PRODUCT_PACKAGES += \
 	libccci_util \

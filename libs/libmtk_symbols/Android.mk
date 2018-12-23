@@ -10,6 +10,7 @@ LOCAL_SRC_FILES := \
 	icu55.c \
 	crypto.c \
 	ssl.c \
+        mtk_jpeg.c \
         sensorlistener/ISensorServer.cpp \
         sensorlistener/SensorManager.cpp
 

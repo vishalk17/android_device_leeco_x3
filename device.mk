@@ -95,7 +95,7 @@ PRODUCT_PACKAGES += \
 	libtinycompress \
 	libtinyxml \
 	audio_policy.stub \
-	libtinymix \
+	tinymix \
 	libfs_mgr
 
 # Wifi

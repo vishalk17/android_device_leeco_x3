@@ -1616,7 +1616,7 @@ service batterywarning /system/bin/batterywarning
 
 service MtkCodecService /system/bin/MtkCodecService
     class main
-    user root
+    user system
     group audio media sdcard_r
 
 # GuiExt Server init

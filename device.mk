@@ -283,10 +283,6 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/hostapd/hostapd.accept:system/vendor/etc/hostapd/hostapd.accept \
 	$(DEVICE_PATH)/configs/hostapd/hostapd.deny:system/vendor/etc/hostapd/hostapd.deny
 
-# Sensors
-PRODUCT_PACKAGES += \
-        sensors.mt6795
-
 # MTK Helpers
 PRODUCT_PACKAGES += \
 	libccci_util \

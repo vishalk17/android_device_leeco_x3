@@ -227,3 +227,6 @@ net.tethering.noprovisioning=true
 # Media Settings
 media.settings.xml=/system/vendor/etc/media_profiles.xml
 persist.media.treble_omx=false
+
+# Default Renderer
+debug.hwui.renderer=opengl

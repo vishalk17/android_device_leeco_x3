@@ -347,3 +347,6 @@ PRODUCT_PACKAGES += \
     libgralloc_extra \
     libui_ext \
     libgui_ext
+
+# XML Parser
+PRODUCT_PACKAGES += libxml2

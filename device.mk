@@ -1,3 +1,9 @@
+# Folder path
+DEVICE_PATH := device/leeco/x3
+
+# Vendor path
+TARGET_COPY_OUT_VENDOR := system/vendor
+
 # Dalvik heap configurations
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
 
@@ -6,9 +12,6 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui
 
 # Vendor
 $(call inherit-product, vendor/leeco/x3/x3-vendor-blobs.mk)
-
-# Folder path
-DEVICE_PATH := device/leeco/x3
 
 -include $(DEVICE_PATH)/hidl.mk
 
@@ -113,11 +116,11 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/camera/camerasize.xml:system/vendor/etc/camerasize.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/vendor/etc/media_codecs_google_audio.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/vendor/etc/media_codecs_google_telephony.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/vendor/etc/media_codecs_google_video_le.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/vendor/etc/media_codecs_google_video.xml
+	$(DEVICE_PATH)/configs/camera/camerasize.xml:$(TARGET_COPY_OUT_VENDOR)/etc/camerasize.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -163,80 +166,80 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/ramdisk/init.trustonic.rc:root/init.trustonic.rc
 
 PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/handheld_core_hardware.xml:system/vendor/etc/permissions/handheld_core_hardware.xml \
-	frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/vendor/etc/permissions/android.hardware.camera.autofocus.xml \
-	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/vendor/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-	frameworks/native/data/etc/android.hardware.camera.front.xml:system/vendor/etc/permissions/android.hardware.camera.front.xml \
-	frameworks/native/data/etc/android.hardware.location.gps.xml:system/vendor/etc/permissions/android.hardware.location.gps.xml \
-	frameworks/native/data/etc/android.hardware.wifi.xml:system/vendor/etc/permissions/android.hardware.wifi.xml \
-	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/vendor/etc/permissions/android.hardware.wifi.direct.xml \
-	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/vendor/etc/permissions/android.hardware.sensor.accelerometer.xml \
-	frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/vendor/etc/permissions/android.hardware.compass.xml \
-	frameworks/native/data/etc/android.hardware.sensor.light.xml:system/vendor/etc/permissions/android.hardware.sensor.light.xml \
-	frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/vendor/etc/permissions/android.hardware.sensor.proximity.xml \
-	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/vendor/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/vendor/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
-	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.xml:system/vendor/etc/permissions/android.hardware.touchscreen.multitouch.xml \
-	frameworks/native/data/etc/android.hardware.touchscreen.xml:system/vendor/etc/permissions/android.hardware.touchscreen.xml \
-	frameworks/native/data/etc/android.software.sip.voip.xml:system/vendor/etc/permissions/android.software.sip.voip.xml \
-	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/vendor/etc/permissions/android.hardware.usb.accessory.xml \
-	frameworks/native/data/etc/android.hardware.ethernet.xml:system/vendor/etc/permissions/android.hardware.ethernet.xml \
-	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/vendor/etc/permissions/android.hardware.audio.low_latency.xml \
-	frameworks/native/data/etc/android.hardware.bluetooth.xml:system/vendor/etc/permissions/android.hardware.bluetooth.xml \
-	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/vendor/etc/permissions/android.hardware.bluetooth_le.xml \
-	frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/vendor/etc/permissions/android.hardware.telephony.cdma.xml \
-	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/vendor/etc/permissions/android.hardware.telephony.gsm.xml \
-	frameworks/native/data/etc/android.software.sip.xml:system/vendor/etc/permissions/android.software.sip.xml \
-	frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/vendor/etc/permissions/android.hardware.sensor.compass.xml \
-	frameworks/native/data/etc/android.hardware.usb.host.xml:system/vendor/etc/permissions/android.hardware.usb.host.xml \
-	frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/vendor/etc/permissions/android.hardware.sensor.gyroscope.xml \
-	frameworks/native/data/etc/android.hardware.camera.manual_sensor.xml:system/vendor/etc/permissions/android.hardware.camera.manual_sensor.xml
+	frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
+	frameworks/native/data/etc/android.hardware.camera.autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.autofocus.xml \
+	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+	frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
+	frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
+	frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
+	frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
+	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
+	frameworks/native/data/etc/android.hardware.sensor.compass.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.compass.xml \
+	frameworks/native/data/etc/android.hardware.sensor.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.light.xml \
+	frameworks/native/data/etc/android.hardware.sensor.proximity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.proximity.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.xml \
+	frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
+	frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
+	frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.ethernet.xml \
+	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
+	frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
+	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
+	frameworks/native/data/etc/android.hardware.telephony.cdma.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.cdma.xml \
+	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
+	frameworks/native/data/etc/android.software.sip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.xml \
+	frameworks/native/data/etc/android.hardware.sensor.compass.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.compass.xml \
+	frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
+	frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \
+	frameworks/native/data/etc/android.hardware.camera.manual_sensor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.manual_sensor.xml
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/media/media_codecs.xml:system/vendor/etc/media_codecs.xml \
-	$(DEVICE_PATH)/configs/media/media_codecs_ffmpeg.xml:system/vendor/etc/media_codecs_ffmpeg.xml \
-	$(DEVICE_PATH)/configs/media/media_codecs_mediatek_audio.xml:system/vendor/etc/media_codecs_mediatek_audio.xml\
-	$(DEVICE_PATH)/configs/media/media_codecs_mediatek_video.xml:system/vendor/etc/media_codecs_mediatek_video.xml \
-	$(DEVICE_PATH)/configs/media/media_codecs_performance.xml:system/vendor/etc/media_codecs_performance.xml \
-	$(DEVICE_PATH)/configs/media/media_profiles.xml:system/vendor/etc/media_profiles.xml \
-	$(DEVICE_PATH)/configs/mtk_clear_motion.cfg:system/vendor/etc/mtk_clear_motion.cfg
+	$(DEVICE_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+	$(DEVICE_PATH)/configs/media/media_codecs_ffmpeg.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_ffmpeg.xml \
+	$(DEVICE_PATH)/configs/media/media_codecs_mediatek_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_mediatek_audio.xml\
+	$(DEVICE_PATH)/configs/media/media_codecs_mediatek_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_mediatek_video.xml \
+	$(DEVICE_PATH)/configs/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
+	$(DEVICE_PATH)/configs/media/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml \
+	$(DEVICE_PATH)/configs/mtk_clear_motion.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/mtk_clear_motion.cfg
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/audio/audio_device.xml:system/vendor/etc/audio_device.xml \
-	$(DEVICE_PATH)/configs/audio/audio_effects.xml:system/vendor/etc/audio_effects.xml \
-	$(DEVICE_PATH)/configs/audio/audio_em.xml:system/vendor/etc/audio_em.xml \
-	$(DEVICE_PATH)/configs/audio/audio_policy.conf:system/vendor/etc/audio_policy.conf
+	$(DEVICE_PATH)/configs/audio/audio_device.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_device.xml \
+	$(DEVICE_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
+	$(DEVICE_PATH)/configs/audio/audio_em.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_em.xml \
+	$(DEVICE_PATH)/configs/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf
 
 # Audio Policy Configurations
 PRODUCT_COPY_FILES += \
-    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:system/vendor/etc/audio/a2dp_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/vendor/etc/audio/r_submix_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/vendor/etc/audio/usb_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:system/vendor/etc/audio/default_volume_tables.xml \
-    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:system/vendor/etc/audio/audio_policy_volumes.xml
+    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/r_submix_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/usb_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_volumes.xml
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.xml:system/vendor/etc/permissions/android.hardware.camera.xml \
-	$(DEVICE_PATH)/configs/permissions/android.hardware.microphone.xml:system/vendor/etc/permissions/android.hardware.microphone.xml \
-	$(DEVICE_PATH)/configs/permissions/com.android.location.provider.xml:system/vendor/etc/permissions/com.android.location.provider.xml \
-	$(DEVICE_PATH)/configs/permissions/com.android.media.remotedisplay.xml:system/vendor/etc/permissions/com.android.media.remotedisplay.xml \
-	$(DEVICE_PATH)/configs/permissions/com.android.mediadrm.signer.xml:system/vendor/etc/permissions/com.android.mediadrm.signer.xml \
-	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.manual_postprocessing.xml:system/vendor/etc/permissions/android.hardware.camera.manual_postprocessing.xml \
-	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.raw.xml:system/vendor/etc/permissions/android.hardware.camera.raw.xml
+	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.xml \
+	$(DEVICE_PATH)/configs/permissions/android.hardware.microphone.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.microphone.xml \
+	$(DEVICE_PATH)/configs/permissions/com.android.location.provider.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.location.provider.xml \
+	$(DEVICE_PATH)/configs/permissions/com.android.media.remotedisplay.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.media.remotedisplay.xml \
+	$(DEVICE_PATH)/configs/permissions/com.android.mediadrm.signer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.mediadrm.signer.xml \
+	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.manual_postprocessing.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.manual_postprocessing.xml \
+	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf \
-	$(DEVICE_PATH)/configs/wifi/wpa_supplicant.conf:system/vendor/etc/wifi/wpa_supplicant.conf \
-	$(DEVICE_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf
+	$(DEVICE_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+	$(DEVICE_PATH)/configs/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
+	$(DEVICE_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/bluetooth/auto_pair_blacklist.conf:system/vendor/etc/bluetooth/auto_pair_blacklist.conf \
-	$(DEVICE_PATH)/configs/bluetooth/auto_pair_devlist.conf:system/vendor/etc/bluetooth/auto_pair_devlist.conf \
-	$(DEVICE_PATH)/configs/bluetooth/btconfig.xml:system/vendor/etc/bluetooth/btconfig.xml \
-	$(DEVICE_PATH)/configs/bluetooth/bt_did.conf:system/vendor/etc/bluetooth/bt_did.conf \
-	$(DEVICE_PATH)/configs/bluetooth/bt_stack.conf:system/vendor/etc/bluetooth/bt_stack.conf \
-	$(DEVICE_PATH)/configs/bluetooth/bt_stack.conf.debug:system/vendor/etc/bluetooth/bt_stack.conf.debug \
-	$(DEVICE_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/vendor/etc/bluetooth/bt_stack.conf.sqc
+	$(DEVICE_PATH)/configs/bluetooth/auto_pair_blacklist.conf:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/auto_pair_blacklist.conf \
+	$(DEVICE_PATH)/configs/bluetooth/auto_pair_devlist.conf:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/auto_pair_devlist.conf \
+	$(DEVICE_PATH)/configs/bluetooth/btconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/btconfig.xml \
+	$(DEVICE_PATH)/configs/bluetooth/bt_did.conf:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/bt_did.conf \
+	$(DEVICE_PATH)/configs/bluetooth/bt_stack.conf:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/bt_stack.conf \
+	$(DEVICE_PATH)/configs/bluetooth/bt_stack.conf.debug:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/bt_stack.conf.debug \
+	$(DEVICE_PATH)/configs/bluetooth/bt_stack.conf.sqc:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth/bt_stack.conf.sqc
 
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
@@ -245,47 +248,47 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/keylayout/synaptics_dsx_i2c.kl:system/usr/keylayout/synaptics_dsx_i2c.kl
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/ril_conf/ecc_list.xml:system/vendor/etc/ecc_list.xml \
-	$(DEVICE_PATH)/configs/ril_conf/spn-conf.xml:system/vendor/etc/spn-conf.xml
+	$(DEVICE_PATH)/configs/ril_conf/ecc_list.xml:$(TARGET_COPY_OUT_VENDOR)/etc/ecc_list.xml \
+	$(DEVICE_PATH)/configs/ril_conf/spn-conf.xml:$(TARGET_COPY_OUT_VENDOR)/etc/spn-conf.xml
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-run-hooks:system/vendor/etc/dhcpcd/dhcpcd-run-hooks \
-	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-hooks/20-dns.conf:system/vendor/etc/dhcpcd/dhcpcd-hooks/20-dns.conf \
-	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-hooks/95-configured:system/vendor/etc/dhcpcd/dhcpcd-hooks/95-configured \
-	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6c.conf:system/vendor/etc/wide-dhcpv6/dhcp6c.conf \
-	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6c.script:system/vendor/etc/wide-dhcpv6/dhcp6c.script \
-	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6cctlkey:system/vendor/etc/wide-dhcpv6/dhcp6cctlkey \
-	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6cDNS.conf:system/vendor/etc/wide-dhcpv6/dhcp6cDNS.conf \
-	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6s.conf:system/vendor/etc/wide-dhcpv6/dhcp6s.conf
+	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-run-hooks:$(TARGET_COPY_OUT_VENDOR)/etc/dhcpcd/dhcpcd-run-hooks \
+	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-hooks/20-dns.conf:$(TARGET_COPY_OUT_VENDOR)/etc/dhcpcd/dhcpcd-hooks/20-dns.conf \
+	$(DEVICE_PATH)/configs/dhcpcd/dhcpcd-hooks/95-configured:$(TARGET_COPY_OUT_VENDOR)/etc/dhcpcd/dhcpcd-hooks/95-configured \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6c.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wide-dhcpv6/dhcp6c.conf \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6c.script:$(TARGET_COPY_OUT_VENDOR)/etc/wide-dhcpv6/dhcp6c.script \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6cctlkey:$(TARGET_COPY_OUT_VENDOR)/etc/wide-dhcpv6/dhcp6cctlkey \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6cDNS.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wide-dhcpv6/dhcp6cDNS.conf \
+	$(DEVICE_PATH)/configs/wide-dhcpv6/dhcp6s.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wide-dhcpv6/dhcp6s.conf
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/radvd/radvd.conf:system/vendor/etc/radvd/radvd.conf
+	$(DEVICE_PATH)/configs/radvd/radvd.conf:$(TARGET_COPY_OUT_VENDOR)/etc/radvd/radvd.conf
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/slp_conf:system/vendor/etc/slp_conf \
-	$(DEVICE_PATH)/configs/gps/gps.conf:system/vendor/etc/gps.conf \
-	$(DEVICE_PATH)/configs/clatd.conf:system/vendor/etc/clatd.conf \
-	$(DEVICE_PATH)/configs/custom.conf:system/vendor/etc/custom.conf \
-	$(DEVICE_PATH)/configs/mtklog-config.prop:system/vendor/etc/mtklog-config.prop \
+	$(DEVICE_PATH)/configs/slp_conf:$(TARGET_COPY_OUT_VENDOR)/etc/slp_conf \
+	$(DEVICE_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
+	$(DEVICE_PATH)/configs/clatd.conf:$(TARGET_COPY_OUT_VENDOR)/etc/clatd.conf \
+	$(DEVICE_PATH)/configs/custom.conf:$(TARGET_COPY_OUT_VENDOR)/etc/custom.conf \
+	$(DEVICE_PATH)/configs/mtklog-config.prop:$(TARGET_COPY_OUT_VENDOR)/etc/mtklog-config.prop \
 	$(DEVICE_PATH)/configs/mtk_omx_core.cfg:system/etc/mtk_omx_core.cfg \
-	$(DEVICE_PATH)/configs/mtk_omx_core.cfg:system/vendor/etc/mtk_omx_core.cfg \
-	$(DEVICE_PATH)/configs/perfservboosttbl.txt:system/vendor/etc/perfservboosttbl.txt \
-	$(DEVICE_PATH)/configs/perfservscntbl.txt:system/vendor/etc/perfservscntbl.txt
+	$(DEVICE_PATH)/configs/mtk_omx_core.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/mtk_omx_core.cfg \
+	$(DEVICE_PATH)/configs/perfservboosttbl.txt:$(TARGET_COPY_OUT_VENDOR)/etc/perfservboosttbl.txt \
+	$(DEVICE_PATH)/configs/perfservscntbl.txt:$(TARGET_COPY_OUT_VENDOR)/etc/perfservscntbl.txt
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/agps_profiles_conf2.xml:system/vendor/etc/agps_profiles_conf2.xml
+	$(DEVICE_PATH)/configs/agps_profiles_conf2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/agps_profiles_conf2.xml
 
 PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.fingerprint.xml:system/vendor/etc/permissions/android.hardware.fingerprint.xml
+	frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
 # Mediaserver with system group
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/init/mediaserver.rc:system/vendor/etc/init/mediaserver.rc
+	$(DEVICE_PATH)/configs/init/mediaserver.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/mediaserver.rc
 
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/hostapd/hostapd_default.conf:system/vendor/etc/hostapd/hostapd_default.conf \
-	$(DEVICE_PATH)/configs/hostapd/hostapd.accept:system/vendor/etc/hostapd/hostapd.accept \
-	$(DEVICE_PATH)/configs/hostapd/hostapd.deny:system/vendor/etc/hostapd/hostapd.deny
+	$(DEVICE_PATH)/configs/hostapd/hostapd_default.conf:$(TARGET_COPY_OUT_VENDOR)/etc/hostapd/hostapd_default.conf \
+	$(DEVICE_PATH)/configs/hostapd/hostapd.accept:$(TARGET_COPY_OUT_VENDOR)/etc/hostapd/hostapd.accept \
+	$(DEVICE_PATH)/configs/hostapd/hostapd.deny:$(TARGET_COPY_OUT_VENDOR)/etc/hostapd/hostapd.deny
 
 # MTK Helpers
 PRODUCT_PACKAGES += \
@@ -329,17 +332,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Vulkan
 PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/vendor/etc/permissions/android.hardware.vulkan.level.xml \
-	frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/vendor/etc/permissions/android.hardware.vulkan.version.xml
+	frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
+	frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/seccomp/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy \
-    $(DEVICE_PATH)/seccomp/mediaextractor.policy:system/vendor/etc/seccomp_policy/mediaextractor.policy
+    $(DEVICE_PATH)/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+    $(DEVICE_PATH)/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
 # HIDL Manifest
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/manifest.xml:system/vendor/manifest.xml
+    $(DEVICE_PATH)/configs/manifest.xml:$(TARGET_COPY_OUT_VENDOR)/manifest.xml
 
 # Bluetooth
 PRODUCT_PACKAGES += \

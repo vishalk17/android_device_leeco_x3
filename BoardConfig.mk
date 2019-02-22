@@ -137,8 +137,9 @@ WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wmtWifi"
 WIFI_DRIVER_STATE_ON := 1
 WIFI_DRIVER_STATE_OFF := 0
 
-# Others
+# Others / Apex
 BUILD_BROKEN_DUP_RULES := true
+DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # Recovery
 ifeq ($(WITH_TWRP),true)

@@ -19,10 +19,12 @@ This branch is device tree for building Lineage-15.1 branch (oreo) Rom for Leeco
 * lights ( notifications, charging,etc)
 * bluetooth
 * USB tethering
+* sensors (proximity, autorotation and might be others too )
 
 ### Broken/Bugs
 
 * graphical glitches
 * camera
+* ussd
+* gps
 * everything
-

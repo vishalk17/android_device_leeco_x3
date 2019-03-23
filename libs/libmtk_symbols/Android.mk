@@ -5,6 +5,7 @@ LOCAL_SRC_FILES := \
 	MediatekHacks.cpp \
 	mtkaudio.cpp  \
 	mtkcamhack.cpp \
+        mtk_jpeg.cpp \
 	mtk_ui.cpp \
 	mtk_omx.cpp \
 	icu55.c \

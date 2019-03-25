@@ -13,7 +13,8 @@ LOCAL_SRC_FILES := \
 	crypto.c \
 	ssl.c \
         sensorlistener/ISensorServer.cpp \
-        sensorlistener/SensorManager.cpp
+        sensorlistener/SensorManager.cpp \
+        CameraParameters.cpp
 
 # only for 32bit libraries
 LOCAL_SRC_FILES_32 := mtk_string.cpp

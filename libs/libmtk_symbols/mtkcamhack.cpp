@@ -27,6 +27,6 @@ extern "C" void _ZN7android13GraphicBufferC1EjjijjP13native_handleb(
         inFormat, static_cast<uint32_t>(1), static_cast<uint64_t>(inUsage), inStride);
 }
 
-extern "C" {
- void _ZN7android16CameraParameters25KEY_SNAPSHOT_PICTURE_FLIPE(){}
-}
+//extern "C" {
+ //void _ZN7android16CameraParameters25KEY_SNAPSHOT_PICTURE_FLIPE(){}
+//}

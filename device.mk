@@ -98,6 +98,10 @@ PRODUCT_PACKAGES += \
 	charger \
 	charger_res_images
 
+# Device settings
+PRODUCT_PACKAGES += \
+    DeviceSettings
+
 # Display
 PRODUCT_PACKAGES += \
 	libion

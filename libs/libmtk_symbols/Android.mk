@@ -4,7 +4,6 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := \
 	MediatekHacks.cpp \
         Buffer.cpp \
-	mtkaudio.cpp  \
 	mtkcamhack.cpp \
         mtk_jpeg.cpp \
 	mtk_ui.cpp \

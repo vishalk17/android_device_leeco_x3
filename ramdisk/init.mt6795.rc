@@ -1612,7 +1612,7 @@ service guiext-server /vendor/bin/guiext-server
     group system graphics
 
 # Charger
-service charger /charger
+service charger /system/bin/charger
     class charger
     user root
     group system graphics

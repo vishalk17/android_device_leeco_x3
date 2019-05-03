@@ -320,6 +320,7 @@ PRODUCT_COPY_FILES += \
 
 # Surfaceflinger
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.protected_contents=true
 
 # TextClassifier
 PRODUCT_PACKAGES += \

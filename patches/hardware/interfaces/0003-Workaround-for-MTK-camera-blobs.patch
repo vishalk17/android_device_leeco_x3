@@ -1,7 +1,7 @@
-From f893bec497670c8415ea2a3570783ef3bf80f442 Mon Sep 17 00:00:00 2001
+From 8df807c774732393cd7bdfea784a10de5d309101 Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Sun, 3 Dec 2017 22:01:01 +0800
-Subject: [PATCH 2/4] Workaround for MTK camera blobs
+Subject: [PATCH 3/4] Workaround for MTK camera blobs
 
 Oreo requires the user handle in sGetMemory callback. MTK camera blob
 just use NULL.

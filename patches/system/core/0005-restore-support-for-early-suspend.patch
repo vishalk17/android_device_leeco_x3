@@ -1,21 +1,8 @@
-From aa370617d9a040d75fb15fe23b923ee8c3974fe1 Mon Sep 17 00:00:00 2001
+From 277e195ff3975066c934a44c153e0f580ac46d0f Mon Sep 17 00:00:00 2001
 From: vishalk17 <vishalkapadi95@gmail.com>
-Date: Mon, 17 Sep 2018 18:34:25 +0000
-Subject: [PATCH] restore support for early_suspend
+Date: Thu, 6 Dec 2018 17:55:11 +0000
+Subject: [PATCH 5/6] restore support for early suspend
 
- our kernel still require early_suspend support &
- This patch hopefully restore support for it.
-
-- fixes sleeping issue which is occurring after screen lock
-- disabled some Alog* to fix build
-
-Revert "libsuspend: remove autosleep and earlysuspend"
-
-This reverts commit 021d60be98ca2eb72b2c63e3b1fea2169b7c2b69.
-
-Change-Id: I8d3a7946ae512e5f7953d64e4e17f5ec41d21e3a
-
-Signed-off-by: vishalk17 <vishalkapadi95@gmail.com> // github.com/vishalk17
 ---
  libsuspend/Android.bp                 |   2 +
  libsuspend/autosuspend.c              |  13 ++

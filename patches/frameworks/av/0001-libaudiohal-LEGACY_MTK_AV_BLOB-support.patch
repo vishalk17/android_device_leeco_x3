@@ -1,7 +1,7 @@
-From f1a142f5e223e44122da9e0495bd2bec4f1f493b Mon Sep 17 00:00:00 2001
+From de59db4be718ec821977016bdcd5c5c523f53ab6 Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Sat, 3 Mar 2018 20:05:51 +0800
-Subject: [PATCH 1/4] libaudiohal:LEGACY_MTK_AV_BLOB support
+Subject: [PATCH 1/6] libaudiohal:LEGACY_MTK_AV_BLOB support
 
 Set LEGACY_MTK_AV_BLOB := ture to enable
 Oreo's audio_stream_in_t definition changed. Old blobs from MTK (and

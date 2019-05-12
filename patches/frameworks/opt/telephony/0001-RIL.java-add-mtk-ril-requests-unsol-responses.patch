@@ -1,7 +1,7 @@
-From 53a3476d49e1defc92cbdb80f6e77b777da895cf Mon Sep 17 00:00:00 2001
+From f1093e0e5671807294e66a218b65dd7b12626cbe Mon Sep 17 00:00:00 2001
 From: vishalk17 <vishalkapadi95@gmail.com>
 Date: Fri, 3 Aug 2018 18:57:24 +0000
-Subject: [PATCH] RIL.java: add mtk ril requests & unsol responses
+Subject: [PATCH 1/1] RIL.java: add mtk ril requests & unsol responses
 
 Change-Id: I9a2003a72869e835be6175739bd76c14d8e659e9
 ---

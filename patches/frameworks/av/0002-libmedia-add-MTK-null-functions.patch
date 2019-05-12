@@ -1,7 +1,7 @@
-From 2546859f076cd93b0f6176ea75317967194dde61 Mon Sep 17 00:00:00 2001
+From 4c6a6afa43024fcf372857514fedb82ffbefc44c Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Sat, 3 Mar 2018 20:09:02 +0800
-Subject: [PATCH 2/4] libmedia:add MTK null functions
+Subject: [PATCH 2/6] libmedia:add MTK null functions
 
 ---
  media/libmedia/Android.bp         |   1 +

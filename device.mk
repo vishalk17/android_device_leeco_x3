@@ -20,9 +20,10 @@ DEVICE_PACKAGE_OVERLAYS += \
          $(DEVICE_PATH)/overlay \
          $(DEVICE_PATH)/overlay-lineage
 
-# Screen density
-PRODUCT_AAPT_CONFIG := normal xxhdpi
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+# AAPT
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi 420dpi xxxhdpi
+PRODUCT_AAPT_PREF_CONFIG := 420dpi
+PRODUCT_AAPT_PREBUILT_DPI := normal hdpi xhdpi xxhdpi 420dpi xxxhdpi
 
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := x3,X500,X507,X509,X3,x500,x507,x509,X502,x502

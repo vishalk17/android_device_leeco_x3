@@ -24,6 +24,7 @@
 
 #include <binder/Parcel.h>
 #include <binder/IInterface.h>
+#include <binder/IPermissionController.h>
 
 #include "gui/Sensor.h"
 #include "gui/ISensorServer.h"

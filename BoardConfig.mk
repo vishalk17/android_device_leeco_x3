@@ -107,8 +107,9 @@ PRODUCT_SHIPPING_API_LEVEL := 23
 # Offline charging
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/BOOT/BOOT/boot/boot_mode
 
-# HIDL Manifest
+# HIDL Manifest & Compatibility_matrix
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/manifest.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/compatibility_matrix.xml
 
 # LightHAL
 TARGET_PROVIDES_LIBLIGHT := true

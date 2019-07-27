@@ -299,9 +299,10 @@ PRODUCT_PACKAGES += \
 	power.default \
 	power.mt6795
 
-# HIDL Manifest
+# HIDL Manifest and Compatibility Matrix
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/manifest.xml:$(TARGET_COPY_OUT_VENDOR)/manifest.xml
+    $(DEVICE_PATH)/configs/manifest.xml:$(TARGET_COPY_OUT_VENDOR)/manifest.xml \
+    $(DEVICE_PATH)/configs/compatibility_matrix.xml:$(TARGET_COPY_OUT_VENDOR)/compatibility_matrix.xml
 
 # Sensor Calibration
 PRODUCT_PACKAGES += libem_sensor_jni
@@ -310,7 +311,7 @@ PRODUCT_PACKAGES += libem_sensor_jni
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     $(DEVICE_PATH)/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
-	
+
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1

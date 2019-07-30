@@ -1639,8 +1639,8 @@ service guiext-server /vendor/bin/guiext-server
 # Charger
 service charger /system/bin/charger
     class charger
-    user root
-    group system graphics
+    user system
+    group system graphics input
     seclabel u:r:charger:s0
 
 on property:apexd.status=ready

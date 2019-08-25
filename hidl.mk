@@ -18,15 +18,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
     android.hardware.audio@2.0-service \
-    android.hardware.audio.effect@2.0-impl \
-    android.hardware.broadcastradio@1.0-impl
-#    android.hardware.soundtrigger@2.0-impl
+    android.hardware.audio.effect@2.0-impl
 
 #gralloc/graphics HAL/HW Composer
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.renderscript@1.0-impl
 
@@ -37,8 +36,6 @@ PRODUCT_PACKAGES += \
 
 # Camera HAL
 PRODUCT_PACKAGES += \
-    camera.device@1.0-impl \
-    camera.device@3.2-impl \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service
 
@@ -57,13 +54,13 @@ PRODUCT_PACKAGES += \
 
 # Keymaster HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl
-#    android.hardware.keymaster@3.0-service
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
 
 # Gatekeeper HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl
-#    android.hardware.gatekeeper@1.0-service
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -82,7 +79,9 @@ PRODUCT_PACKAGES += \
 
 # Drm
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.0-service.widevine
 
 # Health
 PRODUCT_PACKAGES += \
@@ -91,13 +90,17 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.0-service
+    android.hardware.biometrics.fingerprint@2.1-service
 
 # Ril
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.0 \
     android.hardware.radio@1.1 \
     android.hardware.radio.deprecated@1.0
+
+# Network
+PRODUCT_PACKAGES += \
+    netutils-wrapper-1.0
 
 # Tether Packages
 PRODUCT_PACKAGES += \

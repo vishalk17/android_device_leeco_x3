@@ -42,6 +42,10 @@ PRODUCT_PACKAGES += \
 	Camera2 \
 	Snap
 
+# TextClassifier
+PRODUCT_PACKAGES += \
+    textclassifier.smartselection.bundle1
+
 # Charger
 PRODUCT_PACKAGES += \
 	charger \
@@ -101,11 +105,13 @@ PRODUCT_PACKAGES += \
 	libtinyalsa \
 	libtinycompress \
 	libtinyxml \
+        libtinyxml2 \
 	audio_policy.stub \
 	tinymix \
 	libfs_mgr
 
 PRODUCT_PROPERTY_OVERRIDES += ro.af.client_heap_size_kbyte=7168
+
 # Wifi
 PRODUCT_PACKAGES += \
 	lib_driver_cmd_mt66xx \

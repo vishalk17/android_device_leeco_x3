@@ -140,6 +140,7 @@ WIFI_DRIVER_STATE_OFF := 0
 # Others / Apex
 BUILD_BROKEN_DUP_RULES := true
 DEXPREOPT_GENERATE_APEX_IMAGE := true
+TARGET_FLATTEN_APEX := true
 
 # Recovery
 ifeq ($(WITH_TWRP),true)

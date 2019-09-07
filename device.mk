@@ -7,6 +7,9 @@ TARGET_COPY_OUT_VENDOR := system/vendor
 # Vendor
 $(call inherit-product, vendor/leeco/x3/x3-vendor-blobs.mk)
 
+# Initial Product Shipping API Level of the Device
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
+
 -include $(DEVICE_PATH)/hidl.mk
 
 # AAPT

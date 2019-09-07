@@ -100,9 +100,6 @@ BOARD_RED_LED_PATH := "/sys/class/leds/red"
 BOARD_GREEN_LED_PATH := "/sys/class/leds/green"
 BOARD_BLUE_LED_PATH := "/sys/class/leds/blue"
 
-# Initial API Level of the Device
-PRODUCT_SHIPPING_API_LEVEL := 23
-
 # Offline charging
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/BOOT/BOOT/boot/boot_mode
 

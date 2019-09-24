@@ -254,7 +254,7 @@ on post-fs-data
 
     # M4U
     #insmod /vendor/lib/modules/m4u.ko
-    mknod /dev/M4U_device c 188 0
+#    mknod /dev/M4U_device c 188 0
     chmod 0444 /dev/M4U_device
     chown system media /dev/M4U_device
 
@@ -641,7 +641,7 @@ on post-fs-data
     mkdir /data/misc/ppp 0770 bluetooth net_bt
 
     # Android SEC related device nodes
-    mknod /dev/sec c 182 0
+#    mknod /dev/sec c 182 0
     chmod 0660 /dev/sec
     chown root system /dev/sec
 

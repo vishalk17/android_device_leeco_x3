@@ -23,8 +23,25 @@ LOCAL_SRC_FILES_32 := mtk_string.cpp
 # only for 64bit libraries
 LOCAL_SRC_FILES_64 := mtk_parcel.cpp
 
+LOCAL_SHARED_LIBRARIES := \
+       libcutils \
+       libbinder \
+       libutils \
+       liblog \
+       libgui \
+       libui \
+       libc \
+       libandroidicu \
+       libcrypto \
+       libstagefright_foundation \
+       libssl \
+       libnativeloader \
+       libEGL \
+       libGLESv2 \
+       libsync \
+       libbase \
+       libsensor
 
-LOCAL_SHARED_LIBRARIES := libcutils libbinder libutils liblog libgui libui libc libandroidicu libcrypto libstagefright_foundation libssl libnativeloader libEGL  libGLESv2 libsync libbase libsensor libcam.utils.sensorlistener
 LOCAL_C_INCLUDES += \
        frameworks/av/media/ndk/include \
        frameworks/av/media/mtp \

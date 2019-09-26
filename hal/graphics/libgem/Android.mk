@@ -97,6 +97,7 @@ LOCAL_SHARED_LIBRARIES := \
 	libui_ext
 
 LOCAL_PROPRIETARY_MODULE := true
+LOCAL_LDFLAGS +=  -fuse-ld=gold
 include $(BUILD_SHARED_LIBRARY)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))

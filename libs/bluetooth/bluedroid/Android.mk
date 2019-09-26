@@ -24,6 +24,7 @@ LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE_OWNER := mtk
 LOCAL_SHARED_LIBRARIES := liblog libcutils libnvram
 LOCAL_PRELINK_MODULE := false
+LOCAL_LDFLAGS +=  -fuse-ld=gold
 include $(BUILD_SHARED_LIBRARY)
 
 ###########################################################################

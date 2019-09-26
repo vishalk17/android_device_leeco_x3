@@ -32,6 +32,7 @@ LOCAL_C_INCLUDES += \
 LOCAL_MODULE := libgralloc_extra
 LOCAL_MODULE_TAGS := optional
 LOCAL_PROPRIETARY_MODULE := true
+LOCAL_LDFLAGS +=  -fuse-ld=gold
 include $(BUILD_SHARED_LIBRARY)
 
 ifneq ($(TARGET_2ND_ARCH), "")

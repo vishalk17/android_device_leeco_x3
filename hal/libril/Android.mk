@@ -67,8 +67,8 @@ LOCAL_CFLAGS := $(ril_cflags)
 LOCAL_C_INCLUDES += $(ril_inc)
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/../include
 LOCAL_MODULE:= libril
-LOCAL_CLANG := true
 LOCAL_SANITIZE := integer
+LOCAL_LDFLAGS +=  -fuse-ld=gold
 include $(BUILD_SHARED_LIBRARY)
 
 endif

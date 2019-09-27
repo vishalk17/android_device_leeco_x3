@@ -50,10 +50,6 @@ ifeq ($(SIM_COUNT), 2)
     LOCAL_CFLAGS += -DANDROID_SIM_COUNT_2
 endif
 
-# temporary hack for broken vendor rils
-LOCAL_WHOLE_STATIC_LIBRARIES := \
-	librilutils_static
-
 LOCAL_CFLAGS := -DRIL_SHLIB
 
 LOCAL_MODULE_RELATIVE_PATH := hw

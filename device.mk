@@ -299,6 +299,9 @@ PRODUCT_PACKAGES += \
 	libnl_2 \
 	com.android.future.usb.accessory
 
+PRODUCT_PROPERTY_OVERRIDES += \
+        debug.stagefright.ccodec=0
+
 # Power
 PRODUCT_PACKAGES += \
 	power.default \

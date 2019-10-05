@@ -31,6 +31,7 @@ LOCAL_C_INCLUDES := \
 	$(TOP)/external/skia/src/images \
 	$(TOP)/external/skia/include/core \
         $(TOP)/external/skia/include/config \
+        $(TOP)/external/skia/include/private \
         $(TOP)/external/skqp/include/config \
         $(TOP)/external/pdfium/skia/config
 

@@ -23,10 +23,6 @@ on init
     mkdir /nvdata 0771 root system
 
 export LD_PRELOAD "libmtk_symbols.so"
-    # For debugging:
-    setprop ro.secure=0
-    setprop ro.adb.secure=0
-    setprop ro.debuggable=1
 
     # Support legacy paths
     symlink /sdcard /mnt/sdcard

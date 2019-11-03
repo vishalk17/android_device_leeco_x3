@@ -69,14 +69,16 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.allow.mock.location=0 \
-	ro.secure=0 \
-	ro.adb.secure=0 \
-	ro.debuggable=1 \
 	ro.zygote=zygote64_32 \
 	ro.dalvik.vm.native.bridge=0 \
-	persist.sys.usb.config=mtp \
 	persist.debug.xlog.enable=0 \
 	camera.disable_zsl_mode=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp,adb \
+    ro.adb.secure=0 \
+    ro.secure=0 \
+    ro.debuggable=1
 
 ifeq (lineage_x3,$(TARGET_PRODUCT))	#this is included only in lineage atm as some other roms have issue with this
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \

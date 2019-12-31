@@ -1,9 +1,6 @@
 # Folder path
 DEVICE_PATH := device/leeco/x3
 
-# Vendor path
-TARGET_COPY_OUT_VENDOR := system/vendor
-
 # Vendor
 $(call inherit-product, vendor/leeco/x3/x3-vendor-blobs.mk)
 
@@ -253,8 +250,15 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/ramdisk/init.volte.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.volte.rc \
 	$(DEVICE_PATH)/ramdisk/init.mal.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.mal.rc \
 	$(DEVICE_PATH)/ramdisk/init.trustonic.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.trustonic.rc \
- 	$(DEVICE_PATH)/ramdisk/ueventd.mt6795.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc \
-	$(DEVICE_PATH)/ramdisk/fstab.mt6795:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.mt6795
+ 	$(DEVICE_PATH)/ramdisk/ueventd.mt6795.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
+
+ifneq ($(ENABLED_VENDOR_PARTITION),true)
+PRODUCT_COPY_FILES += \
+        $(DEVICE_PATH)/ramdisk/fstab.mt6795:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.mt6795
+else
+PRODUCT_COPY_FILES += \
+       $(DEVICE_PATH)/ramdisk/fstab.vendor.mt6795:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.mt6795
+endif
 
 # OpenGL
 PRODUCT_PROPERTY_OVERRIDES += \

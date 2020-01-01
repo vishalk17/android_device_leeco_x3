@@ -1013,12 +1013,12 @@ on property:vold.decrypt=trigger_shutdown_framework
     setprop service.nvram_init 0
     write /proc/bootprof "trigger_shutdown_framework"
 
-service stop_modem /system/vendor/bin/md_ctrl 0
+service stop_modem /vendor/bin/md_ctrl 0
     class main
     disabled
     oneshot
 
-service start_modem /system/vendor/bin/md_ctrl 1
+service start_modem /vendor/bin/md_ctrl 1
     class main
     disabled
     oneshot
@@ -1051,7 +1051,7 @@ service bugreport /system/bin/dumpstate -d -p -B -q\
 	oneshot
 
 # IMG GPU init
-service pvrsrvctl /system/vendor/bin/pvrsrvctl --no-module --start
+service pvrsrvctl /vendor/bin/pvrsrvctl --no-module --start
     class main
     user root
     group root

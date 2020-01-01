@@ -22,7 +22,7 @@ on post-fs-data
     # Encrypt phone function
     setprop vold.post_fs_data_done 1
 
-service gsm0710muxd /system/vendor/bin/gsm0710muxd -s /dev/ttyC0 -f 512 -n 8 -m basic
+service gsm0710muxd /vendor/bin/gsm0710muxd -s /dev/ttyC0 -f 512 -n 8 -m basic
     class core
     user root
     group radio cache inet misc
@@ -57,19 +57,19 @@ service permission_check /system/bin/permission_check
     group nvram system radio
     oneshot
 
-service ccci_fsd /system/vendor/bin/ccci_fsd 0
+service ccci_fsd /vendor/bin/ccci_fsd 0
     user radio
     group radio system
     class core
     oneshot
 
-service ccci_mdinit /system/vendor/bin/ccci_mdinit 0
+service ccci_mdinit /vendor/bin/ccci_mdinit 0
     user radio
     group radio system
     class core
     oneshot
 
-service ccci_rpcd /system/vendor/bin/ccci_rpcd
+service ccci_rpcd /vendor/bin/ccci_rpcd
     user radio
     group radio system
     class core

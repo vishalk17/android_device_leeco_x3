@@ -1348,10 +1348,10 @@ service emd_daemon /system/bin/emd_daemon
 service agpsd /vendor/bin/mtk_agpsd
     class main
     socket agpsd stream 660 gps system
-    socket agpsd2 stream 660 system inet
-    socket agpsd3 stream 660 system inet
+    socket agpsd2 stream 660 gps inet
+    socket agpsd3 stream 660 gps inet
     user gps
-    group gps inet sdcard_r sdcard_rw misc radio
+    group gps inet sdcard_r sdcard_rw misc radio system
 
 service slpd /vendor/bin/slpd
     class main

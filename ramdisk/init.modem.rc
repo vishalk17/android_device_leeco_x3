@@ -65,19 +65,19 @@ service permission_check /system/bin/permission_check
     oneshot
 
 service ccci_fsd /system/vendor/bin/ccci_fsd 0
-    user root
+    user radio
     group radio system
     class core
     oneshot
 
 service ccci_mdinit /system/vendor/bin/ccci_mdinit 0
-    user root
+    user radio
     group radio system
     class core
     oneshot
 
 service ccci_rpcd /system/vendor/bin/ccci_rpcd
-    user root
+    user radio
     group radio system
     class core
     oneshot

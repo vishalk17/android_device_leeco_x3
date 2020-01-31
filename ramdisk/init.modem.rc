@@ -55,13 +55,7 @@ service md_minilog_util /system/bin/md_minilog_util
 service permission_check /system/bin/permission_check
     class main
     user root
-    group nvram
-    oneshot
-
-service permission_check /system/bin/permission_check
-    class main
-    user root
-    group system radio
+    group nvram system radio
     oneshot
 
 service ccci_fsd /system/vendor/bin/ccci_fsd 0

@@ -59,8 +59,7 @@ PRODUCT_PACKAGES += \
 
 # Gatekeeper HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service
+    android.hardware.gatekeeper@1.0-impl
 
 # Vibrator
 PRODUCT_PACKAGES += \

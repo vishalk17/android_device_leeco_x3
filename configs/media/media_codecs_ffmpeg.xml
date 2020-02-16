@@ -18,10 +18,6 @@
     <Decoders>
 
         <!--  ffmpeg audio codecs -->
-        <MediaCodec name="OMX.ffmpeg.aac.decoder"    type="audio/mp4a-latm">
-            <Limit name="channel-count" max="8" />
-            <Limit name="sample-rate" ranges="8000-192000" />
-        </MediaCodec>
         <!-- Can't use this without a Dolby(TM) license for DD(TM) and DDP(TM)
         <MediaCodec name="OMX.ffmpeg.ac3.decoder"    type="audio/ac3" >
             <Limit name="channel-count" max="8" />
@@ -37,14 +33,6 @@
             <Limit name="sample-rate" ranges="8000-192000" />
         </MediaCodec>
         <MediaCodec name="OMX.ffmpeg.dts.decoder"    type="audio/dts" >
-            <Limit name="channel-count" max="8" />
-            <Limit name="sample-rate" ranges="8000-192000" />
-        </MediaCodec>
-        <MediaCodec name="OMX.ffmpeg.flac.decoder"   type="audio/flac" >
-            <Limit name="channel-count" max="8" />
-            <Limit name="sample-rate" ranges="8000-192000" />
-        </MediaCodec>
-        <MediaCodec name="OMX.ffmpeg.mp2.decoder"    type="audio/mpeg-L2" >
             <Limit name="channel-count" max="8" />
             <Limit name="sample-rate" ranges="8000-192000" />
         </MediaCodec>
@@ -64,16 +52,6 @@
             <Feature name="adaptive-playback" />
         </MediaCodec>
         <MediaCodec name="OMX.ffmpeg.flv1.decoder"   type="video/x-flv">
-            <Limit name="size" min="2x2" max="2048x2048" />
-            <Limit name="alignment" value="2x2" />
-            <Feature name="adaptive-playback" />
-        </MediaCodec>
-        <MediaCodec name="OMX.ffmpeg.mpeg2.decoder"  type="video/mpeg2">
-            <Limit name="size" min="2x2" max="2048x2048" />
-            <Limit name="alignment" value="2x2" />
-            <Feature name="adaptive-playback" />
-        </MediaCodec>
-        <MediaCodec name="OMX.ffmpeg.mpeg4.decoder"  type="video/mp4v-es">
             <Limit name="size" min="2x2" max="2048x2048" />
             <Limit name="alignment" value="2x2" />
             <Feature name="adaptive-playback" />

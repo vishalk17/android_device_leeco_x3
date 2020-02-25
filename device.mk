@@ -326,8 +326,7 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
 	gps.mt6795 \
-	libcurl \
-        mtk_agpsd
+	libcurl
 
 #camera
 PRODUCT_PACKAGES += \

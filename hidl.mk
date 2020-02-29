@@ -1,10 +1,10 @@
 # Power
 PRODUCT_PACKAGES += \
-	android.hardware.power@1.0-impl
+    android.hardware.power@1.0-impl
 
 # Wifi
 PRODUCT_PACKAGES += \
-	android.hardware.wifi@1.0-service
+    android.hardware.wifi@1.0-service
 
 #GNSS HAL
 PRODUCT_PACKAGES += \
@@ -78,8 +78,7 @@ PRODUCT_PACKAGES += \
 # Drm
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service \
-    android.hardware.drm@1.0-service.widevine
+    android.hardware.drm@1.0-service
 
 # Health
 PRODUCT_PACKAGES += \
@@ -95,10 +94,6 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.0 \
     android.hardware.radio@1.1 \
     android.hardware.radio.deprecated@1.0
-
-# Network
-PRODUCT_PACKAGES += \
-    netutils-wrapper-1.0
 
 # Tether Packages
 PRODUCT_PACKAGES += \

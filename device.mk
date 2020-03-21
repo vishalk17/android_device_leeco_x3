@@ -36,13 +36,13 @@ PRODUCT_PACKAGES += \
 	audio.usb.default \
 	audio.r_submix.default \
 	audio_policy.default \
-    audio_policy.stub \
+        audio_policy.stub \
 	libaudio-resampler \
 	libaudiopolicymanagerdefault \
 	libtinyalsa \
 	libtinycompress \
 	libtinyxml \
-    libtinyxml2 \
+        libtinyxml2 \
 	tinymix \
 	libfs_mgr
 
@@ -157,7 +157,7 @@ PRODUCT_COPY_FILES += \
 
 # Modem controller / radio / Mtk Helpers
 PRODUCT_PACKAGES += \
-    md_ctrl \
+        md_ctrl \
 	libccci_util \
 
 PRODUCT_PACKAGES += \
@@ -335,8 +335,8 @@ PRODUCT_PACKAGES += \
 	libwpa_client \
 	hostapd \
 	wpa_supplicant \
-    wificond \
-    wifilogd
+        wificond \
+        wifilogd
 
 # XML Parser
 PRODUCT_PACKAGES += libxml2

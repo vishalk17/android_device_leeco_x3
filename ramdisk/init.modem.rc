@@ -37,11 +37,10 @@ service muxreport-daemon /vendor/bin/muxreport
     oneshot
 
 service ril-daemon-mtk /vendor/bin/hw/rild
-    class core
-    user root
-    group radio cache inet misc audio log readproc wakelock system
-    disabled
-    oneshot
+    class main
+    user radio
+    group radio cache inet misc audio log readproc wakelock
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service md_minilog_util /system/bin/md_minilog_util
     user radio

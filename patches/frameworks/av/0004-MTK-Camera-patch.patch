@@ -1,7 +1,7 @@
-From ed397acd16f8624aaabebaf67b7f09a4658edd5b Mon Sep 17 00:00:00 2001
+From a486ebe1d29474c9300db337bad9ff23166b0cc5 Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Sat, 3 Mar 2018 20:45:49 +0800
-Subject: [PATCH 4/6] MTK Camera patch
+Subject: [PATCH 04/13] MTK Camera patch
 
 1. libcamera_parameters_mtk in device tree for extra camera parameters.
 2. Add deprecated function definitions which the old blobs required.
@@ -9,17 +9,17 @@ Subject: [PATCH 4/6] MTK Camera patch
 
 Change-Id: I6063a61adeffd7f296fce9b5ae37a22aa5824e32
 ---
- camera/cameraserver/cameraserver.rc                |  2 +-
- media/libstagefright/foundation/Android.bp         |  1 +
- .../libstagefright/foundation/MediaBufferGroup.cpp | 10 +++
- .../include/media/stagefright/MediaBufferGroup.h   | 11 +++
- services/camera/libcameraservice/Android.mk        |  2 +-
- .../camera/libcameraservice/api1/CameraClient.cpp  | 94 +++++++++++++++++++++-
- .../camera/libcameraservice/api1/CameraClient.h    |  5 ++
+ camera/cameraserver/cameraserver.rc           |  2 +-
+ media/libstagefright/foundation/Android.bp    |  1 +
+ .../foundation/MediaBufferGroup.cpp           | 10 ++
+ .../media/stagefright/MediaBufferGroup.h      | 11 +++
+ services/camera/libcameraservice/Android.mk   |  2 +-
+ .../libcameraservice/api1/CameraClient.cpp    | 94 ++++++++++++++++++-
+ .../libcameraservice/api1/CameraClient.h      |  5 +
  7 files changed, 122 insertions(+), 3 deletions(-)
 
 diff --git a/camera/cameraserver/cameraserver.rc b/camera/cameraserver/cameraserver.rc
-index fea5a1d..08277d6 100644
+index fea5a1d5c..08277d674 100644
 --- a/camera/cameraserver/cameraserver.rc
 +++ b/camera/cameraserver/cameraserver.rc
 @@ -1,6 +1,6 @@
@@ -31,7 +31,7 @@ index fea5a1d..08277d6 100644
      ioprio rt 4
      writepid /dev/cpuset/camera-daemon/tasks /dev/stune/top-app/tasks
 diff --git a/media/libstagefright/foundation/Android.bp b/media/libstagefright/foundation/Android.bp
-index 221af1d..ebeb0e1 100644
+index 221af1d07..ebeb0e16f 100644
 --- a/media/libstagefright/foundation/Android.bp
 +++ b/media/libstagefright/foundation/Android.bp
 @@ -37,6 +37,7 @@ cc_library_shared {
@@ -43,7 +43,7 @@ index 221af1d..ebeb0e1 100644
  
      shared_libs: [
 diff --git a/media/libstagefright/foundation/MediaBufferGroup.cpp b/media/libstagefright/foundation/MediaBufferGroup.cpp
-index cb62d92..d757e37 100644
+index cb62d9291..d757e376c 100644
 --- a/media/libstagefright/foundation/MediaBufferGroup.cpp
 +++ b/media/libstagefright/foundation/MediaBufferGroup.cpp
 @@ -32,6 +32,11 @@ constexpr T MIN(const T &a, const T &b) { return a <= b ? a : b; }
@@ -71,7 +71,7 @@ index cb62d92..d757e37 100644
          MediaBuffer **out, bool nonBlocking, size_t requestedSize) {
      Mutex::Autolock autoLock(mLock);
 diff --git a/media/libstagefright/include/media/stagefright/MediaBufferGroup.h b/media/libstagefright/include/media/stagefright/MediaBufferGroup.h
-index 3051406..d2a7d89 100644
+index 30514062d..d2a7d890f 100644
 --- a/media/libstagefright/include/media/stagefright/MediaBufferGroup.h
 +++ b/media/libstagefright/include/media/stagefright/MediaBufferGroup.h
 @@ -29,7 +29,12 @@ class MetaData;
@@ -103,7 +103,7 @@ index 3051406..d2a7d89 100644
      size_t buffers() const { return mBuffers.size(); }
  
 diff --git a/services/camera/libcameraservice/Android.mk b/services/camera/libcameraservice/Android.mk
-index 7629594..0708852 100644
+index 762959430..0708852b9 100644
 --- a/services/camera/libcameraservice/Android.mk
 +++ b/services/camera/libcameraservice/Android.mk
 @@ -95,7 +95,7 @@ LOCAL_C_INCLUDES += \
@@ -116,7 +116,7 @@ index 7629594..0708852 100644
  # Workaround for invalid unused-lambda-capture warning http://b/38349491
  LOCAL_CLANG_CFLAGS += -Wno-error=unused-lambda-capture
 diff --git a/services/camera/libcameraservice/api1/CameraClient.cpp b/services/camera/libcameraservice/api1/CameraClient.cpp
-index 48757ac..d85c4c9 100644
+index 48757acdf..d85c4c9ae 100644
 --- a/services/camera/libcameraservice/api1/CameraClient.cpp
 +++ b/services/camera/libcameraservice/api1/CameraClient.cpp
 @@ -31,6 +31,13 @@ namespace android {
@@ -256,7 +256,7 @@ index 48757ac..d85c4c9 100644
  void CameraClient::handleShutter(void) {
      if (mPlayShutterSound) {
 diff --git a/services/camera/libcameraservice/api1/CameraClient.h b/services/camera/libcameraservice/api1/CameraClient.h
-index a0d9d0a..641b6a9 100644
+index a0d9d0add..641b6a9eb 100644
 --- a/services/camera/libcameraservice/api1/CameraClient.h
 +++ b/services/camera/libcameraservice/api1/CameraClient.h
 @@ -110,6 +110,11 @@ private:
@@ -272,5 +272,5 @@ index a0d9d0a..641b6a9 100644
      void                    handlePreviewData(int32_t msgType, const sp<IMemory>& mem,
              camera_frame_metadata_t *metadata);
 -- 
-2.7.4
+2.20.1
 

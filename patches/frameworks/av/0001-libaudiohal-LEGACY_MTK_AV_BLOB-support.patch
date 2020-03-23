@@ -1,7 +1,7 @@
-From de59db4be718ec821977016bdcd5c5c523f53ab6 Mon Sep 17 00:00:00 2001
+From d5eff053249505cde2382bc58ead68d6a68b3ea5 Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Sat, 3 Mar 2018 20:05:51 +0800
-Subject: [PATCH 1/6] libaudiohal:LEGACY_MTK_AV_BLOB support
+Subject: [PATCH 01/13] libaudiohal:LEGACY_MTK_AV_BLOB support
 
 Set LEGACY_MTK_AV_BLOB := ture to enable
 Oreo's audio_stream_in_t definition changed. Old blobs from MTK (and
@@ -21,7 +21,7 @@ device tree
  3 files changed, 24 insertions(+), 1 deletion(-)
 
 diff --git a/media/libaudiohal/Android.mk b/media/libaudiohal/Android.mk
-index 827908e..38ddb7b 100644
+index 827908ec8..38ddb7b4b 100644
 --- a/media/libaudiohal/Android.mk
 +++ b/media/libaudiohal/Android.mk
 @@ -17,6 +17,10 @@ LOCAL_SRC_FILES := \
@@ -36,7 +36,7 @@ index 827908e..38ddb7b 100644
  
  # Use audiohal directly w/o hwbinder middleware.
 diff --git a/media/libaudiohal/DeviceHalLocal.cpp b/media/libaudiohal/DeviceHalLocal.cpp
-index fc098f5..acbfc8b 100644
+index fc098f513..acbfc8b2d 100644
 --- a/media/libaudiohal/DeviceHalLocal.cpp
 +++ b/media/libaudiohal/DeviceHalLocal.cpp
 @@ -137,8 +137,20 @@ status_t DeviceHalLocal::openInputStream(
@@ -74,7 +74,7 @@ index fc098f5..acbfc8b 100644
  
  } // namespace android
 diff --git a/media/libaudiohal/DeviceHalLocal.h b/media/libaudiohal/DeviceHalLocal.h
-index 865f296..6cc5601 100644
+index 865f2968e..6cc560130 100644
 --- a/media/libaudiohal/DeviceHalLocal.h
 +++ b/media/libaudiohal/DeviceHalLocal.h
 @@ -107,7 +107,9 @@ class DeviceHalLocal : public DeviceHalInterface
@@ -89,5 +89,5 @@ index 865f296..6cc5601 100644
  
      // Can not be constructed directly by clients.
 -- 
-2.7.4
+2.20.1
 

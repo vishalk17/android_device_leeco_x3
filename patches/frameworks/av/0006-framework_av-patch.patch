@@ -1,21 +1,21 @@
-From f955fd8da6d63c56a0aa49d281979e8183ccfe37 Mon Sep 17 00:00:00 2001
+From ca805ec7ed04acca42064811b69a34b63fe15c8a Mon Sep 17 00:00:00 2001
 From: vishalk17 <vishalkapadi95@gmail.com>
 Date: Tue, 9 Oct 2018 11:06:14 +0000
-Subject: [PATCH 5/6] framework_av patch
+Subject: [PATCH 06/13] framework_av patch
 
 Change-Id: Ia722a2df73882444dd2e3dcd8183408ee5434803
 ---
- camera/CameraParameters.cpp                        |   5 +
- camera/include/camera/CameraParameters.h           |   5 +
- media/libstagefright/Android.bp                    |   2 +
- media/libstagefright/colorconversion/Android.bp    |   6 +-
- .../colorconversion/ColorConverter.cpp             | 236 +++++++-
- .../colorconversion/inc/DpBlitStream.h             | 209 +++++++
- .../libstagefright/colorconversion/inc/DpConfig.h  |  24 +
- .../colorconversion/inc/DpDataType.h               | 631 +++++++++++++++++++++
- .../include/media/stagefright/ColorConverter.h     |   6 +
- .../include/media/stagefright/MediaCodec.h         |  11 +
- .../camera/libcameraservice/api1/CameraClient.cpp  |   4 +-
+ camera/CameraParameters.cpp                   |   5 +
+ camera/include/camera/CameraParameters.h      |   5 +
+ media/libstagefright/Android.bp               |   2 +
+ .../libstagefright/colorconversion/Android.bp |   6 +-
+ .../colorconversion/ColorConverter.cpp        | 236 ++++++-
+ .../colorconversion/inc/DpBlitStream.h        | 209 ++++++
+ .../colorconversion/inc/DpConfig.h            |  24 +
+ .../colorconversion/inc/DpDataType.h          | 631 ++++++++++++++++++
+ .../media/stagefright/ColorConverter.h        |   6 +
+ .../include/media/stagefright/MediaCodec.h    |  11 +
+ .../libcameraservice/api1/CameraClient.cpp    |   4 +-
  11 files changed, 1134 insertions(+), 5 deletions(-)
  mode change 100644 => 100755 camera/CameraParameters.cpp
  mode change 100644 => 100755 camera/include/camera/CameraParameters.h
@@ -26,7 +26,7 @@ Change-Id: Ia722a2df73882444dd2e3dcd8183408ee5434803
 diff --git a/camera/CameraParameters.cpp b/camera/CameraParameters.cpp
 old mode 100644
 new mode 100755
-index de8ac2f..0ded1f5
+index de8ac2ffc..0ded1f575
 --- a/camera/CameraParameters.cpp
 +++ b/camera/CameraParameters.cpp
 @@ -92,6 +92,9 @@ const char CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED[] = "video-snapshot-su
@@ -51,7 +51,7 @@ index de8ac2f..0ded1f5
 diff --git a/camera/include/camera/CameraParameters.h b/camera/include/camera/CameraParameters.h
 old mode 100644
 new mode 100755
-index ba33ffe..3bc7034
+index ba33ffe63..3bc703456
 --- a/camera/include/camera/CameraParameters.h
 +++ b/camera/include/camera/CameraParameters.h
 @@ -537,6 +537,9 @@ public:
@@ -74,7 +74,7 @@ index ba33ffe..3bc7034
      // Values for scene mode settings.
      static const char SCENE_MODE_AUTO[];
 diff --git a/media/libstagefright/Android.bp b/media/libstagefright/Android.bp
-index c8d4e4a..be554d9 100644
+index c8d4e4aaa..be554d97b 100644
 --- a/media/libstagefright/Android.bp
 +++ b/media/libstagefright/Android.bp
 @@ -108,6 +108,7 @@ cc_library_shared {
@@ -94,7 +94,7 @@ index c8d4e4a..be554d9 100644
  
      product_variables: {
 diff --git a/media/libstagefright/colorconversion/Android.bp b/media/libstagefright/colorconversion/Android.bp
-index 16e9ded..a332999 100644
+index 16e9ded0e..a33299927 100644
 --- a/media/libstagefright/colorconversion/Android.bp
 +++ b/media/libstagefright/colorconversion/Android.bp
 @@ -8,16 +8,20 @@ cc_library_static {
@@ -120,7 +120,7 @@ index 16e9ded..a332999 100644
      sanitize: {
          misc_undefined: [
 diff --git a/media/libstagefright/colorconversion/ColorConverter.cpp b/media/libstagefright/colorconversion/ColorConverter.cpp
-index 0982006..6bf460d 100644
+index 0982006af..6bf460d90 100644
 --- a/media/libstagefright/colorconversion/ColorConverter.cpp
 +++ b/media/libstagefright/colorconversion/ColorConverter.cpp
 @@ -25,6 +25,16 @@
@@ -408,7 +408,7 @@ index 0982006..6bf460d 100644
 \ No newline at end of file
 diff --git a/media/libstagefright/colorconversion/inc/DpBlitStream.h b/media/libstagefright/colorconversion/inc/DpBlitStream.h
 new file mode 100644
-index 0000000..cad8f5b
+index 000000000..cad8f5b4b
 --- /dev/null
 +++ b/media/libstagefright/colorconversion/inc/DpBlitStream.h
 @@ -0,0 +1,209 @@
@@ -623,7 +623,7 @@ index 0000000..cad8f5b
 +#endif  // __DP_BLIT_STREAM_H__
 diff --git a/media/libstagefright/colorconversion/inc/DpConfig.h b/media/libstagefright/colorconversion/inc/DpConfig.h
 new file mode 100644
-index 0000000..f410785
+index 000000000..f41078509
 --- /dev/null
 +++ b/media/libstagefright/colorconversion/inc/DpConfig.h
 @@ -0,0 +1,24 @@
@@ -653,7 +653,7 @@ index 0000000..f410785
 +#endif  // __DP_CONFIG_H__
 diff --git a/media/libstagefright/colorconversion/inc/DpDataType.h b/media/libstagefright/colorconversion/inc/DpDataType.h
 new file mode 100644
-index 0000000..a619bc8
+index 000000000..a619bc845
 --- /dev/null
 +++ b/media/libstagefright/colorconversion/inc/DpDataType.h
 @@ -0,0 +1,631 @@
@@ -1289,7 +1289,7 @@ index 0000000..a619bc8
 +
 +#endif  // __DP_DATA_TYPE_H__
 diff --git a/media/libstagefright/include/media/stagefright/ColorConverter.h b/media/libstagefright/include/media/stagefright/ColorConverter.h
-index 7ac9b37..e2b1060 100644
+index 7ac9b3785..e2b106091 100644
 --- a/media/libstagefright/include/media/stagefright/ColorConverter.h
 +++ b/media/libstagefright/include/media/stagefright/ColorConverter.h
 @@ -91,6 +91,12 @@ private:
@@ -1306,7 +1306,7 @@ index 7ac9b37..e2b1060 100644
  
  }  // namespace android
 diff --git a/media/libstagefright/include/media/stagefright/MediaCodec.h b/media/libstagefright/include/media/stagefright/MediaCodec.h
-index 1030407..fc648d0 100644
+index 10304077e..fc648d017 100644
 --- a/media/libstagefright/include/media/stagefright/MediaCodec.h
 +++ b/media/libstagefright/include/media/stagefright/MediaCodec.h
 @@ -58,12 +58,23 @@ using hardware::cas::native::V1_0::IDescrambler;
@@ -1334,7 +1334,7 @@ index 1030407..fc648d0 100644
  
      enum {
 diff --git a/services/camera/libcameraservice/api1/CameraClient.cpp b/services/camera/libcameraservice/api1/CameraClient.cpp
-index d85c4c9..2513ffa 100644
+index d85c4c9ae..2513ffa77 100644
 --- a/services/camera/libcameraservice/api1/CameraClient.cpp
 +++ b/services/camera/libcameraservice/api1/CameraClient.cpp
 @@ -377,14 +377,12 @@ status_t CameraClient::setPreviewCallbackTarget(
@@ -1369,5 +1369,5 @@ index d85c4c9..2513ffa 100644
  
      sp<hardware::ICameraClient> c = mRemoteCallback;
 -- 
-2.7.4
+2.20.1
 

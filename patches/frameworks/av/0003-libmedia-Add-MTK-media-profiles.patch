@@ -1,16 +1,16 @@
-From f106fe48fded6b17931a017c901889d23f5e1626 Mon Sep 17 00:00:00 2001
+From af11a09a2a4b9b0360af9698f3bcce6849f8c0ce Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Sat, 3 Mar 2018 20:15:53 +0800
-Subject: [PATCH 3/6] libmedia:Add MTK media profiles
+Subject: [PATCH 03/13] libmedia:Add MTK media profiles
 
 Change-Id: I5f76da2f83119536fdba2cede7391344268ee61e
 ---
- media/libmedia/MediaProfiles.cpp             | 47 ++++++++++++++++++++++++++
- media/libmedia/include/media/MediaProfiles.h | 49 ++++++++++++++++++++++++++++
+ media/libmedia/MediaProfiles.cpp             | 47 +++++++++++++++++++
+ media/libmedia/include/media/MediaProfiles.h | 49 ++++++++++++++++++++
  2 files changed, 96 insertions(+)
 
 diff --git a/media/libmedia/MediaProfiles.cpp b/media/libmedia/MediaProfiles.cpp
-index aade69a..0137195 100644
+index aade69a09..0137195aa 100644
 --- a/media/libmedia/MediaProfiles.cpp
 +++ b/media/libmedia/MediaProfiles.cpp
 @@ -48,6 +48,9 @@ const MediaProfiles::NameToTagMap MediaProfiles::sAudioEncoderNameMap[] = {
@@ -75,7 +75,7 @@ index aade69a..0137195 100644
  
  #if LOG_NDEBUG
 diff --git a/media/libmedia/include/media/MediaProfiles.h b/media/libmedia/include/media/MediaProfiles.h
-index 6975581..601b529 100644
+index 6975581f4..601b52945 100644
 --- a/media/libmedia/include/media/MediaProfiles.h
 +++ b/media/libmedia/include/media/MediaProfiles.h
 @@ -34,7 +34,23 @@ enum camcorder_quality {
@@ -152,5 +152,5 @@ index 6975581..601b529 100644
  
  enum video_decoder {
 -- 
-2.7.4
+2.20.1
 

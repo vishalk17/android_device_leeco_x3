@@ -1,7 +1,7 @@
-From 54f0e0de94fc26a4081724848f94c80199b8734a Mon Sep 17 00:00:00 2001
+From d962bac473928c22b05ceaa10c0a95631de628c9 Mon Sep 17 00:00:00 2001
 From: Adrian DC <radian.dc@gmail.com>
 Date: Tue, 25 Jul 2017 01:43:38 +0200
-Subject: [PATCH 6/6] adb: Conditionally restore support for legacy f_adb
+Subject: [PATCH 5/5] adb: Conditionally restore support for legacy f_adb
  interface
 
  * Restore full support of USB and ADB on devices using the
@@ -16,15 +16,15 @@ Change-Id: I37f3ad237ee38a23736b2378e790a97efdf95bf0
 Signed-off-by: Adrian DC <radian.dc@gmail.com>
 ---
  adb/Android.mk      |   8 +++
- adb/adb.h           |   3 ++
+ adb/adb.h           |   3 +
  adb/daemon/main.cpp |   4 ++
- adb/daemon/usb.cpp  | 139 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ adb/daemon/usb.cpp  | 139 ++++++++++++++++++++++++++++++++++++++++++++
  adb/daemon/usb.h    |   5 ++
  rootdir/ueventd.rc  |   2 +
  6 files changed, 161 insertions(+)
 
 diff --git a/adb/Android.mk b/adb/Android.mk
-index ece0645..2a81f06 100644
+index ece064577..2a81f068b 100644
 --- a/adb/Android.mk
 +++ b/adb/Android.mk
 @@ -113,6 +113,10 @@ LOCAL_MODULE := libadbd_usb
@@ -50,7 +50,7 @@ index ece0645..2a81f06 100644
  
  LOCAL_FORCE_STATIC_EXECUTABLE := true
 diff --git a/adb/adb.h b/adb/adb.h
-index 68384f1..acea77d 100644
+index 68384f1b5..acea77ddf 100644
 --- a/adb/adb.h
 +++ b/adb/adb.h
 @@ -215,6 +215,9 @@ extern int SHELL_EXIT_NOTIFY_FD;
@@ -64,7 +64,7 @@ index 68384f1..acea77d 100644
  #define USB_FFS_ADB_EP(x) USB_FFS_ADB_PATH#x
  
 diff --git a/adb/daemon/main.cpp b/adb/daemon/main.cpp
-index c510535..5f39c50 100644
+index c510535a5..5f39c50db 100644
 --- a/adb/daemon/main.cpp
 +++ b/adb/daemon/main.cpp
 @@ -177,7 +177,11 @@ int adbd_main(int server_port) {
@@ -80,7 +80,7 @@ index c510535..5f39c50 100644
          usb_init();
          is_usb = true;
 diff --git a/adb/daemon/usb.cpp b/adb/daemon/usb.cpp
-index 0f92282..690a031 100644
+index 0f92282c4..690a031fa 100644
 --- a/adb/daemon/usb.cpp
 +++ b/adb/daemon/usb.cpp
 @@ -64,7 +64,9 @@ using namespace std::chrono_literals;
@@ -250,7 +250,7 @@ index 0f92282..690a031 100644
  
  int usb_write(usb_handle* h, const void* data, int len) {
 diff --git a/adb/daemon/usb.h b/adb/daemon/usb.h
-index 55b5995..431591a 100644
+index 55b59952f..431591a3f 100644
 --- a/adb/daemon/usb.h
 +++ b/adb/daemon/usb.h
 @@ -34,6 +34,11 @@ struct usb_handle {
@@ -266,7 +266,7 @@ index 55b5995..431591a 100644
      int control = -1;
      int bulk_out = -1; /* "out" from the host's perspective => source for adbd */
 diff --git a/rootdir/ueventd.rc b/rootdir/ueventd.rc
-index eadf219..0cf9253 100644
+index eadf219b5..0cf9253df 100644
 --- a/rootdir/ueventd.rc
 +++ b/rootdir/ueventd.rc
 @@ -68,6 +68,8 @@ subsystem sound
@@ -279,5 +279,5 @@ index eadf219..0cf9253 100644
  /dev/uhid                 0660   uhid       uhid
  /dev/uinput               0660   system     bluetooth
 -- 
-2.7.4
+2.20.1
 

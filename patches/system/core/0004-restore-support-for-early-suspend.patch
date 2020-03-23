@@ -1,32 +1,33 @@
-From 277e195ff3975066c934a44c153e0f580ac46d0f Mon Sep 17 00:00:00 2001
+From 043aadcf57bce9c38a0269139bade43c099ab4f9 Mon Sep 17 00:00:00 2001
 From: vishalk17 <vishalkapadi95@gmail.com>
 Date: Thu, 6 Dec 2018 17:55:11 +0000
-Subject: [PATCH 5/6] restore support for early suspend
+Subject: [PATCH 4/5] restore support for early suspend
 
+Change-Id: I90487808a517b32d3dc7c1c26aaac60cf10a464c
 ---
  libsuspend/Android.bp                 |   2 +
  libsuspend/autosuspend.c              |  13 ++
- libsuspend/autosuspend_autosleep.c    | 102 ++++++++++++++++
- libsuspend/autosuspend_earlysuspend.c | 220 ++++++++++++++++++++++++++++++++++
+ libsuspend/autosuspend_autosleep.c    | 102 ++++++++++++
+ libsuspend/autosuspend_earlysuspend.c | 220 ++++++++++++++++++++++++++
  4 files changed, 337 insertions(+)
  create mode 100644 libsuspend/autosuspend_autosleep.c
  create mode 100644 libsuspend/autosuspend_earlysuspend.c
 
 diff --git a/libsuspend/Android.bp b/libsuspend/Android.bp
-index 32f1e1f..21db90a 100644
+index 32f1e1ff8..632c56a2a 100644
 --- a/libsuspend/Android.bp
 +++ b/libsuspend/Android.bp
-@@ -9,6 +9,8 @@ cc_library {
- 
+@@ -10,6 +10,8 @@ cc_library {
      srcs: [
          "autosuspend.c",
+         "autosuspend_wakeup_count.c",
 +        "autosuspend_autosleep.c",
 +        "autosuspend_earlysuspend.c",
-         "autosuspend_wakeup_count.c",
      ],
      export_include_dirs: ["include"],
+     local_include_dirs: ["include"],
 diff --git a/libsuspend/autosuspend.c b/libsuspend/autosuspend.c
-index 96e1c10..54730c2 100644
+index 96e1c10d0..54730c293 100644
 --- a/libsuspend/autosuspend.c
 +++ b/libsuspend/autosuspend.c
 @@ -34,6 +34,19 @@ static int autosuspend_init(void)
@@ -51,7 +52,7 @@ index 96e1c10..54730c2 100644
          goto out;
 diff --git a/libsuspend/autosuspend_autosleep.c b/libsuspend/autosuspend_autosleep.c
 new file mode 100644
-index 0000000..81c90b0
+index 000000000..81c90b088
 --- /dev/null
 +++ b/libsuspend/autosuspend_autosleep.c
 @@ -0,0 +1,102 @@
@@ -159,7 +160,7 @@ index 0000000..81c90b0
 +}
 diff --git a/libsuspend/autosuspend_earlysuspend.c b/libsuspend/autosuspend_earlysuspend.c
 new file mode 100644
-index 0000000..9a433e6
+index 000000000..9a433e69b
 --- /dev/null
 +++ b/libsuspend/autosuspend_earlysuspend.c
 @@ -0,0 +1,220 @@
@@ -384,5 +385,5 @@ index 0000000..9a433e6
 +    return NULL;
 +}
 -- 
-2.7.4
+2.20.1
 

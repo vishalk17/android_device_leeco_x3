@@ -1,7 +1,7 @@
-From ad3d750b2370a1a0ce5f2c9b27902cf82d285d8a Mon Sep 17 00:00:00 2001
+From 25ab74bba6bdf19cd7dedb633517e49e8e63dae9 Mon Sep 17 00:00:00 2001
 From: vishalk17 <vishalkapadi95@gmail.com>
 Date: Wed, 1 May 2019 06:08:51 +0000
-Subject: [PATCH 6/6] mtkcamera patch : implement StreamImgBuf
+Subject: [PATCH 05/13] mtkcamera patch : implement StreamImgBuf
 
 WIP camera patch.
 
@@ -10,13 +10,13 @@ basically based on @danielhk 's wrapper
 althorugh i m unable to save videos and photos
 Change-Id: I0b31721955d149f7355744189e5b3e21a432ee88
 ---
- camera/cameraserver/cameraserver.rc                |   2 +-
- services/camera/libcameraservice/Android.mk        |  12 +-
- services/camera/libcameraservice/api1/CamUtils.h   |  64 ++++++
- services/camera/libcameraservice/api1/Format.h     | 190 ++++++++++++++++
- services/camera/libcameraservice/api1/IBuffer.h    | 118 ++++++++++
- .../camera/libcameraservice/api1/StreamImgBuf.cpp  | 244 +++++++++++++++++++++
- .../camera/libcameraservice/api1/StreamImgBuf.h    | 161 ++++++++++++++
+ camera/cameraserver/cameraserver.rc           |   2 +-
+ services/camera/libcameraservice/Android.mk   |  12 +-
+ .../camera/libcameraservice/api1/CamUtils.h   |  64 +++++
+ .../camera/libcameraservice/api1/Format.h     | 190 ++++++++++++++
+ .../camera/libcameraservice/api1/IBuffer.h    | 118 +++++++++
+ .../libcameraservice/api1/StreamImgBuf.cpp    | 244 ++++++++++++++++++
+ .../libcameraservice/api1/StreamImgBuf.h      | 161 ++++++++++++
  7 files changed, 788 insertions(+), 3 deletions(-)
  create mode 100644 services/camera/libcameraservice/api1/CamUtils.h
  create mode 100644 services/camera/libcameraservice/api1/Format.h
@@ -25,7 +25,7 @@ Change-Id: I0b31721955d149f7355744189e5b3e21a432ee88
  create mode 100644 services/camera/libcameraservice/api1/StreamImgBuf.h
 
 diff --git a/camera/cameraserver/cameraserver.rc b/camera/cameraserver/cameraserver.rc
-index 08277d6..b51dbc8 100644
+index 08277d674..b51dbc862 100644
 --- a/camera/cameraserver/cameraserver.rc
 +++ b/camera/cameraserver/cameraserver.rc
 @@ -1,6 +1,6 @@
@@ -37,7 +37,7 @@ index 08277d6..b51dbc8 100644
      ioprio rt 4
      writepid /dev/cpuset/camera-daemon/tasks /dev/stune/top-app/tasks
 diff --git a/services/camera/libcameraservice/Android.mk b/services/camera/libcameraservice/Android.mk
-index 0708852..7e5dc55 100644
+index 0708852b9..7e5dc55f7 100644
 --- a/services/camera/libcameraservice/Android.mk
 +++ b/services/camera/libcameraservice/Android.mk
 @@ -39,6 +39,7 @@ LOCAL_SRC_FILES :=  \
@@ -79,7 +79,7 @@ index 0708852..7e5dc55 100644
  LOCAL_CLANG_CFLAGS += -Wno-error=unused-lambda-capture
 diff --git a/services/camera/libcameraservice/api1/CamUtils.h b/services/camera/libcameraservice/api1/CamUtils.h
 new file mode 100644
-index 0000000..db5c637
+index 000000000..db5c63702
 --- /dev/null
 +++ b/services/camera/libcameraservice/api1/CamUtils.h
 @@ -0,0 +1,64 @@
@@ -150,7 +150,7 @@ index 0000000..db5c637
 \ No newline at end of file
 diff --git a/services/camera/libcameraservice/api1/Format.h b/services/camera/libcameraservice/api1/Format.h
 new file mode 100644
-index 0000000..9866dbd
+index 000000000..9866dbd34
 --- /dev/null
 +++ b/services/camera/libcameraservice/api1/Format.h
 @@ -0,0 +1,190 @@
@@ -347,7 +347,7 @@ index 0000000..9866dbd
 \ No newline at end of file
 diff --git a/services/camera/libcameraservice/api1/IBuffer.h b/services/camera/libcameraservice/api1/IBuffer.h
 new file mode 100644
-index 0000000..b7b0e59
+index 000000000..b7b0e591f
 --- /dev/null
 +++ b/services/camera/libcameraservice/api1/IBuffer.h
 @@ -0,0 +1,118 @@
@@ -472,7 +472,7 @@ index 0000000..b7b0e59
 \ No newline at end of file
 diff --git a/services/camera/libcameraservice/api1/StreamImgBuf.cpp b/services/camera/libcameraservice/api1/StreamImgBuf.cpp
 new file mode 100644
-index 0000000..4e66a91
+index 000000000..4e66a9136
 --- /dev/null
 +++ b/services/camera/libcameraservice/api1/StreamImgBuf.cpp
 @@ -0,0 +1,244 @@
@@ -722,7 +722,7 @@ index 0000000..4e66a91
 +}
 diff --git a/services/camera/libcameraservice/api1/StreamImgBuf.h b/services/camera/libcameraservice/api1/StreamImgBuf.h
 new file mode 100644
-index 0000000..13c8b54
+index 000000000..13c8b54e1
 --- /dev/null
 +++ b/services/camera/libcameraservice/api1/StreamImgBuf.h
 @@ -0,0 +1,161 @@
@@ -889,5 +889,5 @@ index 0000000..13c8b54
 +#endif  //_MTK_CAMERA_CLIENT_DISPLAYCLIENT_STREAMIMGBUF_H_
 \ No newline at end of file
 -- 
-2.7.4
+2.20.1
 

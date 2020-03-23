@@ -1,7 +1,7 @@
-From 7103886284b41ac432348f96b998ae0827f4902f Mon Sep 17 00:00:00 2001
+From 3ac88a6c3044af1d1ede326b79039f34794a07fa Mon Sep 17 00:00:00 2001
 From: vishalk17 <vishalkapadi95@gmail.com>
 Date: Sat, 30 Mar 2019 15:43:10 +0000
-Subject: [PATCH] Revert "system/core: Make Thread::run threadName argument
+Subject: [PATCH 3/5] Revert "system/core: Make Thread::run threadName argument
  required"
 
 This reverts commit e71b9147756ab4da306e4c16461ad23936769603.
@@ -14,7 +14,7 @@ Change-Id: Ied37ddf93f1ab6b2d474f09d8442a4e8109d6daa
  3 files changed, 3 insertions(+), 8 deletions(-)
 
 diff --git a/libutils/Threads.cpp b/libutils/Threads.cpp
-index 2d7e46f..679a0c2 100644
+index 2d7e46f9a..679a0c269 100644
 --- a/libutils/Threads.cpp
 +++ b/libutils/Threads.cpp
 @@ -661,11 +661,6 @@ status_t Thread::readyToRun()
@@ -30,7 +30,7 @@ index 2d7e46f..679a0c2 100644
  
      if (mRunning) {
 diff --git a/libutils/include/utils/Thread.h b/libutils/include/utils/Thread.h
-index a261fc8..0f7ac9f 100644
+index a261fc8d9..0f7ac9fdb 100644
 --- a/libutils/include/utils/Thread.h
 +++ b/libutils/include/utils/Thread.h
 @@ -45,7 +45,7 @@ public:
@@ -43,7 +43,7 @@ index a261fc8..0f7ac9f 100644
                                  size_t stack = 0);
      
 diff --git a/libutils/tests/Looper_test.cpp b/libutils/tests/Looper_test.cpp
-index 8ebcfaf..bdb1bb7 100644
+index 8ebcfaf5a..bdb1bb7ee 100644
 --- a/libutils/tests/Looper_test.cpp
 +++ b/libutils/tests/Looper_test.cpp
 @@ -138,7 +138,7 @@ TEST_F(LooperTest, PollOnce_WhenNonZeroTimeoutAndAwokenBeforeWaiting_Immediately
@@ -65,4 +65,5 @@ index 8ebcfaf..bdb1bb7 100644
      StopWatch stopWatch("pollOnce");
      int result = mLooper->pollOnce(1000);
 -- 
-2.7.4
+2.20.1
+

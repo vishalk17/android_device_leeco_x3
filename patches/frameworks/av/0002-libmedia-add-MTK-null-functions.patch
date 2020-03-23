@@ -1,16 +1,16 @@
-From 4c6a6afa43024fcf372857514fedb82ffbefc44c Mon Sep 17 00:00:00 2001
+From 16cbc43e746655b634eb236791520724dd232ebe Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Sat, 3 Mar 2018 20:09:02 +0800
-Subject: [PATCH 2/6] libmedia:add MTK null functions
+Subject: [PATCH 02/13] libmedia:add MTK null functions
 
 ---
  media/libmedia/Android.bp         |   1 +
- media/libmedia/mtkaudio_stubs.cpp | 216 ++++++++++++++++++++++++++++++++++++++
+ media/libmedia/mtkaudio_stubs.cpp | 216 ++++++++++++++++++++++++++++++
  2 files changed, 217 insertions(+)
  create mode 100644 media/libmedia/mtkaudio_stubs.cpp
 
 diff --git a/media/libmedia/Android.bp b/media/libmedia/Android.bp
-index a462f3a..0422ad0 100644
+index a462f3a8f..0422ad002 100644
 --- a/media/libmedia/Android.bp
 +++ b/media/libmedia/Android.bp
 @@ -172,6 +172,7 @@ cc_library_shared {
@@ -23,7 +23,7 @@ index a462f3a..0422ad0 100644
      shared_libs: [
 diff --git a/media/libmedia/mtkaudio_stubs.cpp b/media/libmedia/mtkaudio_stubs.cpp
 new file mode 100644
-index 0000000..fcdf14b
+index 000000000..fcdf14b7d
 --- /dev/null
 +++ b/media/libmedia/mtkaudio_stubs.cpp
 @@ -0,0 +1,216 @@
@@ -244,5 +244,5 @@ index 0000000..fcdf14b
 +
 +} // namespace
 -- 
-2.7.4
+2.20.1
 

@@ -1,7 +1,7 @@
-From 36f14b32f5fafd3f8c131d5c23c8302d8748987d Mon Sep 17 00:00:00 2001
+From 8b3c070143d905d42a12f12e7586b2eda0988cba Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Sun, 3 Dec 2017 21:39:24 +0800
-Subject: [PATCH 1/4] Add error message suppress option
+Subject: [PATCH 1/2] Add error message suppress option
 
 Suppress the error message "E AudioALSAStreamOut:
 -getPresentationPosition(), no playback handler, *frames = 0, return"
@@ -9,29 +9,27 @@ This is not really an error but repeated endlessly all the time.
 
 Change-Id: I38157cc2b506dbc533f5ec0c8c75bf4aec177dcb
 ---
- audio/2.0/default/Android.mk    | 8 ++++++++
+ audio/2.0/default/Android.mk    | 4 ++++
  audio/2.0/default/StreamOut.cpp | 3 +++
- 2 files changed, 11 insertions(+)
+ 2 files changed, 7 insertions(+)
 
 diff --git a/audio/2.0/default/Android.mk b/audio/2.0/default/Android.mk
-index 8dec482..84ca6e3 100644
+index 8dec48209..3f056b61a 100644
 --- a/audio/2.0/default/Android.mk
 +++ b/audio/2.0/default/Android.mk
-@@ -84,4 +84,12 @@ else
- LOCAL_MULTILIB := $(AUDIOSERVER_MULTILIB)
- endif
+@@ -51,6 +51,10 @@ LOCAL_HEADER_LIBRARIES := \
  
-+ifeq ($(TARGET_USES_BCRADIO_FUTURE_FEATURES),true)
-+LOCAL_CFLAGS += -DTARGET_USES_BCRADIO_FUTURE_FEATURES
-+endif
-+
+ LOCAL_WHOLE_STATIC_LIBRARIES := libmedia_helper
+ 
 +ifeq ($(SUPPRESS_MTK_AUDIO_BLOB_ERR_MSG),true)
-+LOCAL_CFLAGS += -DSUPPRESS_MTK_AUDIO_BLOB_ERR_MSG
++LOCAL_CFLAGS= -DSUPPRESS_MTK_AUDIO_BLOB_ERR_MSG
 +endif
 +
- include $(BUILD_EXECUTABLE)
+ include $(BUILD_SHARED_LIBRARY)
+ 
+ #
 diff --git a/audio/2.0/default/StreamOut.cpp b/audio/2.0/default/StreamOut.cpp
-index 22dcd0c..81f1d58 100644
+index 22dcd0c99..81f1d5859 100644
 --- a/audio/2.0/default/StreamOut.cpp
 +++ b/audio/2.0/default/StreamOut.cpp
 @@ -488,6 +488,9 @@ Result StreamOut::getPresentationPositionImpl(audio_stream_out_t* stream,
@@ -45,5 +43,5 @@ index 22dcd0c..81f1d58 100644
      struct timespec halTimeStamp;
      retval = Stream::analyzeStatus("get_presentation_position",
 -- 
-2.7.4
+2.20.1
 

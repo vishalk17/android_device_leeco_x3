@@ -1,7 +1,7 @@
-From d4f419ec94227de1609449932153051c72c68b85 Mon Sep 17 00:00:00 2001
+From c84180fd1f9b07467d9eea4c045a8527b06ff16c Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Fri, 22 Dec 2017 22:59:13 +0800
-Subject: [PATCH 1/6] liblog:Add __xlog_buf_printf()
+Subject: [PATCH 1/5] liblog:Add __xlog_buf_printf()
 
 1. Add __xlog_buf_printf function.
 2. Add a system property to allow suppress all xlog
@@ -10,7 +10,7 @@ Subject: [PATCH 1/6] liblog:Add __xlog_buf_printf()
  1 file changed, 27 insertions(+)
 
 diff --git a/liblog/logger_write.c b/liblog/logger_write.c
-index 84feb20..c6b54de 100644
+index 84feb206b..c6b54de37 100644
 --- a/liblog/logger_write.c
 +++ b/liblog/logger_write.c
 @@ -34,6 +34,10 @@
@@ -52,5 +52,5 @@ index 84feb20..c6b54de 100644
 +}
 +
 -- 
-2.7.4
+2.20.1
 

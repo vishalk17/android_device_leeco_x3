@@ -21,7 +21,6 @@ mediatek.wlan.ctia=0
 rild.libpath=mtk-ril.so
 rild.libargs=-d /dev/ttyC0
 #
-wifi.tethering.interface=ap0
 #
 
 #ro.kernel.qemu=1

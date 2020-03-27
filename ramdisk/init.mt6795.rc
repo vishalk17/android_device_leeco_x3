@@ -166,6 +166,9 @@ on post-fs
     chown root system /proc/mtprof/reboot_pid
     chown system system /proc/mtprof/gpu_freq
 
+    # Allow writing to the kernel trace log.
+    chmod 0222 /sys/kernel/debug/tracing/trace_marker
+
 on post-fs-data
 
     # create basic filesystem structure

@@ -203,7 +203,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
 	frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml
-	
+
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.xml \
 	$(DEVICE_PATH)/configs/permissions/android.hardware.microphone.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.microphone.xml \
@@ -211,7 +211,8 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/permissions/com.android.media.remotedisplay.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.media.remotedisplay.xml \
 	$(DEVICE_PATH)/configs/permissions/com.android.mediadrm.signer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.mediadrm.signer.xml \
 	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.manual_postprocessing.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.manual_postprocessing.xml \
-	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
+	$(DEVICE_PATH)/configs/permissions/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml \
+        $(DEVICE_PATH)/configs/permissions/privapp-permissions-leeco-x3.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-leeco-x3.xml
 
 # keylayout
 PRODUCT_COPY_FILES += \

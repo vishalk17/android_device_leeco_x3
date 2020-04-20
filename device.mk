@@ -75,6 +75,8 @@ PRODUCT_PACKAGES += \
     libbt-vendor \
     libbluetooth_mtk
 
+PRODUCT_PROPERTY_OVERRIDES += ro.boot.btmacaddr=00:00:00:00:00:00
+
 # Camera
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/camera/camerasize.xml:$(TARGET_COPY_OUT_VENDOR)/etc/camerasize.xml

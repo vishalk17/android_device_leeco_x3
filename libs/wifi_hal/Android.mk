@@ -34,7 +34,8 @@ LOCAL_SRC_FILES := \
 	common.cpp \
 	cpp_bindings.cpp \
 	wifi_logger.cpp \
-	wifi_offload.cpp
+	wifi_offload.cpp \
+        link_layer_stats.cpp
 
 LOCAL_SHARED_LIBRARIES += libutils liblog
 LOCAL_MODULE := libwifi-hal-mt66xx

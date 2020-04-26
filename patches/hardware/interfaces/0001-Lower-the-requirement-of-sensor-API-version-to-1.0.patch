@@ -1,7 +1,7 @@
-From 8685591a4a6a604ef925ed61f7bc4b0e50b5be0d Mon Sep 17 00:00:00 2001
+From 09b8162d52f193e95495746984e5df97936c08e6 Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Sun, 3 Dec 2017 22:07:50 +0800
-Subject: [PATCH 2/2] Lower the requirement of sensor API version to 1.0
+Subject: [PATCH 1/1] Lower the requirement of sensor API version to 1.0
 
 ---
  sensors/1.0/default/Sensors.cpp | 2 +-

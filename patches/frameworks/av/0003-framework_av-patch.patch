@@ -1,28 +1,41 @@
-From ca805ec7ed04acca42064811b69a34b63fe15c8a Mon Sep 17 00:00:00 2001
+From 75b0b11b9c42aa5aa68b2bf493db14ce5757a3c2 Mon Sep 17 00:00:00 2001
 From: vishalk17 <vishalkapadi95@gmail.com>
 Date: Tue, 9 Oct 2018 11:06:14 +0000
-Subject: [PATCH 06/13] framework_av patch
+Subject: [PATCH 3/3] framework_av patch
 
 Change-Id: Ia722a2df73882444dd2e3dcd8183408ee5434803
 ---
+ camera/Android.bp                             |   1 +
  camera/CameraParameters.cpp                   |   5 +
  camera/include/camera/CameraParameters.h      |   5 +
  media/libstagefright/Android.bp               |   2 +
  .../libstagefright/colorconversion/Android.bp |   6 +-
- .../colorconversion/ColorConverter.cpp        | 236 ++++++-
+ .../colorconversion/ColorConverter.cpp        | 231 ++++++-
  .../colorconversion/inc/DpBlitStream.h        | 209 ++++++
  .../colorconversion/inc/DpConfig.h            |  24 +
  .../colorconversion/inc/DpDataType.h          | 631 ++++++++++++++++++
  .../media/stagefright/ColorConverter.h        |   6 +
  .../include/media/stagefright/MediaCodec.h    |  11 +
  .../libcameraservice/api1/CameraClient.cpp    |   4 +-
- 11 files changed, 1134 insertions(+), 5 deletions(-)
+ 12 files changed, 1131 insertions(+), 4 deletions(-)
  mode change 100644 => 100755 camera/CameraParameters.cpp
  mode change 100644 => 100755 camera/include/camera/CameraParameters.h
  create mode 100644 media/libstagefright/colorconversion/inc/DpBlitStream.h
  create mode 100644 media/libstagefright/colorconversion/inc/DpConfig.h
  create mode 100644 media/libstagefright/colorconversion/inc/DpDataType.h
 
+diff --git a/camera/Android.bp b/camera/Android.bp
+index 7cc0336c3..2bf66729f 100644
+--- a/camera/Android.bp
++++ b/camera/Android.bp
+@@ -103,6 +103,7 @@ cc_library_shared {
+         "-Werror",
+         "-Wall",
+         "-Wextra",
++        "-DMTK_HARDWARE",
+     ],
+ 
+ }
 diff --git a/camera/CameraParameters.cpp b/camera/CameraParameters.cpp
 old mode 100644
 new mode 100755
@@ -74,25 +87,25 @@ index ba33ffe63..3bc703456
      // Values for scene mode settings.
      static const char SCENE_MODE_AUTO[];
 diff --git a/media/libstagefright/Android.bp b/media/libstagefright/Android.bp
-index c8d4e4aaa..be554d97b 100644
+index 924d46084..2774c3bf7 100644
 --- a/media/libstagefright/Android.bp
 +++ b/media/libstagefright/Android.bp
-@@ -108,6 +108,7 @@ cc_library_shared {
-         "android.hardware.cas@1.0",
-         "android.hardware.cas.native@1.0",
+@@ -175,6 +175,7 @@ cc_library_shared {
          "android.hardware.media.omx@1.0",
-+        "libdpframework"
+         "android.hardware.graphics.allocator@2.0",
+         "android.hardware.graphics.mapper@2.0",
++        "libdpframework",
      ],
  
      static_libs: [
-@@ -139,6 +140,7 @@ cc_library_shared {
+@@ -204,6 +205,7 @@ cc_library_shared {
          "-Werror",
          "-Wno-error=deprecated-declarations",
          "-Wall",
 +        "-DMTK_HARDWARE",
      ],
  
-     product_variables: {
+     version_script: "exports.lds",
 diff --git a/media/libstagefright/colorconversion/Android.bp b/media/libstagefright/colorconversion/Android.bp
 index 16e9ded0e..a33299927 100644
 --- a/media/libstagefright/colorconversion/Android.bp
@@ -120,12 +133,12 @@ index 16e9ded0e..a33299927 100644
      sanitize: {
          misc_undefined: [
 diff --git a/media/libstagefright/colorconversion/ColorConverter.cpp b/media/libstagefright/colorconversion/ColorConverter.cpp
-index 0982006af..6bf460d90 100644
+index a1873bc5c..407461475 100644
 --- a/media/libstagefright/colorconversion/ColorConverter.cpp
 +++ b/media/libstagefright/colorconversion/ColorConverter.cpp
-@@ -25,6 +25,16 @@
- #include "libyuv/convert_from.h"
- #include "libyuv/video_common.h"
+@@ -30,6 +30,16 @@
+ #include <functional>
+ #include <sys/time.h>
  
 +#ifdef MTK_HARDWARE
 +#include <cutils/properties.h>
@@ -138,9 +151,9 @@ index 0982006af..6bf460d90 100644
 +#endif
 +
  #define USE_LIBYUV
+ #define PERF_PROFILING 0
  
- namespace android {
-@@ -42,6 +52,16 @@ ColorConverter::~ColorConverter() {
+@@ -59,6 +69,16 @@ ColorConverter::~ColorConverter() {
  }
  
  bool ColorConverter::isValid() const {
@@ -155,9 +168,9 @@ index 0982006af..6bf460d90 100644
 +	return true;
 +#endif
      switch (mSrcFormat) {
-         case OMX_COLOR_FormatYUV420Planar:
-             return mDstFormat == OMX_COLOR_Format16bitRGB565
-@@ -119,6 +139,7 @@ status_t ColorConverter::convert(
+         case OMX_COLOR_FormatYUV420Planar16:
+             if (mDstFormat == OMX_COLOR_FormatYUV444Y410) {
+@@ -160,6 +180,7 @@ status_t ColorConverter::convert(
          size_t dstWidth, size_t dstHeight,
          size_t dstCropLeft, size_t dstCropTop,
          size_t dstCropRight, size_t dstCropBottom) {
@@ -165,8 +178,8 @@ index 0982006af..6bf460d90 100644
      BitmapParams src(
              const_cast<void *>(srcBits),
              srcWidth, srcHeight,
-@@ -130,7 +151,11 @@ status_t ColorConverter::convert(
-             dstCropLeft, dstCropTop, dstCropRight, dstCropBottom, mDstFormat);
+@@ -177,7 +198,11 @@ status_t ColorConverter::convert(
+     }
  
      status_t err;
 -
@@ -178,28 +191,10 @@ index 0982006af..6bf460d90 100644
      switch (mSrcFormat) {
          case OMX_COLOR_FormatYUV420Planar:
  #ifdef USE_LIBYUV
-@@ -336,6 +361,8 @@ void ColorConverter::writeToDst(
-         break;
-     }
- }
-+
-+#if !(defined(USE_LIBYUV) && defined(MTK_HARDWARE))
- status_t ColorConverter::convertYUV420Planar(
-         const BitmapParams &src, const BitmapParams &dst) {
-     if (!((src.mCropLeft & 1) == 0
-@@ -417,6 +444,7 @@ status_t ColorConverter::convertYUV420Planar(
- 
-     return OK;
- }
-+#endif
- 
- status_t ColorConverter::convertQCOMYUV420SemiPlanar(
-         const BitmapParams &src, const BitmapParams &dst) {
-@@ -649,4 +677,208 @@ uint8_t *ColorConverter::initClip() {
+@@ -977,4 +1002,208 @@ uint8_t *ColorConverter::initClip() {
      return &mClip[-kClipMin];
  }
  
--}  // namespace android
 +#ifdef MTK_HARDWARE
 +status_t ColorConverter::convertYUVToRGBHW(const BitmapParams &src, const BitmapParams &dst)
 +{
@@ -404,8 +399,7 @@ index 0982006af..6bf460d90 100644
 +}
 +#endif
 +
-+}  // namespace android
-\ No newline at end of file
+ }  // namespace android
 diff --git a/media/libstagefright/colorconversion/inc/DpBlitStream.h b/media/libstagefright/colorconversion/inc/DpBlitStream.h
 new file mode 100644
 index 000000000..cad8f5b4b
@@ -1289,10 +1283,10 @@ index 000000000..a619bc845
 +
 +#endif  // __DP_DATA_TYPE_H__
 diff --git a/media/libstagefright/include/media/stagefright/ColorConverter.h b/media/libstagefright/include/media/stagefright/ColorConverter.h
-index 7ac9b3785..e2b106091 100644
+index 2d061113f..c405b1dc1 100644
 --- a/media/libstagefright/include/media/stagefright/ColorConverter.h
 +++ b/media/libstagefright/include/media/stagefright/ColorConverter.h
-@@ -91,6 +91,12 @@ private:
+@@ -101,6 +101,12 @@ private:
  
      ColorConverter(const ColorConverter &);
      ColorConverter &operator=(const ColorConverter &);
@@ -1306,10 +1300,10 @@ index 7ac9b3785..e2b106091 100644
  
  }  // namespace android
 diff --git a/media/libstagefright/include/media/stagefright/MediaCodec.h b/media/libstagefright/include/media/stagefright/MediaCodec.h
-index 10304077e..fc648d017 100644
+index 7f6aae628..b66bbfe1c 100644
 --- a/media/libstagefright/include/media/stagefright/MediaCodec.h
 +++ b/media/libstagefright/include/media/stagefright/MediaCodec.h
-@@ -58,12 +58,23 @@ using hardware::cas::native::V1_0::IDescrambler;
+@@ -58,6 +58,9 @@ using hardware::cas::native::V1_0::IDescrambler;
  struct MediaCodec : public AHandler {
      enum ConfigureFlags {
          CONFIGURE_FLAG_ENCODE   = 1,
@@ -1319,9 +1313,10 @@ index 10304077e..fc648d017 100644
      };
  
      enum BufferFlags {
-         BUFFER_FLAG_SYNCFRAME   = 1,
-         BUFFER_FLAG_CODECCONFIG = 2,
-         BUFFER_FLAG_EOS         = 4,
+@@ -66,6 +69,14 @@ struct MediaCodec : public AHandler {
+         BUFFER_FLAG_EOS           = 4,
+         BUFFER_FLAG_PARTIAL_FRAME = 8,
+         BUFFER_FLAG_MUXER_DATA    = 16,
 +#ifdef MTK_HARDWARE
 +        BUFFER_FLAG_ENDOFFRAME  = 8,
 +        BUFFER_FLAG_DUMMY       = 16,
@@ -1334,10 +1329,10 @@ index 10304077e..fc648d017 100644
  
      enum {
 diff --git a/services/camera/libcameraservice/api1/CameraClient.cpp b/services/camera/libcameraservice/api1/CameraClient.cpp
-index d85c4c9ae..2513ffa77 100644
+index baadf3270..72af230ec 100644
 --- a/services/camera/libcameraservice/api1/CameraClient.cpp
 +++ b/services/camera/libcameraservice/api1/CameraClient.cpp
-@@ -377,14 +377,12 @@ status_t CameraClient::setPreviewCallbackTarget(
+@@ -384,14 +384,12 @@ status_t CameraClient::setPreviewCallbackTarget(
  
  // start preview mode
  status_t CameraClient::startPreview() {
@@ -1352,7 +1347,7 @@ index d85c4c9ae..2513ffa77 100644
      LOG1("startRecording (pid %d)", getCallingPid());
      return startCameraMode(CAMERA_RECORDING_MODE);
  }
-@@ -392,6 +390,7 @@ status_t CameraClient::startRecording() {
+@@ -399,6 +397,7 @@ status_t CameraClient::startRecording() {
  // start preview or recording
  status_t CameraClient::startCameraMode(camera_mode mode) {
      LOG1("startCameraMode(%d)", mode);
@@ -1360,7 +1355,7 @@ index d85c4c9ae..2513ffa77 100644
      status_t result = checkPidAndHardware();
      if (result != NO_ERROR) return result;
  
-@@ -1040,6 +1039,7 @@ void CameraClient::handleCallbackTimestampBatch(
+@@ -1056,6 +1055,7 @@ void CameraClient::handleCallbackTimestampBatch(
  void CameraClient::handleMtkShutter(int32_t ext2) {
      if (mPlayShutterSound && (ext2 == 1)) {
          sCameraService->playSound(CameraService::SOUND_SHUTTER);

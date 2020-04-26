@@ -1,7 +1,7 @@
-From a486ebe1d29474c9300db337bad9ff23166b0cc5 Mon Sep 17 00:00:00 2001
+From a473f7c1b937dcb0026c2b3b133f4827dab2c11b Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Sat, 3 Mar 2018 20:45:49 +0800
-Subject: [PATCH 04/13] MTK Camera patch
+Subject: [PATCH 1/3] MTK Camera patch
 
 1. libcamera_parameters_mtk in device tree for extra camera parameters.
 2. Add deprecated function definitions which the old blobs required.
@@ -10,19 +10,18 @@ Subject: [PATCH 04/13] MTK Camera patch
 Change-Id: I6063a61adeffd7f296fce9b5ae37a22aa5824e32
 ---
  camera/cameraserver/cameraserver.rc           |  2 +-
- media/libstagefright/foundation/Android.bp    |  1 +
- .../foundation/MediaBufferGroup.cpp           | 10 ++
- .../media/stagefright/MediaBufferGroup.h      | 11 +++
+ media/libmediaextractor/Android.bp            |  1 +
+ .../media/stagefright/MediaBufferGroup.h      |  1 -
  services/camera/libcameraservice/Android.mk   |  2 +-
  .../libcameraservice/api1/CameraClient.cpp    | 94 ++++++++++++++++++-
  .../libcameraservice/api1/CameraClient.h      |  5 +
- 7 files changed, 122 insertions(+), 3 deletions(-)
+ 6 files changed, 101 insertions(+), 4 deletions(-)
 
 diff --git a/camera/cameraserver/cameraserver.rc b/camera/cameraserver/cameraserver.rc
-index fea5a1d5c..08277d674 100644
+index a9aae0b15..46a4a304e 100644
 --- a/camera/cameraserver/cameraserver.rc
 +++ b/camera/cameraserver/cameraserver.rc
-@@ -1,6 +1,6 @@
+@@ -1,7 +1,7 @@
  service cameraserver /system/bin/cameraserver
      class main
      user cameraserver
@@ -30,11 +29,12 @@ index fea5a1d5c..08277d674 100644
 +    group audio camera input drmrpc media
      ioprio rt 4
      writepid /dev/cpuset/camera-daemon/tasks /dev/stune/top-app/tasks
-diff --git a/media/libstagefright/foundation/Android.bp b/media/libstagefright/foundation/Android.bp
-index 221af1d07..ebeb0e16f 100644
---- a/media/libstagefright/foundation/Android.bp
-+++ b/media/libstagefright/foundation/Android.bp
-@@ -37,6 +37,7 @@ cc_library_shared {
+     rlimit rtprio 10 10
+diff --git a/media/libmediaextractor/Android.bp b/media/libmediaextractor/Android.bp
+index b9b47cd60..e183524a2 100644
+--- a/media/libmediaextractor/Android.bp
++++ b/media/libmediaextractor/Android.bp
+@@ -12,6 +12,7 @@ cc_library {
          "-Wno-multichar",
          "-Werror",
          "-Wall",
@@ -42,81 +42,33 @@ index 221af1d07..ebeb0e16f 100644
      ],
  
      shared_libs: [
-diff --git a/media/libstagefright/foundation/MediaBufferGroup.cpp b/media/libstagefright/foundation/MediaBufferGroup.cpp
-index cb62d9291..d757e376c 100644
---- a/media/libstagefright/foundation/MediaBufferGroup.cpp
-+++ b/media/libstagefright/foundation/MediaBufferGroup.cpp
-@@ -32,6 +32,11 @@ constexpr T MIN(const T &a, const T &b) { return a <= b ? a : b; }
- static const size_t kSharedMemoryThreshold = MIN(
-         (size_t)MediaBuffer::kSharedMemThreshold, (size_t)(4 * 1024));
- 
-+#ifdef MTK_HARDWARE
-+MediaBufferGroup::MediaBufferGroup() :
-+    mGrowthLimit(0) {
-+}
-+#endif
- MediaBufferGroup::MediaBufferGroup(size_t growthLimit) :
-     mGrowthLimit(growthLimit) {
- }
-@@ -138,6 +143,11 @@ bool MediaBufferGroup::has_buffers() {
-     return false;
- }
- 
-+#ifdef MTK_HARDWARE
-+status_t MediaBufferGroup::acquire_buffer(MediaBuffer **buffer, bool nonBlocking) {
-+    return acquire_buffer(buffer, nonBlocking, 0);
-+}
-+#endif
- status_t MediaBufferGroup::acquire_buffer(
-         MediaBuffer **out, bool nonBlocking, size_t requestedSize) {
-     Mutex::Autolock autoLock(mLock);
-diff --git a/media/libstagefright/include/media/stagefright/MediaBufferGroup.h b/media/libstagefright/include/media/stagefright/MediaBufferGroup.h
-index 30514062d..d2a7d890f 100644
---- a/media/libstagefright/include/media/stagefright/MediaBufferGroup.h
-+++ b/media/libstagefright/include/media/stagefright/MediaBufferGroup.h
-@@ -29,7 +29,12 @@ class MetaData;
- 
- class MediaBufferGroup : public MediaBufferObserver {
- public:
-+#ifdef MTK_HARDWARE
-+    MediaBufferGroup();
-+    MediaBufferGroup(size_t growthLimit);
-+#else
-     MediaBufferGroup(size_t growthLimit = 0);
-+#endif
- 
-     // create a media buffer group with preallocated buffers
-     MediaBufferGroup(size_t buffers, size_t buffer_size, size_t growthLimit = 0);
-@@ -48,8 +53,14 @@ public:
-     // If requestedSize is 0, any free MediaBuffer will be returned.
-     // If requestedSize is > 0, the returned MediaBuffer should have buffer
+diff --git a/media/libmediaextractor/include/media/stagefright/MediaBufferGroup.h b/media/libmediaextractor/include/media/stagefright/MediaBufferGroup.h
+index 75d5df746..a4c0d1859 100644
+--- a/media/libmediaextractor/include/media/stagefright/MediaBufferGroup.h
++++ b/media/libmediaextractor/include/media/stagefright/MediaBufferGroup.h
+@@ -51,7 +51,6 @@ public:
      // size of at least requstedSize.
-+#ifdef MTK_HARDWARE
-+    status_t acquire_buffer(MediaBuffer **buffer, bool nonBlocking = false);
-+    status_t acquire_buffer(
-+            MediaBuffer **buffer, bool nonBlocking, size_t requestedSize);
-+#else
      status_t acquire_buffer(
-             MediaBuffer **buffer, bool nonBlocking = false, size_t requestedSize = 0);
-+#endif
+             MediaBufferBase **buffer, bool nonBlocking = false, size_t requestedSize = 0);
+-
+     size_t buffers() const;
  
-     size_t buffers() const { return mBuffers.size(); }
- 
+     // If buffer is nullptr, have acquire_buffer() check for remote release.
 diff --git a/services/camera/libcameraservice/Android.mk b/services/camera/libcameraservice/Android.mk
-index 762959430..0708852b9 100644
+index 468688174..fcb0138d0 100644
 --- a/services/camera/libcameraservice/Android.mk
 +++ b/services/camera/libcameraservice/Android.mk
-@@ -95,7 +95,7 @@ LOCAL_C_INCLUDES += \
+@@ -99,7 +99,7 @@ LOCAL_C_INCLUDES += \
  LOCAL_EXPORT_C_INCLUDE_DIRS := \
      frameworks/av/services/camera/libcameraservice
  
 -LOCAL_CFLAGS += -Wall -Wextra -Werror
 +LOCAL_CFLAGS += -Wall -Wextra -Werror -DMTK_HARDWARE
  
- # Workaround for invalid unused-lambda-capture warning http://b/38349491
- LOCAL_CLANG_CFLAGS += -Wno-error=unused-lambda-capture
+ ifeq ($(TARGET_HAS_LEGACY_CAMERA_HAL1),true)
+     LOCAL_CFLAGS += -DNO_CAMERA_SERVER
 diff --git a/services/camera/libcameraservice/api1/CameraClient.cpp b/services/camera/libcameraservice/api1/CameraClient.cpp
-index 48757acdf..d85c4c9ae 100644
+index a5aa4742a..baadf3270 100644
 --- a/services/camera/libcameraservice/api1/CameraClient.cpp
 +++ b/services/camera/libcameraservice/api1/CameraClient.cpp
 @@ -31,6 +31,13 @@ namespace android {
@@ -133,7 +85,7 @@ index 48757acdf..d85c4c9ae 100644
  static int getCallingPid() {
      return IPCThreadState::self()->getCallingPid();
  }
-@@ -98,7 +105,9 @@ status_t CameraClient::initialize(sp<CameraProviderManager> manager) {
+@@ -99,7 +106,9 @@ status_t CameraClient::initialize(sp<CameraProviderManager> manager,
      // Enable zoom, error, focus, and metadata messages by default
      enableMsgType(CAMERA_MSG_ERROR | CAMERA_MSG_ZOOM | CAMERA_MSG_FOCUS |
                    CAMERA_MSG_PREVIEW_METADATA | CAMERA_MSG_FOCUS_MOVE);
@@ -144,7 +96,7 @@ index 48757acdf..d85c4c9ae 100644
      LOG1("CameraClient::initialize X (pid %d, id %d)", callingPid, mCameraId);
      return OK;
  }
-@@ -801,6 +810,9 @@ void CameraClient::disableMsgType(int32_t msgType) {
+@@ -817,6 +826,9 @@ void CameraClient::disableMsgType(int32_t msgType) {
  
  #define CHECK_MESSAGE_INTERVAL 10 // 10ms
  bool CameraClient::lockIfMessageWanted(int32_t msgType) {
@@ -154,7 +106,7 @@ index 48757acdf..d85c4c9ae 100644
      int sleepCount = 0;
      while (mMsgEnabled & msgType) {
          if (mLock.tryLock() == NO_ERROR) {
-@@ -860,6 +872,24 @@ void CameraClient::notifyCallback(int32_t msgType, int32_t ext1,
+@@ -876,6 +888,24 @@ void CameraClient::notifyCallback(int32_t msgType, int32_t ext1,
  
      if (!client->lockIfMessageWanted(msgType)) return;
  
@@ -179,7 +131,7 @@ index 48757acdf..d85c4c9ae 100644
      switch (msgType) {
          case CAMERA_MSG_SHUTTER:
              // ext1 is the dimension of the yuv picture.
-@@ -885,6 +915,46 @@ void CameraClient::dataCallback(int32_t msgType,
+@@ -901,6 +931,46 @@ void CameraClient::dataCallback(int32_t msgType,
          return;
      }
  
@@ -226,7 +178,7 @@ index 48757acdf..d85c4c9ae 100644
      switch (msgType & ~CAMERA_MSG_PREVIEW_METADATA) {
          case CAMERA_MSG_PREVIEW_FRAME:
              client->handlePreviewData(msgType, dataPtr, metadata);
-@@ -965,6 +1035,28 @@ void CameraClient::handleCallbackTimestampBatch(
+@@ -981,6 +1051,28 @@ void CameraClient::handleCallbackTimestampBatch(
      }
  }
  
@@ -256,10 +208,10 @@ index 48757acdf..d85c4c9ae 100644
  void CameraClient::handleShutter(void) {
      if (mPlayShutterSound) {
 diff --git a/services/camera/libcameraservice/api1/CameraClient.h b/services/camera/libcameraservice/api1/CameraClient.h
-index a0d9d0add..641b6a9eb 100644
+index c4ed87600..197e0d951 100644
 --- a/services/camera/libcameraservice/api1/CameraClient.h
 +++ b/services/camera/libcameraservice/api1/CameraClient.h
-@@ -110,6 +110,11 @@ private:
+@@ -111,6 +111,11 @@ private:
      static void             handleCallbackTimestampBatch(
                                      int32_t msgType, const std::vector<HandleTimestampMessage>&, void* user);
      // handlers for messages

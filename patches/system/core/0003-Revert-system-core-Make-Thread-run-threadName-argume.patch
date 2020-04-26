@@ -1,7 +1,7 @@
-From 3ac88a6c3044af1d1ede326b79039f34794a07fa Mon Sep 17 00:00:00 2001
+From da0aef3f0ad8c9d716c58581c10a6f6b7e221315 Mon Sep 17 00:00:00 2001
 From: vishalk17 <vishalkapadi95@gmail.com>
 Date: Sat, 30 Mar 2019 15:43:10 +0000
-Subject: [PATCH 3/5] Revert "system/core: Make Thread::run threadName argument
+Subject: [PATCH 3/4] Revert "system/core: Make Thread::run threadName argument
  required"
 
 This reverts commit e71b9147756ab4da306e4c16461ad23936769603.
@@ -30,10 +30,10 @@ index 2d7e46f9a..679a0c269 100644
  
      if (mRunning) {
 diff --git a/libutils/include/utils/Thread.h b/libutils/include/utils/Thread.h
-index a261fc8d9..0f7ac9fdb 100644
+index 598298de5..fb0a9a7f4 100644
 --- a/libutils/include/utils/Thread.h
 +++ b/libutils/include/utils/Thread.h
-@@ -45,7 +45,7 @@ public:
+@@ -47,7 +47,7 @@ public:
      virtual             ~Thread();
  
      // Start the thread in threadLoop() which needs to be implemented.

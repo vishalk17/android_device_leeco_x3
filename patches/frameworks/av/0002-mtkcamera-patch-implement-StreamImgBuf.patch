@@ -1,7 +1,7 @@
-From 25ab74bba6bdf19cd7dedb633517e49e8e63dae9 Mon Sep 17 00:00:00 2001
+From 21a7a13834c51eca6fdeda5b5cab600336bd3910 Mon Sep 17 00:00:00 2001
 From: vishalk17 <vishalkapadi95@gmail.com>
 Date: Wed, 1 May 2019 06:08:51 +0000
-Subject: [PATCH 05/13] mtkcamera patch : implement StreamImgBuf
+Subject: [PATCH 2/3] mtkcamera patch : implement StreamImgBuf
 
 WIP camera patch.
 
@@ -9,6 +9,8 @@ basically based on @danielhk 's wrapper
 
 althorugh i m unable to save videos and photos
 Change-Id: I0b31721955d149f7355744189e5b3e21a432ee88
+
+Change-Id: I2e7ba128f60e1909a2c2567a9e8658fde0d44c54
 ---
  camera/cameraserver/cameraserver.rc           |   2 +-
  services/camera/libcameraservice/Android.mk   |  12 +-
@@ -25,10 +27,10 @@ Change-Id: I0b31721955d149f7355744189e5b3e21a432ee88
  create mode 100644 services/camera/libcameraservice/api1/StreamImgBuf.h
 
 diff --git a/camera/cameraserver/cameraserver.rc b/camera/cameraserver/cameraserver.rc
-index 08277d674..b51dbc862 100644
+index 46a4a304e..4a73b5983 100644
 --- a/camera/cameraserver/cameraserver.rc
 +++ b/camera/cameraserver/cameraserver.rc
-@@ -1,6 +1,6 @@
+@@ -1,7 +1,7 @@
  service cameraserver /system/bin/cameraserver
      class main
      user cameraserver
@@ -36,8 +38,9 @@ index 08277d674..b51dbc862 100644
 +    group audio camera input drmrpc media system
      ioprio rt 4
      writepid /dev/cpuset/camera-daemon/tasks /dev/stune/top-app/tasks
+     rlimit rtprio 10 10
 diff --git a/services/camera/libcameraservice/Android.mk b/services/camera/libcameraservice/Android.mk
-index 0708852b9..7e5dc55f7 100644
+index fcb0138d0..6bee5d468 100644
 --- a/services/camera/libcameraservice/Android.mk
 +++ b/services/camera/libcameraservice/Android.mk
 @@ -39,6 +39,7 @@ LOCAL_SRC_FILES :=  \
@@ -48,7 +51,7 @@ index 0708852b9..7e5dc55f7 100644
      api2/CameraDeviceClient.cpp \
      device1/CameraHardwareInterface.cpp \
      device3/Camera3Device.cpp \
-@@ -74,6 +75,8 @@ LOCAL_SHARED_LIBRARIES:= \
+@@ -76,6 +77,8 @@ LOCAL_SHARED_LIBRARIES:= \
      libhidltransport \
      libjpeg \
      libmemunreachable \
@@ -57,7 +60,7 @@ index 0708852b9..7e5dc55f7 100644
      android.hardware.camera.common@1.0 \
      android.hardware.camera.provider@2.4 \
      android.hardware.camera.device@1.0 \
-@@ -90,12 +93,17 @@ LOCAL_EXPORT_SHARED_LIBRARY_HEADERS := libbinder libcamera_client libfmq
+@@ -94,12 +97,17 @@ LOCAL_EXPORT_SHARED_LIBRARY_HEADERS := libbinder libcamera_client libfmq
  
  LOCAL_C_INCLUDES += \
      system/media/private/camera/include \
@@ -75,8 +78,8 @@ index 0708852b9..7e5dc55f7 100644
 -LOCAL_CFLAGS += -Wall -Wextra -Werror -DMTK_HARDWARE
 +LOCAL_CFLAGS += -Wall -Wextra -DMTK_HARDWARE
  
- # Workaround for invalid unused-lambda-capture warning http://b/38349491
- LOCAL_CLANG_CFLAGS += -Wno-error=unused-lambda-capture
+ ifeq ($(TARGET_HAS_LEGACY_CAMERA_HAL1),true)
+     LOCAL_CFLAGS += -DNO_CAMERA_SERVER
 diff --git a/services/camera/libcameraservice/api1/CamUtils.h b/services/camera/libcameraservice/api1/CamUtils.h
 new file mode 100644
 index 000000000..db5c63702
@@ -472,7 +475,7 @@ index 000000000..b7b0e591f
 \ No newline at end of file
 diff --git a/services/camera/libcameraservice/api1/StreamImgBuf.cpp b/services/camera/libcameraservice/api1/StreamImgBuf.cpp
 new file mode 100644
-index 000000000..4e66a9136
+index 000000000..1902db8f9
 --- /dev/null
 +++ b/services/camera/libcameraservice/api1/StreamImgBuf.cpp
 @@ -0,0 +1,244 @@
@@ -684,9 +687,9 @@ index 000000000..4e66a9136
 +    MY_LOGD(
 +        "[%s](%s@%dx%d@%d-bit@%d), ion:%d, pBuf/pBufHndl=%p/%p/%p, Stride:%d, Timestamp:%lld",
 +        getBufName(), getImgFormat().string(), getImgWidth(), getImgHeight(),
-+        getBitsPerPixel(), getBufSize(),
++        getBitsPerPixel(), (int)getBufSize(),
 +        mfdIon,
-+        mpBufBase, mpBufHndl, *mpBufHndl, mi4Stride, mi8Timestamp
++        mpBufBase, mpBufHndl, *mpBufHndl, mi4Stride, (long long)mi8Timestamp
 +    );
 +}
 +

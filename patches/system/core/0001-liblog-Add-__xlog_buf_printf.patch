@@ -1,7 +1,7 @@
-From c84180fd1f9b07467d9eea4c045a8527b06ff16c Mon Sep 17 00:00:00 2001
+From d0d2699770d1c36d9a87650c2526a155ac081bbc Mon Sep 17 00:00:00 2001
 From: danielhk <daniel.p6800@gmail.com>
 Date: Fri, 22 Dec 2017 22:59:13 +0800
-Subject: [PATCH 1/5] liblog:Add __xlog_buf_printf()
+Subject: [PATCH 1/4] liblog:Add __xlog_buf_printf()
 
 1. Add __xlog_buf_printf function.
 2. Add a system property to allow suppress all xlog
@@ -10,7 +10,7 @@ Subject: [PATCH 1/5] liblog:Add __xlog_buf_printf()
  1 file changed, 27 insertions(+)
 
 diff --git a/liblog/logger_write.c b/liblog/logger_write.c
-index 84feb206b..c6b54de37 100644
+index 2754e6e74..cf883cfb8 100644
 --- a/liblog/logger_write.c
 +++ b/liblog/logger_write.c
 @@ -34,6 +34,10 @@
@@ -24,7 +24,7 @@ index 84feb206b..c6b54de37 100644
  #define LOG_BUF_SIZE 1024
  
  static int __write_to_log_init(log_id_t, struct iovec* vec, size_t nr);
-@@ -701,3 +705,26 @@ LIBLOG_ABI_PUBLIC int android_get_log_transport() {
+@@ -725,3 +729,26 @@ LIBLOG_ABI_PUBLIC int android_get_log_transport() {
  
    return ret;
  }

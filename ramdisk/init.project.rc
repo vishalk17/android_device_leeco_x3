@@ -1,8 +1,8 @@
 # MTK project .rc configure
 
-import init.mt6795.usb.rc
-import init.modem.rc
-import init.trustonic.rc
+import /vendor/etc/init/hw/init.mt6795.usb.rc
+import /vendor/etc/init/hw/init.modem.rc
+import /vendor/etc/init/hw/init.trustonic.rc
 
 on init
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw

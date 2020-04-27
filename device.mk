@@ -235,18 +235,18 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/ramdisk/enableswap.sh:root/enableswap.sh \
-	$(DEVICE_PATH)/ramdisk/factory_init.project.rc:root/factory_init.project.rc \
-	$(DEVICE_PATH)/ramdisk/factory_init.rc:root/factory_init.rc \
-	$(DEVICE_PATH)/ramdisk/fstab.mt6795:root/fstab.mt6795 \
-	$(DEVICE_PATH)/ramdisk/init.modem.rc:root/init.modem.rc \
-	$(DEVICE_PATH)/ramdisk/init.mt6795.rc:root/init.mt6795.rc \
-	$(DEVICE_PATH)/ramdisk/init.mt6795.usb.rc:root/init.mt6795.usb.rc \
-	$(DEVICE_PATH)/ramdisk/init.project.rc:root/init.project.rc \
-	$(DEVICE_PATH)/ramdisk/ueventd.mt6795.rc:root/ueventd.mt6795.rc \
-	$(DEVICE_PATH)/ramdisk/init.volte.rc:root/init.volte.rc \
-	$(DEVICE_PATH)/ramdisk/init.mal.rc:root/init.mal.rc \
-	$(DEVICE_PATH)/ramdisk/init.trustonic.rc:root/init.trustonic.rc
+	$(DEVICE_PATH)/ramdisk/enableswap.sh:$(TARGET_COPY_OUT_VENDOR)/bin/enableswap.sh \
+	$(DEVICE_PATH)/ramdisk/factory_init.project.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/factory_init.project.rc \
+	$(DEVICE_PATH)/ramdisk/factory_init.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/factory_init.rc \
+	$(DEVICE_PATH)/ramdisk/init.modem.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.modem.rc \
+	$(DEVICE_PATH)/ramdisk/init.mt6795.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.mt6795.rc \
+	$(DEVICE_PATH)/ramdisk/init.mt6795.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.mt6795.usb.rc \
+	$(DEVICE_PATH)/ramdisk/init.project.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.project.rc \
+	$(DEVICE_PATH)/ramdisk/init.volte.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.volte.rc \
+	$(DEVICE_PATH)/ramdisk/init.mal.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.mal.rc \
+	$(DEVICE_PATH)/ramdisk/init.trustonic.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.trustonic.rc \
+ 	$(DEVICE_PATH)/ramdisk/ueventd.mt6795.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc \
+	$(DEVICE_PATH)/ramdisk/fstab.mt6795:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.mt6795
 
 # OpenGL
 PRODUCT_PROPERTY_OVERRIDES += \

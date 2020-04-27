@@ -1,7 +1,7 @@
 import /init.environ.rc
-import init.fon.rc
-import init.trustonic.rc
-import init.nvdata.rc
+import /init.fon.rc
+import /vendor/etc/init/hw/init.trustonic.rc
+import /init.nvdata.rc
 
 
 on early-init
@@ -105,7 +105,7 @@ on late-init
 on fs
 #INTERNAL_START
     write /proc/bootprof "INIT:Mount_START"
-    mount_all /fstab.mt6795
+    mount_all /vendor/etc/fstab.mt6795
     write /proc/bootprof "INIT:Mount_END"
 #INTERNAL_END
 

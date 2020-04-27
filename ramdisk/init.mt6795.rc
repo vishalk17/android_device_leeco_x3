@@ -1,10 +1,11 @@
 # MTK platform .rc configure
 
-import init.project.rc
-import init.volte.rc
-import init.mal.rc
-import init.trustonic.rc
-import init.modem.rc
+import /vendor/etc/init/hw/init.mt6795.usb.rc
+import /vendor/etc/init/hw/init.project.rc
+import /vendor/etc/init/hw/init.volte.rc
+import /vendor/etc/init/hw/init.mal.rc
+import /vendor/etc/init/hw/init.trustonic.rc
+import /vendor/etc/init/hw/init.modem.rc
 
 on late-fs
     # boot time fs tune
@@ -90,7 +91,7 @@ on charger
 # mount different fs start
 on fs
     write /proc/bootprof "INIT:Mount_START"
-    mount_all /fstab.mt6795
+    mount_all /vendor/etc/fstab.mt6795
     exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata
     write /proc/bootprof "INIT:Mount_END"
 
@@ -102,7 +103,7 @@ on fs
 
 on post-fs
     # NVRAM
-    copy /fstab.mt6795 /data/nvram/fstab.mt6795
+    copy /vendor/etc/fstab.mt6795 /data/nvram/fstab.mt6795
 
     # Support legacy paths
     symlink /sdcard /storage/sdcard0

@@ -277,7 +277,6 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/clatd.conf:$(TARGET_COPY_OUT_VENDOR)/etc/clatd.conf \
 	$(DEVICE_PATH)/configs/custom.conf:$(TARGET_COPY_OUT_VENDOR)/etc/custom.conf \
 	$(DEVICE_PATH)/configs/mtklog-config.prop:$(TARGET_COPY_OUT_VENDOR)/etc/mtklog-config.prop \
-	$(DEVICE_PATH)/configs/mtk_omx_core.cfg:system/etc/mtk_omx_core.cfg \
 	$(DEVICE_PATH)/configs/mtk_omx_core.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/mtk_omx_core.cfg \
 	$(DEVICE_PATH)/configs/perfservboosttbl.txt:$(TARGET_COPY_OUT_VENDOR)/etc/perfservboosttbl.txt \
 	$(DEVICE_PATH)/configs/perfservscntbl.txt:$(TARGET_COPY_OUT_VENDOR)/etc/perfservscntbl.txt

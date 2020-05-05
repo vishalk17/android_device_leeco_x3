@@ -166,11 +166,7 @@ PRODUCT_PACKAGES += \
 	muxreport \
 	terservice
 
-PRODUCT_PACKAGES += \
-        libmtk_symbols \
-        mtkc \
-        mtkui \
-        mtklog
+PRODUCT_PACKAGES += libmtk_symbols
 
 # Permissions
 PRODUCT_COPY_FILES += \

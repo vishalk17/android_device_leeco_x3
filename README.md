@@ -1,8 +1,8 @@
-# LeEco Le 1s (x3) * Lineage*15.1 branch (oreo)
+# LeEco Le 1s (x3) : Lineage-16.0 branch (pie)
 
 ==============
 
-This branch is device tree for building Lineage*15.1 branch (oreo) Rom for Leeco 1S(eco).
+This branch is device tree for building Lineage-16.0 branch (pie) Rom for Leeco 1S(eco).
 
 ---
 
@@ -14,35 +14,37 @@ working/ fixes
 
 * bluetooth
 
-* camera : 1. normal pics * broken
-           2. pics with hdr or flashlight *working
-		   3. video recording * working
-
 * wifi / hotspot
 
-* usb tethering
+* usb/bluetooth tethering
 
 * online/offline charging
 
 * lights ( notifications, charging,etc)
 
-* ussd fixed ( thanks to @ibilux )
+* ussd fixed
 
-* graphical glitches and ui fixed ( thanks to @RawMain & TRONX2100 )
+* graphical glitches and ui fixed
 
 * sensors ( other than fp yes)
 
-* gps
-
 * IR sensor
+
+* Added livedisplay 
+
+* USB service fixed : MTP is working
+
+* Fixed black screen  Video output ( although videos are still lagging in some cases )
 
 * overall basic functioning
  
-Bugs :* 
+Bugs :- 
 
-* audio glitches
+* audio output fixed ( bug - audio glitches ) 
 
 * fingerprint broken
+
+* Gps broken ( you will get appox location )
 
 * omx : some youtube  videos may lags
 
@@ -50,3 +52,4 @@ Bugs :*
 
 * others ( may be there are .. )
 
+contributors:-  @WisniaPL, @vishalk17 / @vishalk95, @SscSPs, @joshi3, @SuryashankarDas, @VenkatVishalV, @DarkAbhi, @psycho-source, @SanjayBaby , @danielhk, @dinolek, @rawmain, @ibilux,TRONX2100 ,lbule , DeckerSU and others 

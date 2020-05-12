@@ -137,6 +137,9 @@ WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wmtWifi"
 WIFI_DRIVER_STATE_ON := 1
 WIFI_DRIVER_STATE_OFF := 0
 
+# Others
+BUILD_BROKEN_DUP_RULES := true
+
 # Recovery
 ifeq ($(WITH_TWRP),true)
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/ramdisk/twrp.fstab

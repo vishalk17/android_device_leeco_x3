@@ -360,8 +360,7 @@ PRODUCT_PACKAGES += \
 	libwpa_client \
 	hostapd \
 	wpa_supplicant \
-        wificond \
-        wifilogd
+        wificond
 
 # XML Parser
 PRODUCT_PACKAGES += libxml2

@@ -41,7 +41,7 @@ public class SettingsUtils {
     public static final String CAMERA_FOCUS_FIX_SYSFS =
             "/sys/module/msm_actuator/parameters/use_focus_fix";
     public static final String QUICK_CHARGE_SYSFS =
-            "/sys/class/power_supply/le_ab/le_quick_charge_mode";
+            "/sys/class/power_supply/bq2589x-Wall/disable_quick_charge";
 
     private static final String QC_SYSTEM_PROPERTY = "persist.sys.le_fast_chrg_enable";
 

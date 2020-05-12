@@ -17,7 +17,7 @@
 #include <stdint.h>
 #include <string>
 #include <ui/GraphicBuffer.h>
-#include <gui/BufferQueue.h>
+#include <gui/IGraphicBufferConsumer.h>
 #include <media/stagefright/MediaBuffer.h>
 
 #ifdef __cplusplus

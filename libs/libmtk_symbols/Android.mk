@@ -25,7 +25,16 @@ LOCAL_SRC_FILES_64 := mtk_parcel.cpp
 
 
 LOCAL_SHARED_LIBRARIES := libcutils libbinder libutils liblog libgui libui libc libandroidicu libcrypto libstagefright_foundation libssl libnativeloader libEGL  libGLESv2 libsync libbase libsensor libcam.utils.sensorlistener
-LOCAL_C_INCLUDES += frameworks/av/media/mtp/ system/core/include/ frameworks/rs/server/ frameworks/av/include/ hardware/libhardware/include/ frameworks/native/libs/sensor/include/ frameworks/native/include
+LOCAL_C_INCLUDES += \
+       frameworks/av/media/ndk/include \
+       frameworks/av/media/mtp \
+       frameworks/av/include \
+       frameworks/rs/server \
+       frameworks/native/libs/sensor/include \
+       frameworks/native/include \
+       hardware/libhardware/include \
+       system/core/include \
+
 LOCAL_MODULE := libmtk_symbols
 LOCAL_MODULE_TAGS := optional
 

@@ -134,6 +134,7 @@ ENABLE_VENDOR_RIL_SERVICE := true
 
 # Selinux
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # system.prop
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop

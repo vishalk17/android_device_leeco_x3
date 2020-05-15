@@ -1,0 +1,17 @@
+cc_prebuilt_library_static {
+    arch: {
+        arm: {
+            srcs: [
+                "arm/libdpframework_prot.a",
+            ],
+        },
+        arm64: {
+            srcs: [
+                "arm64/libdpframework_prot.a",
+            ],
+        },
+    },
+    compile_multilib: "both",
+    name: "libdpframework_prot",
+    proprietary: true,
+}

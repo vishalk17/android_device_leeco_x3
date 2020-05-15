@@ -64,4 +64,5 @@ LOCAL_CPPFLAGS += -Wno-c++98-compat-pedantic
 LOCAL_CPPFLAGS += -Wno-four-char-constants
 LOCAL_CPPFLAGS += -Wno-padded
 LOCAL_PROPRIETARY_MODULE = true
+LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 include $(BUILD_SHARED_LIBRARY)

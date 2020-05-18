@@ -1041,12 +1041,6 @@ on property:debug.MB.prdebug=0
 service met_log_d /system/bin/met_log_d
     class main
 
-service bugreport /system/bin/dumpstate -d -p -B -q\
-        -o /data/data/com.android.shell/files/bugreports/bugreport
-	class main
-	disabled
-	oneshot
-
 # IMG GPU init
 service pvrsrvctl /vendor/bin/pvrsrvctl --no-module --start
     class main

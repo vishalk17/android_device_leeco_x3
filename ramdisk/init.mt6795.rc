@@ -37,8 +37,8 @@ export LD_PRELOAD "libmtk_symbols.so"
     chmod 0664 /proc/mtk_battery_cmd/battery_cmd
 
     export USBOTG_STORAGE /storage/usbotg
-    mkdir /protect_f 0771 system system
-    mkdir /protect_s 0771 system system
+    mkdir /mnt/vendor/protect_f 0771 system system
+    mkdir /mnt/vendor/protect_s 0771 system system
     mkdir /system
     mkdir /data 0771 system system
     mkdir /cache 0770 system cache

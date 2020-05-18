@@ -284,10 +284,6 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/perfservboosttbl.txt:$(TARGET_COPY_OUT_VENDOR)/etc/perfservboosttbl.txt \
 	$(DEVICE_PATH)/configs/perfservscntbl.txt:$(TARGET_COPY_OUT_VENDOR)/etc/perfservscntbl.txt
 
-# Mediaserver with system group
-PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/init/mediaserver.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/mediaserver.rc
-
 # Configure jemalloc for low memory
 MALLOC_SVELTE := true
 

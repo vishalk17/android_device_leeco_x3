@@ -74,6 +74,14 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
+BOARD_ROOT_EXTRA_FOLDERS := \
+    protect_f \
+    protect_s
+
+BOARD_ROOT_EXTRA_SYMLINKS := \
+    /mnt/vendor/protect_f:/protect_f \
+    /mnt/vendor/protect_s:/protect_s
+
 # Display
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080

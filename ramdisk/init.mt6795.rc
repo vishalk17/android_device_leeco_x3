@@ -34,7 +34,7 @@ on init
 export LD_PRELOAD "libmtk_symbols.so"
 
     # Support legacy paths
-    symlink /sdcard /mnt/sdcard
+    #symlink /sdcard /mnt/sdcard
 
     # if primary storage is physical, set ro.vold.primary_physical to 1
     # setprop ro.vold.primary_physical 1
@@ -58,7 +58,7 @@ export LD_PRELOAD "libmtk_symbols.so"
 
     chmod 0666 /dev/kmsg
 
-    mkdir /mnt/cd-rom 0000 system system
+    #mkdir /mnt/cd-rom 0000 system system
 
     write /proc/sys/net/core/wmem_max 1572864
     write /proc/sys/net/core/rmem_max 1572864
@@ -107,7 +107,7 @@ on fs
 
 on fs
 
-   mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
+   #mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
 
 on post-fs
     # NVRAM

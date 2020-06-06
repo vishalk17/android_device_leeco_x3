@@ -25,7 +25,6 @@ allow radio zygote:unix_stream_socket { getopt getattr };
 # Operation : Migration
 # Purpose : for mtkrild and viarild
 allow radio mtkrild:unix_stream_socket connectto;
-allow radio mtkrildmd2:unix_stream_socket connectto;
 allow radio statusd:unix_stream_socket connectto;
 
 # Date : WK14.38 2014/09/16

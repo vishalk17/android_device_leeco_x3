@@ -47,7 +47,7 @@ allow tunman appdomain:fd use;
 allow tunman appdomain:{ tcp_socket udp_socket } { read write };
 
 # Needed for socket re-tagging
-allow tunman qtaguid_proc:file { open write };
+#allow tunman qtaguid_proc:file { open write };
 
 #
 #allow tunman socket_device:dir { search write add_name remove_name};

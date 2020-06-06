@@ -181,7 +181,7 @@ allow system_server save_locale_prop:property_service set;
 # Date: WK14.47
 # Operation : Sanity
 # Purpose : for avoid SELinux warning after dex2oat execv failed
-allow system_server dex2oat_exec:file r_file_perms;
+
 
 # Date: WK14.47
 # Operation : Sanity

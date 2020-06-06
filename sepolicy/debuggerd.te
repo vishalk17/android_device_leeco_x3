@@ -40,7 +40,7 @@ allow debuggerd gpu_device:chr_file rw_file_perms;
 allow debuggerd exm0_device:chr_file r_file_perms;
 
 allow debuggerd shell_exec:file { execute execute_no_trans };
-allow debuggerd dex2oat_exec:file { execute execute_no_trans };
+#allow debuggerd dex2oat_exec:file { execute execute_no_trans };
 
 #data/anr
 allow debuggerd anr_data_file:dir create_dir_perms;

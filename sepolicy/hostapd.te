@@ -1,6 +1,10 @@
 # ====================================
 # MTK Policy Rule
 # ====================================
+type hostapd, domain;
+type hostapd_exec, exec_type, file_type;
+
+net_domain(hostapd)
 
 # Date: 2014/09/15
 # Operation: [Pre-SQC] Hotspot Manager cannot communicate with framework

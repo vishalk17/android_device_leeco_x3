@@ -103,6 +103,9 @@ BOARD_BLUE_LED_PATH := "/sys/class/leds/blue"
 # Offline charging
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/BOOT/BOOT/boot/boot_mode
 
+# FS_CONFIG
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
+
 # HIDL Manifest & Compatibility_matrix
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/compatibility_matrix.xml
@@ -146,6 +149,10 @@ WIFI_DRIVER_STATE_OFF := 0
 
 # Others
 BUILD_BROKEN_DUP_RULES := true
+BOARD_ROOT_EXTRA_FOLDERS := \
+    protect_f \
+    protect_s \
+    custom
 
 # Recovery
 ifeq ($(WITH_TWRP),true)

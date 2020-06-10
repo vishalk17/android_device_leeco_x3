@@ -819,6 +819,29 @@ on post-fs-data
 # End of adding by MTK drivers
 # -----------------------
 
+    rm /data/debug.logcat.txt
+    rm /data/debug.logcat.txt
+
+service debug_kernel /system/bin/sh -c "cat /proc/kmsg > /data/debug.kernel.txt"
+    class main
+    user root
+    oneshot
+
+service debug_logcat /system/bin/logcat -f /data/debug.logcat.txt -v threadtime
+    class main
+    user root
+    group system
+
+service debug_properties /system/bin/sh -c "getprop > /data/debug.properties.txt"
+    class main
+    user root
+    oneshot
+
+service debug_roottree /system/bin/sh -c "ls -la / > /data/debug.roottree.txt"
+    class main
+    user root
+    oneshot
+
 on boot
 
     chown root /remount.sh

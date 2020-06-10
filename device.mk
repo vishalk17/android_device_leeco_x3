@@ -341,3 +341,6 @@ PRODUCT_PACKAGES += \
 
 # XML Parser
 PRODUCT_PACKAGES += libxml2
+
+# UNWIND
+PRODUCT_PACKAGES += libunwind

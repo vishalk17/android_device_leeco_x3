@@ -15,7 +15,8 @@ LOCAL_SRC_FILES := \
         sensorlistener/ISensorServer.cpp \
         sensorlistener/SensorManager.cpp \
         CameraParameters.cpp \
-        bionic/pthread_mutex_destroy.cpp
+        bionic/pthread_mutex_destroy.cpp \
+        xlog.c
 
 # only for 32bit libraries
 LOCAL_SRC_FILES_32 := mtk_string.cpp

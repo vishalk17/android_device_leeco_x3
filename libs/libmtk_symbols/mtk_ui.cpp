@@ -24,16 +24,6 @@ extern "C" {
         _ZN7android19GraphicBufferMapper9lockYCbCrEPK13native_handlejRKNS_4RectEP13android_ycbcr(handle, static_cast<uint32_t>(usage), bounds, ycbcr);
     }
 
-    void _ZN7android19GraphicBufferMapper4lockEPK13native_handlejRKNS_4RectEPPv(buffer_handle_t, uint32_t, const android::Rect&, void**);
-
-//    void _ZN7android19GraphicBufferMapper4lockEPK13native_handleiRKNS_4RectEPPv(buffer_handle_t handle, int usage, const android::Rect& bounds, void** vaddr) {
- //       _ZN7android19GraphicBufferMapper4lockEPK13native_handlejRKNS_4RectEPPv(handle, static_cast<uint32_t>(usage), bounds, vaddr);
-   // }
-
-    /* void _ZN7android13GraphicBufferC1EjjijNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE(
-            uint32_t inWidth, uint32_t inHeight, android::PixelFormat inFormat,
-            uint32_t inUsage, std::string requestorName); */
-
 //#ifdef FRAMEWORK_NATIVE_NOT_SUPPORT_OLD_BUFFER_REQ
     void _ZN7android13GraphicBufferC1Ejjij(void *instance, uint32_t inWidth, uint32_t inHeight, android::PixelFormat inFormat, uint32_t inUsage) {
                                                         // uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat, uint32_t inUsage
@@ -79,5 +69,16 @@ extern "C" {
 
     void _ZN7android5Fence4waitEj(unsigned int timeout) {
         _ZN7android5Fence4waitEi(static_cast<int>(timeout));
+    }
+}
+
+namespace android {
+    extern "C" void _ZN7android19GraphicBufferMapper4lockEPK13native_handlejRKNS_4RectEPPvPiS9_(buffer_handle_t handle, int usage, const android::Rect& bounds,
+                                                                                     void** vaddr, int32_t* outBytesPerPixel,
+                                                                                     int32_t* outBytesPerStride);
+
+    extern "C" void _ZN7android19GraphicBufferMapper4lockEPK13native_handlejRKNS_4RectEPPv(buffer_handle_t handle,
+                                                                                           uint32_t usage, const android::Rect& bounds, void** vaddr) {
+         _ZN7android19GraphicBufferMapper4lockEPK13native_handlejRKNS_4RectEPPvPiS9_(handle, static_cast<uint32_t>(usage), bounds, vaddr, nullptr, nullptr);
     }
 }

@@ -12,6 +12,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 -include $(DEVICE_PATH)/hidl.mk
 
+# APEX
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.apex.updatable=false
+
 # AAPT
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi 420dpi xxxhdpi
 PRODUCT_AAPT_PREF_CONFIG := 420dpi

@@ -119,6 +119,15 @@ BOARD_PROVIDES_LIBRIL := true
 BOARD_CONNECTIVITY_MODULE := conn_soc
 ENABLE_VENDOR_RIL_SERVICE := true
 
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /system/vendor/lib/libdpframework.so|libmtk_symbols.so \
+    /system/vendor/lib64/libdpframework.so|libmtk_symbols.so \
+    /system/vendor/lib/hwcomposer.mt6795.so|libmtk_symbols.so \
+    /system/vendor/lib64/hwcomposer.mt6795.so|libmtk_symbols.so \
+    /system/vendor/lib/egl/libGLESv2_mtk.so|libmtk_symbols.so \
+    /system/vendor/lib64/egl/libGLESv2_mtk.so|libmtk_symbols.so
+
 # Selinux
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 SELINUX_IGNORE_NEVERALLOWS := true

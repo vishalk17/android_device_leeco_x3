@@ -31,8 +31,6 @@ on init
 #Create nvdata mount point
     mkdir /nvdata 0771 root system
 
-export LD_PRELOAD "libmtk_symbols.so"
-
     # Support legacy paths
     #symlink /sdcard /mnt/sdcard
 

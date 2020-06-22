@@ -125,8 +125,6 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib64/libdpframework.so|libmtk_symbols.so \
     /system/vendor/lib/hwcomposer.mt6795.so|libmtk_symbols.so \
     /system/vendor/lib64/hwcomposer.mt6795.so|libmtk_symbols.so \
-    /system/vendor/lib/egl/libGLESv2_mtk.so|libmtk_symbols.so \
-    /system/vendor/lib64/egl/libGLESv2_mtk.so|libmtk_symbols.so \
     /system/vendor/lib/libBnMtkCodec.so|libmtk_symbols.so \
     /system/vendor/lib64/libBnMtkCodec.so|libmtk_symbols.so \
     /system/vendor/lib/hw/audio.primary.mt6795.so|libmtk_symbols.so \

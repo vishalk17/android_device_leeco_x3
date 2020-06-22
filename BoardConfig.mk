@@ -129,6 +129,10 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib64/egl/libGLESv2_mtk.so|libmtk_symbols.so \
     /system/vendor/lib/libBnMtkCodec.so|libmtk_symbols.so \
     /system/vendor/lib64/libBnMtkCodec.so|libmtk_symbols.so \
+    /system/vendor/lib/libcam_utils.so|libutilscallstack.so \
+    /system/vendor/lib64/libcam_utils.so|libutilscallstack.so \
+    /system/vendor/lib/libsrv_um.so|libutilscallstack.so \
+    /system/vendor/lib64/libsrv_um.so|libutilscallstack.so \
     /system/vendor/bin/guiext-server|libmtk_symbols.so \
     /system/vendor/xbin/mnld|libmtk_symbols.so
 

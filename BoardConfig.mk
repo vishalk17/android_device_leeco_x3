@@ -127,8 +127,8 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib64/hwcomposer.mt6795.so|libmtk_symbols.so \
     /system/vendor/lib/libBnMtkCodec.so|libmtk_symbols.so \
     /system/vendor/lib64/libBnMtkCodec.so|libmtk_symbols.so \
-    /system/vendor/lib/hw/audio.primary.mt6795.so|libmtk_symbols.so|libutilscallstack.so \
-    /system/vendor/lib64/hw/audio.primary.mt6795.so|libmtk_symbols.so|libutilscallstack.so \
+    /system/vendor/lib/hw/audio.primary.mt6795.so|libutilscallstack.so \
+    /system/vendor/lib64/hw/audio.primary.mt6795.so|libutilscallstack.so \
     /system/vendor/lib/libcam_utils.so|libutilscallstack.so \
     /system/vendor/lib64/libcam_utils.so|libutilscallstack.so \
     /system/vendor/lib/libsrv_um.so|libutilscallstack.so \

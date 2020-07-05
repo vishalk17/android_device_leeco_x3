@@ -174,7 +174,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	muxreport \
-	terservice
+	terservice \
+        mtkc
 
 PRODUCT_PACKAGES += libmtk_symbols
 

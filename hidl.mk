@@ -51,11 +51,11 @@ PRODUCT_PACKAGES += \
 
 #USB HAL
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.basic
+    android.hardware.usb@1.0-service
 
 # Omx
-PRODUCT_PACKAGES += \
-    android.hardware.media.omx@1.0
+#PRODUCT_PACKAGES += \
+#    android.hardware.media.omx@1.0
 
 # Keymaster HIDL
 PRODUCT_PACKAGES += \
@@ -102,5 +102,4 @@ PRODUCT_PACKAGES += \
 # Ril
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.0 \
-    android.hardware.radio@1.1 \
     android.hardware.radio.deprecated@1.0

@@ -5,6 +5,7 @@ gettid: 1
 sendto: 1
 pselect6: 1
 eventfd2: 1
+eventfd4: 1
 getsockopt: 1
 sched_getparam: 1
 sched_getscheduler: 1

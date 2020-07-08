@@ -54,8 +54,8 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
 
 # Omx
-#PRODUCT_PACKAGES += \
-#    android.hardware.media.omx@1.0
+PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0
 
 # Keymaster HIDL
 PRODUCT_PACKAGES += \
@@ -96,8 +96,8 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service
 
 # Fingerprint
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.0-service
+#PRODUCT_PACKAGES += \
+#    android.hardware.biometrics.fingerprint@2.0-service
 
 # Ril
 PRODUCT_PACKAGES += \

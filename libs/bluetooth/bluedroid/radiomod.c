@@ -94,6 +94,9 @@ static BOOL GORMcmd_HCC_Set_BLEPTA(HC_BT_HDR *);
 static BOOL GORMcmd_HCC_Set_Internal_PTA_1(HC_BT_HDR *);
 static BOOL GORMcmd_HCC_Set_Internal_PTA_2(HC_BT_HDR *);
 static BOOL GORMcmd_HCC_Set_RF_Reg_100(HC_BT_HDR *);
+static BOOL GORMcmd_HCC_Coex_Bt_Ctrl(HC_BT_HDR *);
+static BOOL GORMcmd_HCC_Coex_Opp_Time_Ratio(HC_BT_HDR *);
+static BOOL GORMcmd_HCC_Coex_Lescan_Time_Ratio(HC_BT_HDR *);
 static BOOL GORMcmd_HCC_RESET(HC_BT_HDR *);
 static BOOL GORMcmd_HCC_Set_SSP_Debug_Mode(HC_BT_HDR *);
 
@@ -174,6 +177,22 @@ HCI_SEQ_T bt_init_preload_script_connac[] =
     {  GORMcmd_HCC_RESET                   }, /*0x0C03*/
     {  GORMcmd_HCC_Set_PIP                 }, /*0xFCC5*/
     {  GORMcmd_HCC_Set_SSP_Debug_Mode      }, /*0x1804*/
+    {  0  },
+};
+
+HCI_SEQ_T bt_init_preload_script_connac20[] =
+{
+    {  GORMcmd_HCC_Set_Local_BD_Addr       }, /*0xFC1A*/
+    {  GORMcmd_HCC_Set_Radio               }, /*0xFC79*/
+    {  GORMcmd_HCC_Set_TX_Power_Offset     }, /*0xFC93*/
+    {  GORMcmd_HCC_Set_Sleep_Timeout       }, /*0xFC7A*/
+    {  GORMcmd_HCC_RESET                   }, /*0x0C03*/
+    {  GORMcmd_HCC_Set_PIP                 }, /*0xFCC5*/
+    {  GORMcmd_HCC_Set_SSP_Debug_Mode      }, /*0x1804*/
+    /* co-exist cmd are set by init script after connac20 */
+    {  GORMcmd_HCC_Coex_Bt_Ctrl            }, /*0xFCFB*/
+    {  GORMcmd_HCC_Coex_Opp_Time_Ratio     }, /*0xFCFB*/
+    {  GORMcmd_HCC_Coex_Lescan_Time_Ratio  }, /*0xFCFB*/
     {  0  },
 };
 
@@ -963,6 +982,93 @@ static BOOL GORMcmd_HCC_Set_RF_Reg_100(HC_BT_HDR *p_cmd)
     return ret;
 }
 
+static BOOL GORMcmd_HCC_Coex_Bt_Ctrl(HC_BT_HDR *p_cmd)
+{
+    uint8_t *p, ret;
+    wOpCode = 0xFCFB;
+
+    p_cmd->len = 7;
+    p = (uint8_t *)(p_cmd + 1);
+    UINT16_TO_STREAM(p, wOpCode);
+    *p++ = 4;
+
+    /* HCI cmd params */
+    *p++ = 0x1E;
+    *p++ = btinit->fw_conf_para.coex_bt_ctrl;
+    *p++ = btinit->fw_conf_para.coex_bt_ctrl_mode;
+    *p++ = btinit->fw_conf_para.coex_bt_ctrl_rw;
+
+    LOG_DBG("GORMcmd_HCC_Coex_Bt_Ctrl\n");
+
+    if (bt_vnd_cbacks) {
+        ret = bt_vnd_cbacks->xmit_cb(wOpCode, p_cmd, GORMevt_HCE_Common_Complete);
+    }
+    else {
+        LOG_ERR("No HCI packet transmit callback\n");
+        ret = FALSE;
+    }
+
+    return ret;
+}
+
+static BOOL GORMcmd_HCC_Coex_Opp_Time_Ratio(HC_BT_HDR *p_cmd)
+{
+    uint8_t *p, ret;
+    wOpCode = 0xFCFB;
+
+    p_cmd->len = 7;
+    p = (uint8_t *)(p_cmd + 1);
+    UINT16_TO_STREAM(p, wOpCode);
+    *p++ = 4;
+
+    /* HCI cmd params */
+    *p++ = 0x1F;
+    *p++ = btinit->fw_conf_para.coex_opp_time_ratio;
+    *p++ = btinit->fw_conf_para.coex_opp_time_ratio_bt_slot;
+    *p++ = btinit->fw_conf_para.coex_opp_time_ratio_wifi_slot;
+
+    LOG_DBG("GORMcmd_HCC_Coex_Opp_Time_Ratio\n");
+
+    if (bt_vnd_cbacks) {
+        ret = bt_vnd_cbacks->xmit_cb(wOpCode, p_cmd, GORMevt_HCE_Common_Complete);
+    }
+    else {
+        LOG_ERR("No HCI packet transmit callback\n");
+        ret = FALSE;
+    }
+
+    return ret;
+}
+
+static BOOL GORMcmd_HCC_Coex_Lescan_Time_Ratio(HC_BT_HDR *p_cmd)
+{
+    uint8_t *p, ret;
+    wOpCode = 0xFCFB;
+
+    p_cmd->len = 7;
+    p = (uint8_t *)(p_cmd + 1);
+    UINT16_TO_STREAM(p, wOpCode);
+    *p++ = 4;
+
+    /* HCI cmd params */
+    *p++ = 0x20;
+    *p++ = btinit->fw_conf_para.coex_lescan_time_ratio;
+    *p++ = btinit->fw_conf_para.coex_lescan_time_ratio_bt_slot;
+    *p++ = btinit->fw_conf_para.coex_lescan_time_ratio_wifi_slot;
+
+    LOG_DBG("GORMcmd_HCC_Coex_Lescan_Time_Ratio\n");
+
+    if (bt_vnd_cbacks) {
+        ret = bt_vnd_cbacks->xmit_cb(wOpCode, p_cmd, GORMevt_HCE_Common_Complete);
+    }
+    else {
+        LOG_ERR("No HCI packet transmit callback\n");
+        ret = FALSE;
+    }
+
+    return ret;
+}
+
 static BOOL GORMcmd_HCC_RESET(HC_BT_HDR *p_cmd)
 {
     uint8_t *p, ret;
@@ -1028,6 +1134,33 @@ static BOOL GORMcmd_HCC_Set_SSP_Debug_Mode(HC_BT_HDR *p_cmd)
     return ret;
 }
 
+static BOOL GORMcmd_HCC_Fw_Cfg_Cmd(HC_BT_HDR *p_cmd)
+{
+    uint8_t *p, ret, i;
+    wOpCode = (btinit->fw_conf_cmd[1] << 8) + btinit->fw_conf_cmd[0];
+
+    p_cmd->len = 3 + btinit->fw_conf_cmd[2];
+    p = (uint8_t *)(p_cmd + 1);
+    *p++ = btinit->fw_conf_cmd[0]; // opcode
+    *p++ = btinit->fw_conf_cmd[1]; // opcode
+    *p++ = btinit->fw_conf_cmd[2]; // parameter length
+    for(i = 3; i < (btinit->fw_conf_cmd[2] + 3); i++) {
+        *p++ = btinit->fw_conf_cmd[i]; // parameter
+    }
+
+    LOG_DBG("GORMcmd_HCC_Fw_Cfg_Cmd\n");
+
+    if (bt_vnd_cbacks) {
+        ret = bt_vnd_cbacks->xmit_cb(wOpCode, p_cmd, GORMevt_HCE_Common_Complete);
+    }
+    else {
+        LOG_ERR("No HCI packet transmit callback\n");
+        ret = FALSE;
+    }
+
+    return ret;
+}
+
 static VOID GORMevt_HCE_Common_Complete(VOID *p_evt)
 {
     HC_BT_HDR *p_buf = (HC_BT_HDR *)p_evt;
@@ -1077,41 +1210,187 @@ VOID notify_thread_exit(VOID)
     pthread_mutex_unlock(&btinit_ctrl.mutex);
 }
 
-VOID *GORM_FW_Init_Thread(UNUSED_ATTR VOID *ptr)
+BOOL _parse_cmd(const char* line, char *cmd_buf) {
+    char *key = NULL;
+    char *tmp = NULL;
+	int i = 0;
+
+    if(line[0] == '#') {
+        return FALSE;
+    }
+    key = strsep(&line, ":");
+    if (key == NULL || line == NULL) {
+        return FALSE;
+    }
+    if(strcmp(key, "VENDOR_CMD") != 0) {
+        return FALSE;
+    }
+
+    LOG_DBG("%s: %s", __func__, line);
+    tmp = strsep(&line, " ");  // first whitespace
+    while(tmp != NULL && line != NULL && line[0] != ' ') {
+        tmp = strsep(&line, " ");
+        cmd_buf[i] = (UCHAR)strtol(tmp, NULL, 16);
+        i++;
+    }
+    return TRUE;
+}
+
+void _parse_para(const char* line) {
+    char* key = NULL;
+    UCHAR val = 0;
+    if(line[0] == '#') {
+        return;
+    }
+    key = strsep(&line, ":");
+    if (key != NULL && line != NULL) {
+        val = (UCHAR)strtol(line, NULL, 16);
+        if(strcmp(key, "coex_bt_ctrl") == 0) {
+            btinit->fw_conf_para.coex_bt_ctrl = val;
+        } else if(strcmp(key, "coex_bt_ctrl_mode") == 0) {
+            btinit->fw_conf_para.coex_bt_ctrl_mode = val;
+        } else if(strcmp(key, "coex_bt_ctrl_rw") == 0) {
+            btinit->fw_conf_para.coex_bt_ctrl_rw = val;
+        } else if(strcmp(key, "coex_opp_time_ratio") == 0) {
+            btinit->fw_conf_para.coex_opp_time_ratio = val;
+        } else if(strcmp(key, "coex_opp_time_ratio_bt_slot") == 0) {
+            btinit->fw_conf_para.coex_opp_time_ratio_bt_slot = val;
+        } else if(strcmp(key, "coex_opp_time_ratio_wifi_slot") == 0) {
+            btinit->fw_conf_para.coex_opp_time_ratio_wifi_slot = val;
+        } else if(strcmp(key, "coex_lescan_time_ratio") == 0) {
+            btinit->fw_conf_para.coex_lescan_time_ratio = val;
+        } else if(strcmp(key, "coex_lescan_time_ratio_bt_slot") == 0) {
+            btinit->fw_conf_para.coex_lescan_time_ratio_bt_slot = val;
+        } else if(strcmp(key, "coex_lescan_time_ratio_wifi_slot") == 0) {
+            btinit->fw_conf_para.coex_lescan_time_ratio_wifi_slot = val;
+        }
+    }
+}
+
+int parse_fw_cfg_para(void) {
+    FILE *fp = fopen(BT_FW_CFG_FILE, "r");
+    char *line = NULL;
+    size_t len = 0;
+    ssize_t read = 0;
+
+    if(fp == NULL) {
+        LOG_ERR("Unable to open %s!", BT_FW_CFG_FILE);
+        return -1;
+    }
+
+    while((read = getline(&line, &len, fp)) != -1) {
+        //LOG_DBG("read[%zd], len[%zd], strlen[%zd] %s\n", read, len, strlen(line), line);
+        _parse_para(line);
+    }
+    fclose(fp);
+    free(line);
+
+    LOG_DBG("btinit.fw_conf_para.coex_bt_ctrl = 0x%02x\n", btinit->fw_conf_para.coex_bt_ctrl);
+    LOG_DBG("btinit.fw_conf_para.coex_bt_ctrl_mode = 0x%02x\n", btinit->fw_conf_para.coex_bt_ctrl_mode);
+    LOG_DBG("btinit.fw_conf_para.coex_bt_ctrl_rw = 0x%02x\n", btinit->fw_conf_para.coex_bt_ctrl_rw);
+    LOG_DBG("btinit.fw_conf_para.coex_opp_time_ratio = 0x%02x\n", btinit->fw_conf_para.coex_opp_time_ratio);
+    LOG_DBG("btinit.fw_conf_para.coex_opp_time_ratio_bt_slot = 0x%02x\n", btinit->fw_conf_para.coex_opp_time_ratio_bt_slot);
+    LOG_DBG("btinit.fw_conf_para.coex_opp_time_ratio_wifi_slot = 0x%02x\n", btinit->fw_conf_para.coex_opp_time_ratio_wifi_slot);
+    LOG_DBG("btinit.fw_conf_para.coex_lescan_time_ratio = 0x%02x\n", btinit->fw_conf_para.coex_lescan_time_ratio);
+    LOG_DBG("btinit.fw_conf_para.coex_lescan_time_ratio_bt_slot = 0x%02x\n", btinit->fw_conf_para.coex_lescan_time_ratio_bt_slot);
+    LOG_DBG("btinit.fw_conf_para.coex_lescan_time_ratio_wifi_slot = 0x%02x\n", btinit->fw_conf_para.coex_lescan_time_ratio_wifi_slot);
+    return 0;
+}
+
+BOOL process_cmd_rsp(HCI_CMD_FUNC_T func)
 {
-    INT32 i = 0;
     HC_BT_HDR  *p_buf = NULL;
-    bt_vendor_op_result_t ret = BT_VND_OP_RESULT_FAIL;
-    char bt_syslog_val[PROPERTY_VALUE_MAX];
-    char bt_ssp_debug_val[PROPERTY_VALUE_MAX];
-    char bt_pip_val[PROPERTY_VALUE_MAX];
     int rc = 0;
     struct timespec ts;
 
-    LOG_DBG("FW init thread starts\n");
+    pthread_mutex_lock(&btinit_ctrl.mutex);
+    if (cmd_status != CMD_TERMINATE) {
+        cmd_status = CMD_PENDING;
+        pthread_mutex_unlock(&btinit_ctrl.mutex);
+    } else {
+        pthread_mutex_unlock(&btinit_ctrl.mutex);
+        return FALSE;
+    }
 
-    pthread_mutexattr_init(&btinit_ctrl.attr);
-    pthread_mutexattr_settype(&btinit_ctrl.attr, PTHREAD_MUTEX_ERRORCHECK);
-    pthread_mutex_init(&btinit_ctrl.mutex, &btinit_ctrl.attr);
-    pthread_condattr_init(&btinit_ctrl.condattr);
-    pthread_condattr_setclock(&btinit_ctrl.condattr, CLOCK_MONOTONIC);
-    pthread_cond_init(&btinit_ctrl.cond, &btinit_ctrl.condattr);
+    if (bt_vnd_cbacks) {
+        p_buf = (HC_BT_HDR *)bt_vnd_cbacks->alloc(BT_HC_HDR_SIZE + HCI_CMD_MAX_SIZE);
+    } else {
+        LOG_ERR("No libbt-hci callbacks!\n");
+        return FALSE;
+    }
+
+    if (p_buf) {
+        p_buf->event = MSG_STACK_TO_HC_HCI_CMD;
+        p_buf->offset = 0;
+        p_buf->layer_specific = 0;
+
+        if (func(p_buf) == FALSE) {
+            LOG_ERR("Send command fails\n");
+            if (bt_vnd_cbacks) {
+                bt_vnd_cbacks->dealloc(p_buf);
+            }
+            return FALSE;
+        }
+    } else {
+        LOG_ERR("Alloc command buffer fails\n");
+        return FALSE;
+    }
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    ts.tv_sec += WAIT_TIME_SECONDS;
+
+    /* Wait for event returned */
+    pthread_mutex_lock(&btinit_ctrl.mutex);
+    while (cmd_status == CMD_PENDING) {
+        rc = pthread_cond_timedwait(&btinit_ctrl.cond, &btinit_ctrl.mutex, &ts);
+        if (rc == ETIMEDOUT) {
+            LOG_DBG("command timedout, trigger assert\n");
+            mtk_set_fw_assert(((UINT32)wOpCode << 16) | 31);
+            cmd_status = CMD_FAIL;
+            return FALSE;
+        }
+    }
+
+    if (cmd_status == CMD_SUCCESS) {
+        LOG_DBG("Receive success event\n");
+        pthread_mutex_unlock(&btinit_ctrl.mutex);
+        return TRUE;
+    } else if (cmd_status == CMD_FAIL) {
+        LOG_ERR("Receive error event\n");
+        pthread_mutex_unlock(&btinit_ctrl.mutex);
+        return FALSE;
+    } else {
+        LOG_WAN("FW init thread is forced to exit\n");
+        //cmd_status = CMD_SUCCESS; /* restore the global variable for next time */
+        pthread_mutex_unlock(&btinit_ctrl.mutex);
+        return FALSE;
+    }
+}
+
+VOID *GORM_FW_Init_Thread(UNUSED_ATTR VOID *ptr)
+{
+    INT32 i = 0;
+    bt_vendor_op_result_t ret = BT_VND_OP_RESULT_FAIL;
+    char bt_ssp_debug_val[PROPERTY_VALUE_MAX];
+    char bt_pip_val[PROPERTY_VALUE_MAX];
+
+    LOG_DBG("FW init thread starts\n");
+    parse_fw_cfg_para();
 
     /* preload init script */
     switch (btinit->chip_id) {
       case 0x6628:
         btinit->cur_script = bt_init_preload_script_6628;
-        btinit->chip_type = BT_COMBO;
+        btinit->chip_type = BT_EXT_COMBO;
         memcpy(ucDefaultAddr, stBtDefault_6628.addr, 6);
         break;
       case 0x6630:
         btinit->cur_script = bt_init_preload_script_6630;
-        btinit->chip_type = BT_COMBO;
+        btinit->chip_type = BT_EXT_COMBO;
         memcpy(ucDefaultAddr, stBtDefault_6630.addr, 6);
         break;
       case 0x6632:
         btinit->cur_script = bt_init_preload_script_6632;
-        btinit->chip_type = BT_COMBO;
+        btinit->chip_type = BT_EXT_COMBO;
         memcpy(ucDefaultAddr, stBtDefault_6632.addr, 6);
         break;
       case 0x8163:
@@ -1125,6 +1404,7 @@ VOID *GORM_FW_Init_Thread(UNUSED_ATTR VOID *ptr)
       case 0x0337:
       case 0x6580:
       case 0x6570:
+      case 0x6735:
       case 0x6755:
       case 0x6797:
       case 0x6757:
@@ -1142,12 +1422,31 @@ VOID *GORM_FW_Init_Thread(UNUSED_ATTR VOID *ptr)
       case 0x6765:
       case 0x3967:
       case 0x6761:
+      case 0x6768:
+      case 0x6785:
         LOG_WAN("CONNAC chip id: %04x\n", btinit->chip_id);
         btinit->cur_script = bt_init_preload_script_connac;
         btinit->chip_type = BT_CONNAC;
-        memcpy(ucDefaultAddr, stBtDefault_connac.addr, 6);
+        memcpy(ucDefaultAddr, stBtDefault_connac_soc_1_0.addr, 6);
         break;
-
+      case 0x6779:
+        LOG_WAN("CONNAC chip id: %04x\n", btinit->chip_id);
+        btinit->cur_script = bt_init_preload_script_connac;
+        btinit->chip_type = BT_CONNAC;
+        #ifdef MTK_CONSYS_ADIE_6631
+          LOG_WAN("Use connsys 6631 setting!");
+          memcpy(ucDefaultAddr, stBtDefault_connac_soc_2_0_6631.addr, 6);
+        #else
+          LOG_WAN("Use connsys 6635 setting!");
+          memcpy(ucDefaultAddr, stBtDefault_connac_soc_2_0.addr, 6);
+        #endif
+        break;
+      case 0x6885:
+        LOG_WAN("CONNAC chip id: %04x\n", btinit->chip_id);
+        btinit->cur_script = bt_init_preload_script_connac20;
+        btinit->chip_type = BT_CONNAC;
+        memcpy(ucDefaultAddr, stBtDefault_connac_soc_3_0.addr, 6);
+        break;
       default:
         LOG_ERR("Unknown combo chip id: %04x\n", btinit->chip_id);
         break;
@@ -1165,11 +1464,11 @@ VOID *GORM_FW_Init_Thread(UNUSED_ATTR VOID *ptr)
         goto exit;
     }
 
-    if (btinit->chip_type == BT_COMBO) {
+    if (btinit->chip_type == BT_EXT_COMBO) {
         if ((0 == memcmp(btinit->bt_nvram.fields.addr, ucDefaultAddr, 6)) ||
             (0 == memcmp(btinit->bt_nvram.fields.addr, ucZeroAddr, 6))) {
             /* NVRAM BD address default value */
-            /* Want to retrieve module eFUSE address on combo chip */
+            /* Want to retrieve module eFUSE address on external combo chip */
             fgGetEFUSE = TRUE;
         }
 
@@ -1179,7 +1478,8 @@ VOID *GORM_FW_Init_Thread(UNUSED_ATTR VOID *ptr)
             i = 1;
     }
 
-    while (btinit->cur_script[i].command_func && cmd_status != CMD_TERMINATE) {
+    /* process init script */
+    while (btinit->cur_script[i].command_func) {
         /* Some debug commands are executed by request */
         if (btinit->cur_script[i].command_func == GORMcmd_HCC_Set_SSP_Debug_Mode) {
             if (!property_get("persist.vendor.bt.sspdebug.enable", bt_ssp_debug_val, NULL) ||
@@ -1194,130 +1494,74 @@ VOID *GORM_FW_Init_Thread(UNUSED_ATTR VOID *ptr)
                 continue;
             }
         }
-
-        p_buf = NULL;
-
-        if (bt_vnd_cbacks) {
-            p_buf = (HC_BT_HDR *)bt_vnd_cbacks->alloc(BT_HC_HDR_SIZE + \
-                                                          HCI_CMD_MAX_SIZE);
+        if(process_cmd_rsp(btinit->cur_script[i].command_func) != TRUE) {
+            goto exit;
         }
-        else {
-            LOG_ERR("No libbt-hci callbacks!\n");
-        }
-
-        if (p_buf) {
-            p_buf->event = MSG_STACK_TO_HC_HCI_CMD;
-            p_buf->offset = 0;
-            p_buf->layer_specific = 0;
-
-            pthread_mutex_lock(&btinit_ctrl.mutex);
-            if (cmd_status != CMD_TERMINATE) {
-                cmd_status = CMD_PENDING;
-                pthread_mutex_unlock(&btinit_ctrl.mutex);
-            } else {
-                pthread_mutex_unlock(&btinit_ctrl.mutex);
-                break;
-            }
-
-            if (btinit->cur_script[i].command_func(p_buf) == FALSE) {
-                LOG_ERR("Send command %d fails\n", i);
-                if (bt_vnd_cbacks) {
-                    bt_vnd_cbacks->dealloc(p_buf);
-                }
-                break;
-            }
-        }
-        else {
-            LOG_ERR("Alloc command %d buffer fails\n", i);
-            break;
-        }
-
-        clock_gettime(CLOCK_MONOTONIC, &ts);
-        ts.tv_sec += WAIT_TIME_SECONDS;
-
-        /* Wait for event returned */
-        pthread_mutex_lock(&btinit_ctrl.mutex);
-        while (cmd_status == CMD_PENDING) {
-            rc = pthread_cond_timedwait(&btinit_ctrl.cond, &btinit_ctrl.mutex, &ts);
-            if (rc == ETIMEDOUT) {
-                LOG_DBG("The event of command %d timedout, trigger assert\n", i);
-                mtk_set_fw_assert(((UINT32)wOpCode << 16) | 31);
-                cmd_status = CMD_FAIL;
-                break;
-            }
-        }
-
-        if (cmd_status == CMD_SUCCESS) {
-            LOG_DBG("The event of command %d success\n", i);
-            pthread_mutex_unlock(&btinit_ctrl.mutex);
-        }
-        else if (cmd_status == CMD_FAIL) {
-            LOG_ERR("The event of command %d error\n", i);
-            pthread_mutex_unlock(&btinit_ctrl.mutex);
-            break;
-        }
-        else {
-            LOG_WAN("FW init thread is forced to exit\n");
-            cmd_status = CMD_SUCCESS; /* restore the global variable for next time */
-            pthread_mutex_unlock(&btinit_ctrl.mutex);
-            break;
-        }
-
-        i ++;
+        i++;
     }
-
     if (btinit->cur_script[i].command_func == NULL)
         ret = BT_VND_OP_RESULT_SUCCESS;
 
-exit:
-    pthread_mutexattr_destroy(&btinit_ctrl.attr);
-    pthread_mutex_destroy(&btinit_ctrl.mutex);
-    pthread_condattr_destroy(&btinit_ctrl.condattr);
-    pthread_cond_destroy(&btinit_ctrl.cond);
+    /* process vendor cmd assigned in cfg file */
+    FILE *fp = fopen(BT_FW_CFG_FILE, "r");
+    char *line = NULL;
+    size_t len = 0;
+    ssize_t read = 0;
 
+    if(fp != NULL) {
+        while((read = getline(&line, &len, fp)) != -1) {
+            if(_parse_cmd(line, btinit->fw_conf_cmd) == TRUE) {
+                if(process_cmd_rsp(GORMcmd_HCC_Fw_Cfg_Cmd) != TRUE) {
+                    fclose(fp);
+                    free(line);
+                    goto exit;
+                }
+            }
+        }
+        fclose(fp);
+        free(line);
+    }
+
+exit:
+    pthread_mutex_lock(&btinit_ctrl.mutex);
     if (bt_vnd_cbacks) {
         bt_vnd_cbacks->fwcfg_cb(ret);
     }
+    pthread_mutex_unlock(&btinit_ctrl.mutex);
 
     btinit_ctrl.worker_thread_running = FALSE;
     return NULL;
 }
 
+UCHAR GetRandomByte(UCHAR exclude)
+{
+    struct timeval tv;
+    UCHAR ret = exclude;
+    while(ret == exclude) {
+        gettimeofday(&tv, NULL);
+        srand(tv.tv_usec);
+        ret = ((rand()>>8) & 0xFF);
+    }
+    return ret;
+}
+
 static VOID GetRandomValue(UCHAR string[6])
 {
     INT32 iRandom = 0;
-    INT32 fd = 0;
-    UINT32 seed;
-
     LOG_WAN("Enable random generation\n");
 
     /* Initialize random seed */
     srand(time(NULL));
     iRandom = rand();
-    LOG_WAN("iRandom = [%d]", iRandom);
     string[0] = (((iRandom>>24|iRandom>>16) & (0xFE)) | (0x02)); /* Must use private bit(1) and no BCMC bit(0) */
 
-    /* second seed */
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    srand(tv.tv_usec);
-    iRandom = rand();
-    LOG_WAN("iRandom = [%d]", iRandom);
-    string[1] = ((iRandom>>8) & 0xFF);
-
-    /* third seed */
-    fd = open("/dev/urandom", O_RDONLY);
-    if (fd >= 0) {
-        if (read(fd, &seed, sizeof(UINT32)) > 0) {
-            srand(seed);
-            iRandom = rand();
-        }
-        close(fd);
-    }
-
-    LOG_WAN("iRandom = [%d]", iRandom);
-    string[5] = (iRandom & 0xFF);
-
+    string[1] = GetRandomByte(0x00);
+    /* Generate random LAP, exclude 0x9E8B00 ~ 0x9E8BFF*/
+    string[3] = GetRandomByte(0x9E);
+    string[4] = GetRandomByte(0x8B);
+    string[5] = GetRandomByte(0x00);
+    LOG_WAN("Generate bd_addr:  %02x-%02x-%02x-%02x-%02x-%02x\n",
+        string[0], string[1], string[2], string[3], string[4], string[5]);
     return;
 }
 

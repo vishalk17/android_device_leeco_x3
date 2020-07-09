@@ -35,7 +35,7 @@
  * any receiver's applicable license agreements with MediaTek Inc.
  */
 
-
+#include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
 
@@ -56,13 +56,18 @@ extern BT_INIT_CB_T btinit_ctrl;
 extern VOID *GORM_FW_Init_Thread(VOID *ptr);
 extern VOID notify_thread_exit(VOID);
 
-
 BOOL BT_InitDevice(UINT32 chipId, PUCHAR pucNvRamData)
 {
     LOG_DBG("BT_InitDevice\n");
 
     memset(btinit, 0, sizeof(BT_INIT_VAR_T));
     btinit_ctrl.worker_thread_running = FALSE;
+    pthread_mutexattr_init(&btinit_ctrl.attr);
+    pthread_mutexattr_settype(&btinit_ctrl.attr, PTHREAD_MUTEX_ERRORCHECK);
+    pthread_mutex_init(&btinit_ctrl.mutex, &btinit_ctrl.attr);
+    pthread_condattr_init(&btinit_ctrl.condattr);
+    pthread_condattr_setclock(&btinit_ctrl.condattr, CLOCK_MONOTONIC);
+    pthread_cond_init(&btinit_ctrl.cond, &btinit_ctrl.condattr);
 
     btinit->chip_id = chipId;
     /* Copy configuration data */
@@ -101,6 +106,11 @@ VOID BT_Cleanup(VOID)
      */
     /* Always do pthread_join no matter the target thread has exited or not */
     pthread_join(btinit_ctrl.worker_thread, NULL);
+
+    pthread_mutexattr_destroy(&btinit_ctrl.attr);
+    pthread_mutex_destroy(&btinit_ctrl.mutex);
+    pthread_condattr_destroy(&btinit_ctrl.condattr);
+    pthread_cond_destroy(&btinit_ctrl.cond);
 
     return;
 }

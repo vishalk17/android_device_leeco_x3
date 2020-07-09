@@ -45,6 +45,7 @@
 
 #define BD_ADDR_LEN             6   /* Device address length */
 #define HCI_CMD_MAX_SIZE        251
+#define BT_FW_CFG_FILE          "/vendor/etc/firmware/BT_FW.cfg"
 
 /********************************************************************************
 ** Macros to get and put bytes to and from a stream (Little Endian format).
@@ -65,7 +66,7 @@ typedef enum {
 
 typedef enum {
   BT_UNKNOWN = 0,
-  BT_COMBO,
+  BT_EXT_COMBO,
   BT_CONSYS,
   BT_CONNAC,
 } CHIP_TYPE_T;
@@ -81,10 +82,24 @@ typedef struct {
 } HCI_SEQ_T;
 
 typedef struct {
+  UCHAR coex_bt_ctrl;
+  UCHAR coex_bt_ctrl_mode;
+  UCHAR coex_bt_ctrl_rw;
+  UCHAR coex_opp_time_ratio;
+  UCHAR coex_opp_time_ratio_bt_slot;
+  UCHAR coex_opp_time_ratio_wifi_slot;
+  UCHAR coex_lescan_time_ratio;
+  UCHAR coex_lescan_time_ratio_bt_slot;
+  UCHAR coex_lescan_time_ratio_wifi_slot;
+} FW_CONF_PARA_T;
+
+typedef struct {
   UINT32 chip_id;
   CHIP_TYPE_T chip_type;
   BT_NVRAM_DATA_T bt_nvram;
   HCI_SEQ_T *cur_script;
+  FW_CONF_PARA_T fw_conf_para;
+  UCHAR fw_conf_cmd[256];
 } BT_INIT_VAR_T;
 
 /* Thread control block for Controller initialize */

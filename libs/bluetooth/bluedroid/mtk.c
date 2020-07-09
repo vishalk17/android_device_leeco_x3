@@ -56,8 +56,8 @@
 ***************************************************************************/
 
 #define COMBO_IOC_MAGIC         0xb0
-#define COMBO_IOCTL_FW_ASSERT   _IOWR(COMBO_IOC_MAGIC, 0, int)
-#define COMBO_IOCTL_BT_SET_PSM  _IOWR(COMBO_IOC_MAGIC, 1, bool)
+#define COMBO_IOCTL_FW_ASSERT   _IOW(COMBO_IOC_MAGIC, 0, int)
+#define COMBO_IOCTL_BT_SET_PSM  _IOW(COMBO_IOC_MAGIC, 1, bool)
 /**************************************************************************
  *                  G L O B A L   V A R I A B L E S                       *
 ***************************************************************************/
@@ -108,15 +108,23 @@ void clean_callbacks(void)
 /* Initialize UART port */
 int init_uart(void)
 {
+    int i;
     LOG_TRC();
 
-    bt_fd = open(CUST_BT_SERIAL_PORT, O_RDWR | O_NOCTTY | O_NONBLOCK);
-    if (bt_fd < 0) {
-        LOG_ERR("Can't open %s (%s), errno[%d]\n", CUST_BT_SERIAL_PORT, strerror(errno), errno);
-        return -1;
+    /* M: Bug Fix for ALPS04297476 */
+    /* For auto stress test case, if wmt is under chip reseting, re-open device node will cause fail
+       Add wait and retry to wait for wmt recover*/
+    for(i = 0; i < 3; i++) {
+        bt_fd = open(CUST_BT_SERIAL_PORT, O_RDWR | O_NOCTTY | O_NONBLOCK);
+        if (bt_fd < 0) {
+            LOG_ERR("Can't open %s (%s), errno[%d]\n", CUST_BT_SERIAL_PORT, strerror(errno), errno);
+            usleep(1000000);
+        } else {
+            return bt_fd;
+        }
     }
-
-    return bt_fd;
+    // open fail
+    return -1;
 }
 
 /* Close UART port previously opened */
@@ -219,7 +227,8 @@ static int bt_read_nvram(unsigned char *pucNvRamData)
 int mtk_fw_cfg(void)
 {
     unsigned int chipId = 0;
-    ap_nvram_btradio_struct nvData = {0};
+    ap_nvram_btradio_struct nvData;
+    memset(&nvData, 0, sizeof(nvData));
 
     LOG_TRC();
 
@@ -231,7 +240,7 @@ int mtk_fw_cfg(void)
 
     /* Read NVRAM data */
     if ((bt_read_nvram((unsigned char *)&nvData) < 0) ||
-          is_memzero(&nvData, sizeof(ap_nvram_btradio_struct))) {
+          is_memzero((unsigned char *)&nvData, sizeof(ap_nvram_btradio_struct))) {
         LOG_WAN("Read NVRAM data fails or NVRAM data all zero!!\n");
         LOG_WAN("Use %04x default value\n", chipId);
         switch (chipId) {
@@ -258,6 +267,7 @@ int mtk_fw_cfg(void)
           case 0x0337:
           case 0x6580:
           case 0x6570:
+          case 0x6735:
           case 0x6755:
           case 0x6797:
           case 0x6757:
@@ -273,8 +283,21 @@ int mtk_fw_cfg(void)
           case 0x6765:
           case 0x3967:
           case 0x6761:
-            /* Use CONNAC default value */
-            memcpy(&nvData, &stBtDefault_connac, sizeof(ap_nvram_btradio_struct));
+          case 0x6768:
+          case 0x6785:
+            /* Use CONNAC1.0 SOC1_0 default value */
+            memcpy(&nvData, &stBtDefault_connac_soc_1_0, sizeof(ap_nvram_btradio_struct));
+            break;
+          case 0x6779:
+            /* Use CONNAC1.0 SOC2_0 default value */
+            #ifdef MTK_CONSYS_ADIE_6631
+              memcpy(&nvData, &stBtDefault_connac_soc_2_0_6631, sizeof(ap_nvram_btradio_struct));
+            #else
+              memcpy(&nvData, &stBtDefault_connac_soc_2_0, sizeof(ap_nvram_btradio_struct));
+            #endif
+            break;
+          case 0x6885:
+            memcpy(&nvData, &stBtDefault_connac_soc_3_0, sizeof(ap_nvram_btradio_struct));
             break;
           default:
             LOG_WAN("Unknown combo chip id: %04x\n", chipId);

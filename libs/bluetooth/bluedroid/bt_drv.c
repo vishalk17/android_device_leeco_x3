@@ -38,7 +38,6 @@
 #include "bt_vendor_lib.h"
 #include "bt_mtk.h"
 
-
 //===============        I N T E R F A C E S      =======================
 
 int mtk_bt_init(const bt_vendor_callbacks_t* p_cb, UNUSED_ATTR unsigned char *local_bdaddr)
